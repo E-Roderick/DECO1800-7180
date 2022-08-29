@@ -68,6 +68,28 @@ uploadInput.addEventListener("change", () => {
     }
 });
 
+const dataLoad = (rawData) => {
+    let data = rawData.split("\r\n")
+        .map(line => line.split(','))
+        .filter(line => line.includes(TARGET))
+        .map(vals => [Number(vals[1]), Number(vals[2])]);
+
+    console.log(data);
+
+    L.polyline(data, {color: 'red'}).addTo(map);
+}
+
+$(document).ready(function() {
+    $.ajax({
+      type: "GET",
+      url: "data\\SEQ_GTFS\\shapes.txt",
+      dataType: "text",
+      success: function(data) {
+        dataLoad(data);
+      }
+    });
+  });
+
 // Add event listener on keydown
 document.addEventListener('keydown', (event) => {
     var name = event.key;
