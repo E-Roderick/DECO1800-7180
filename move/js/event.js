@@ -1,9 +1,3 @@
-function getYear(year) {
-    if (year) {
-        return year.match(/[\d]{4}/); // This is regex: https://en.wikipedia.org/wiki/Regular_expression
-    }
-}
-
 var artIcon = L.icon({
     iconUrl: 'images/mona-lisa.png',
     // shadowUrl: 'images/mona-lisa.png',
@@ -15,21 +9,24 @@ var artIcon = L.icon({
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var nearbyMarkers = [];
+var nearbyMarkers = []; // the event marker within a certain range of the user
 
-function iterateRecords1(results, lat, lon) {
-
-    console.log(results);
-
-    // Iterate over each record and add a marker using the Latitude field (also containing longitude)
+/**
+ * Iterate over all the given event records and draw markers for those that are near given coordinate.
+ *
+ * @param {any} results The event data.
+ * @param {number} lat the latitude of the user's current position.
+ * @param {number} lon the longitude of the user's current position.
+ */
+function iterateEventRecords(results, lat, lon) {
     $.each(results.result.records, function(recordID, recordValue) {
         var recordLatitude = recordValue["Latitude"];
         var recordLongitud = recordValue["Longitude"]
         var recordItem = recordValue["Item_title"];
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
-        //console.log(recordLatitude, recordLongitud);
-        //console.log(distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000);
+
+        // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
             distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
             var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map)
@@ -37,8 +34,6 @@ function iterateRecords1(results, lat, lon) {
             marker.bindPopup(`<b>${recordItem}</b><br>${recordLocation}<br>${recordDescription}`);
             //marker.bindPopup(`<b>${recordItem}</b><br>${distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000}`);
         }
-
-
     });
 
 }
@@ -46,12 +41,10 @@ function iterateRecords1(results, lat, lon) {
 
 
 $(document).ready(function() {
-
     var eventData = JSON.parse(localStorage.getItem("eventData"));
 
     if (eventData) {
         console.log("Source: localStorage");
-        //iterateRecords1(eventData);
     } else {
         var data = {
             resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
@@ -65,7 +58,6 @@ $(document).ready(function() {
             cache: true,
             success: function(data) {
                 localStorage.setItem("eventData", JSON.stringify(data));
-                //iterateRecords1(data);
             }
         });
     }
