@@ -82,7 +82,7 @@ const dataLoad = (rawData) => {
 $(document).ready(function() {
     $.ajax({
       type: "GET",
-      url: "data\\SEQ_GTFS\\shapes.txt",
+      url: "data\\shapes.txt",
       dataType: "text",
       success: function(data) {
         dataLoad(data);
