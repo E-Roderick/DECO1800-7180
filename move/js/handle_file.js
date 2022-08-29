@@ -31,64 +31,42 @@ var data;
 var maxIndex;
 var circle;
 
-uploadInput.addEventListener("change", () => {
-    // Calculate total size
-    for (const file of uploadInput.files) {
-        console.log("I am here")
-        console.log(file);
-
-        let fr = new FileReader();
-        fr.onload = (e => {
-            let raw = e.target.result;
-            data = raw.split("\r\n")
-                .map(line => line.split(','))
-                .filter(line => line.includes(TARGET))
-                .map(vals => [Number(vals[1]), Number(vals[2])]);
-
-            console.log(data);
-            console.log(data[index][0]);
-            maxIndex = data.length;
-            index = maxIndex - 1;
-            console.log(maxIndex);
-            marker = L.marker([data[index][0], data[index][1]], { icon: greenIcon }).addTo(map);
-            circle = L.circle([data[index][0], data[index][1]], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: 500
-            }).addTo(map);
-
-            L.polyline(data, { color: 'red' }).addTo(map);
-            if (eventData) {
-                console.log("Source: localStorage");
-                iterateRecords1(eventData, data[index][0], data[index][1]);
-            }
-        });
-        fr.readAsText(file);
-    }
-});
-
 const dataLoad = (rawData) => {
-    let data = rawData.split("\r\n")
+    data = rawData.split("\r\n")
         .map(line => line.split(','))
         .filter(line => line.includes(TARGET))
         .map(vals => [Number(vals[1]), Number(vals[2])]);
 
     console.log(data);
+    console.log(data[index][0]);
+    maxIndex = data.length;
+    index = maxIndex - 1;
+    console.log(maxIndex);
+    marker = L.marker([data[index][0], data[index][1]], { icon: greenIcon }).addTo(map);
+    circle = L.circle([data[index][0], data[index][1]], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
 
-    L.polyline(data, {color: 'red'}).addTo(map);
+    L.polyline(data, { color: 'red' }).addTo(map);
+    if (eventData) {
+        console.log("Source: localStorage");
+        iterateRecords1(eventData, data[index][0], data[index][1]);
+    }
 }
 
 $(document).ready(function() {
     $.ajax({
-      type: "GET",
-      url: "data\\shapes.txt",
-      dataType: "text",
-      success: function(data) {
-        dataLoad(data);
-      }
+        type: "GET",
+        url: "data\\shapes.txt",
+        dataType: "text",
+        success: function(data) {
+            dataLoad(data);
+        }
     });
-  });
+});
 
 // Add event listener on keydown
 document.addEventListener('keydown', (event) => {
