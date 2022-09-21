@@ -6,7 +6,7 @@ var artIcon = L.icon({
     // shadowSize:   [50, 64], // size of the shadow
     iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62], // the same for the shadow
-    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
 });
 
 var nearbyMarkers = []; // the event marker within a certain range of the user
@@ -26,20 +26,41 @@ function iterateEventRecords(results, lat, lon) {
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
 
+        var popupText = `<h3>${recordItem}</h3>
+        <div>
+            <p>${recordLocation}</p>
+            <img src="images/blanchflower.jpg" alt="blanchflower" />
+            <p>${recordDescription}</p>
+        </div>
+        <div class="wrapper">
+            <input type="checkbox" class="heart-checkbox" id="heart-checkbox">
+            <label id = ${recordID} class="heart" for="heart-checkbox" onclick="myFunction(this.id);"></label>
+        </div>
+        <button type="button" class="button" onclick="alert('Hello angel!')">Click Me!</button>`;
+
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
             distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
             var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map)
             nearbyMarkers.push(marker);
-            marker.bindPopup(`<b>${recordItem}</b><br>${recordLocation}<br>${recordDescription}`);
-            //marker.bindPopup(`<b>${recordItem}</b><br>${distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000}`);
+            // marker.bindPopup(`<button type="button" onclick="alert('Hello world!')">Click Me!</button>`);
+            marker.bindPopup(popupText);
         }
     });
+    // var hearts = document.getElementsByClassName("heart");
+    // console.log(hearts);
 
+    // for (var i = 0; i < hearts.length ; i++) {
+    //     hearts[i].addEventListener("click", myFunction);
+    // }
 }
 
+function myFunction(id) {
+    console.log(id);
+    alert('Saved!');
+}
 
-
+console.log(updatedEvents)
 $(document).ready(function() {
     var eventData = JSON.parse(localStorage.getItem("eventData"));
 

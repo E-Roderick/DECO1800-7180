@@ -32,7 +32,8 @@ var maxIndex; // the max index of route points
 var circle; // circle round the user marker
 
 const dataLoad = (rawData) => {
-    routeCoordinates = rawData.split("\r\n")
+
+    routeCoordinates = rawData.split("\n")
         .map(line => line.split(','))
         .filter(line => line.includes(TARGET))
         .map(vals => [Number(vals[1]), Number(vals[2])]);
@@ -67,6 +68,7 @@ $(document).ready(function() {
         }
     });
 });
+
 
 // Add event listener on keydown of 'A' and 'D'
 document.addEventListener('keydown', (event) => {
