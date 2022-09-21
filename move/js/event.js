@@ -10,7 +10,7 @@ var artIcon = L.icon({
 });
 
 var nearbyMarkers = []; // the event marker within a certain range of the user
-
+var collectFlags = new Array(100).fill(0);
 /**
  * Iterate over all the given event records and draw markers for those that are near given coordinate.
  *
@@ -26,38 +26,59 @@ function iterateEventRecords(results, lat, lon) {
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
 
-        var popupText = `<h3>${recordItem}</h3>
-        <div>
-            <p>${recordLocation}</p>
-            <img src="images/blanchflower.jpg" alt="blanchflower" />
-            <p>${recordDescription}</p>
-        </div>
-        <div class="wrapper">
-            <input type="checkbox" class="heart-checkbox" id="heart-checkbox">
-            <label id = ${recordID} class="heart" for="heart-checkbox" onclick="myFunction(this.id);"></label>
-        </div>
-        <button type="button" class="button" onclick="alert('Hello angel!')">Click Me!</button>`;
+        var checkState = '';
+        if (collectFlags[recordID]) {
+            checkState = 'checked';
+        }
+        var popupText = `<div id='popup'>
+            <h3>${recordItem}</h3>
+            <div>
+                <p>${recordLocation}</p>
+                <img src="images/blanchflower.jpg" alt="blanchflower" />
+                <p>${recordDescription}</p>
+            </div>
+            <div class="wrapper">
+                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${checkState}>
+                <label id = ${recordID} class="heart" for="heart-checkbox" onclick="collectCallback(this.id);"></label>
+            </div>
+        </div>`;
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
             distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
-            var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map)
+            var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map);
             nearbyMarkers.push(marker);
+            var myPopup = L.DomUtil.create('div', 'infoWindow');
+            myPopup.innerHTML = popupText;
             // marker.bindPopup(`<button type="button" onclick="alert('Hello world!')">Click Me!</button>`);
-            marker.bindPopup(popupText);
+            marker.bindPopup(myPopup);
+            $('#popup', myPopup).on('load', function() {
+                console.log("popup");
+            });
         }
     });
     // var hearts = document.getElementsByClassName("heart");
     // console.log(hearts);
 
     // for (var i = 0; i < hearts.length ; i++) {
-    //     hearts[i].addEventListener("click", myFunction);
+    //     hearts[i].addEventListener("click", collectCallback);
+    // }
+
+    // let markers = document.querySelectorAll(".leaflet-marker-icon");
+    // console.log(markers);
+    // for (i = 0; i < markers.length; ++i) {
+    //     markers[i].addEventListener('click', markerCallback);
     // }
 }
+// function markerCallback() {
+//     //let popup = document.querySelectorAll(".leaflet-popup-pane");
+//     console.log("popup");
+// }
 
-function myFunction(id) {
+function collectCallback(id) {
     console.log(id);
-    alert('Saved!');
+    console.log(collectFlags[id]);
+    collectFlags[id] = 1 - collectFlags[id];
 }
 
 console.log(updatedEvents)
