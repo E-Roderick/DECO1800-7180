@@ -73,7 +73,7 @@ main.explore-page {
 #collection {
     position: absolute;
     right: 0;
-    bottom: 5%;
+    bottom: 10%;
     z-index: 1001;
     margin: 6pt;
     padding: 12pt;
