@@ -11,7 +11,7 @@ const INC = 3; // the number of route coordinate points the user goes through on
 //     attribution: '© OpenStreetMap'
 // }).addTo(map);
 
-var eventData = JSON.parse(localStorage.getItem("eventData")); // the event records
+var eventData; // the event records
 
 var greenIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/avatar.png",
@@ -38,7 +38,7 @@ const dataLoad = (rawData) => {
         .filter(line => line.includes(TARGET))
         .map(vals => [Number(vals[1]), Number(vals[2])]);
 
-    console.log(routeCoordinates);
+    // console.log(routeCoordinates);
     console.log(routeCoordinates[index][0]);
     maxIndex = routeCoordinates.length - 1;
     index = maxIndex;
@@ -57,18 +57,6 @@ const dataLoad = (rawData) => {
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
     }
 }
-
-$(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: "/DECO1800-7180/data/shapes.txt",
-        dataType: "text",
-        success: function(data) {
-            dataLoad(data);
-        }
-    });
-});
-
 
 // Add event listener on keydown of 'A' and 'D'
 document.addEventListener('keydown', (event) => {

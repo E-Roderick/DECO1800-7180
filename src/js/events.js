@@ -116,10 +116,18 @@ function updateCollection() {
 
 console.log(updatedEvents)
 $(document).ready(function() {
-    var eventData = JSON.parse(localStorage.getItem("eventData"));
+    eventData = JSON.parse(localStorage.getItem("eventData"));
 
     if (eventData) {
         console.log("Source: localStorage");
+        $.ajax({
+            type: "GET",
+            url: "/DECO1800-7180/data/shapes.txt",
+            dataType: "text",
+            success: function(data) {
+                dataLoad(data);
+            }
+        });
     } else {
         var data = {
             resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
@@ -132,7 +140,16 @@ $(document).ready(function() {
             dataType: "jsonp",
             cache: true,
             success: function(data) {
+                eventData = data;
                 localStorage.setItem("eventData", JSON.stringify(data));
+                $.ajax({
+                    type: "GET",
+                    url: "/DECO1800-7180/data/shapes.txt",
+                    dataType: "text",
+                    success: function(data) {
+                        dataLoad(data);
+                    }
+                });
             }
         });
     }
