@@ -6,6 +6,16 @@
     justify-content: center;
 }
 
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
 .all-height {
     height: 100%;
 }
