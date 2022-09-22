@@ -33,7 +33,10 @@ const generatePopup = (state, record) => {
             </div>
             <div class="wrapper">
                 <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
-                <label id = ${id} class="heart" for="heart-checkbox" onclick="collectCallback('${encodeURIComponent(JSON.stringify(record))}');"></label>
+                <label id = ${id} class="heart" for="heart-checkbox" 
+                    onclick="collectCallback('${
+                        encodeURIComponent(JSON.stringify(record)).replace(/'/g, '&quot;')
+                    }');"></label>
             </div>
         </div>
     `;
@@ -55,7 +58,7 @@ function iterateEventRecords(results, lat, lon) {
         var recordLocation = recordValue["The_Location"];
 
         var checkState = '';
-        if (collectedEvents.find(record => findCollectedEvent(record, id))) {
+        if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
             checkState = 'checked';
         }
 
@@ -98,8 +101,8 @@ function collectCallback(record) {
 }
 
 function updateCollection() {
-    // Empty list
-    $("#collection").html('<section id="collection">');
+    // Empty container
+    $("#collection").empty();
 
     // Add all icons
     collectedEvents.forEach(collected => {
