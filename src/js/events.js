@@ -10,7 +10,35 @@ var artIcon = L.icon({
 });
 
 var nearbyMarkers = []; // the event marker within a certain range of the user
-var collectFlags = new Array(100).fill(0);
+let collectedEvents = [];
+
+// Function to find a collected event
+const findCollectedEvent = (ce, id) => ce.id === id; 
+
+/**
+ * Generates HTML for an event's popup.
+ * @param {str} state Whether this event has been collected yet.
+ * @param {Any} record Record obj containing the event's information.
+ * @returns String of popup's inner HTML.
+ */
+const generatePopup = (state, record) => {
+    const { id, item, location, desc } = record;
+    return `
+        <div id='popup'>
+            <h3>${item}</h3>
+            <div>
+                <p>${location}</p>
+                <img src="/DECO1800-7180/public/assets/images/blanchflower.jpg" alt="blanchflower" />
+                <p>${desc}</p>
+            </div>
+            <div class="wrapper">
+                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
+                <label id = ${id} class="heart" for="heart-checkbox" onclick="collectCallback('${encodeURIComponent(JSON.stringify(record))}');"></label>
+            </div>
+        </div>
+    `;
+}
+
 /**
  * Iterate over all the given event records and draw markers for those that are near given coordinate.
  *
@@ -27,21 +55,17 @@ function iterateEventRecords(results, lat, lon) {
         var recordLocation = recordValue["The_Location"];
 
         var checkState = '';
-        if (collectFlags[recordID]) {
+        if (collectedEvents.find(record => findCollectedEvent(record, id))) {
             checkState = 'checked';
         }
-        var popupText = `<div id='popup'>
-            <h3>${recordItem}</h3>
-            <div>
-                <p>${recordLocation}</p>
-                <img src="/DECO1800-7180/public/assets/images/blanchflower.jpg" alt="blanchflower" />
-                <p>${recordDescription}</p>
-            </div>
-            <div class="wrapper">
-                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${checkState}>
-                <label id = ${recordID} class="heart" for="heart-checkbox" onclick="collectCallback(this.id);"></label>
-            </div>
-        </div>`;
+
+        let record = {
+            id: recordID, 
+            item: recordItem, 
+            location: recordLocation, 
+            desc: recordDescription
+        };
+        var popupText = generatePopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
@@ -57,28 +81,34 @@ function iterateEventRecords(results, lat, lon) {
             });
         }
     });
-    // var hearts = document.getElementsByClassName("heart");
-    // console.log(hearts);
-
-    // for (var i = 0; i < hearts.length ; i++) {
-    //     hearts[i].addEventListener("click", collectCallback);
-    // }
-
-    // let markers = document.querySelectorAll(".leaflet-marker-icon");
-    // console.log(markers);
-    // for (i = 0; i < markers.length; ++i) {
-    //     markers[i].addEventListener('click', markerCallback);
-    // }
 }
-// function markerCallback() {
-//     //let popup = document.querySelectorAll(".leaflet-popup-pane");
-//     console.log("popup");
-// }
 
-function collectCallback(id) {
-    console.log(id);
-    console.log(collectFlags[id]);
-    collectFlags[id] = 1 - collectFlags[id];
+function collectCallback(record) {
+    record = JSON.parse(decodeURIComponent(record));
+    const id = record.id;
+
+    if (collectedEvents.find(record => findCollectedEvent(record, id))) {
+        collectedEvents = collectedEvents.filter(record => record.id !== id);
+    } else {
+        collectedEvents.push(record);
+    }
+
+    // Propagate updates to collection
+    updateCollection();
+}
+
+function updateCollection() {
+    // Empty list
+    $("#collection").html('<section id="collection">');
+
+    // Add all icons
+    collectedEvents.forEach(collected => {
+        $("#collection").append(
+            $('<section class="collected-event">').append(
+                '<img src="/DECO1800-7180/public/assets/art-icons/mona-lisa.png" height="64px" width="64px">'
+            )
+        );
+    });
 }
 
 console.log(updatedEvents)
