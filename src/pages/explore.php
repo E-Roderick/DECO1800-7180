@@ -10,11 +10,7 @@
         <script> var updatedEvents = <?php echo(getEventData()); ?>; </script>
 
         <!-- Container for collected events -->
-        <section id="collection">
-            <figure>
-                <p>Hello</p>
-            </figure>
-        </section>
+        <section id="collection"></section>
     
     </main>
     
