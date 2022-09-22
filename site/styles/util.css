@@ -1,0 +1,15 @@
+/*** UTILITY CLASSES ***/
+/* These classes aren't semantic, they are used to apply utility styles */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-height {
+    height: 100%;
+}
+
+.all-width {
+    width: 100%;
+}
