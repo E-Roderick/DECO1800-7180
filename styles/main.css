@@ -13,24 +13,29 @@ body {
 
 header, footer {
     width: 100vw;
+    text-align: center;
 }
 
 header {
     height: 64pt;
-    background-color: aquamarine;
-    /* z-index: 1500; */
+    
+    font-size: 24pt;
+    
+    /* background-color: aquamarine; */
 }
 
 footer {
     height: 42pt;
     align-self: flex-end;
 
-    background-color: salmon;
+    font-size: 12pt;
+
+    /* background-color: salmon; */
 }
 
-main {
+/* main {
     background-color: palegoldenrod;
-}
+} */
 
 /* These styles are quite specific. Might move later. */
 main.home-page {
@@ -43,6 +48,7 @@ main.home-page {
 }
 
 main.explore-page {
+    position: absolute;
     height: 100%;
 }
 
@@ -67,12 +73,13 @@ main.explore-page {
 #collection {
     position: absolute;
     right: 0;
-    bottom: 10%;
+    bottom: 5%;
     z-index: 1001;
     margin: 6pt;
+    padding: 12pt;
 
     border-radius: 6pt;
-    background-color: rgba(130, 130, 200, 0.15);
+    background-color: rgba(60, 60, 114, 0.2);
     backdrop-filter: blur(6pt);
     -webkit-backdrop-filter: blur(6pt);
 
