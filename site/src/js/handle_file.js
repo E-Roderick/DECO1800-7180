@@ -14,8 +14,8 @@ const INC = 3; // the number of route coordinate points the user goes through on
 var eventData = JSON.parse(localStorage.getItem("eventData")); // the event records
 
 var greenIcon = L.icon({
-    iconUrl: "/site/public/assets/avatar/avatar.png",
-    shadowUrl: "/site/public/assets/avatar/avatar-shadow.png",
+    iconUrl: "/DECO1800-7180/site/public/assets/avatar/avatar.png",
+    shadowUrl: "/DECO1800-7180/site/public/assets/avatar/avatar-shadow.png",
 
     iconSize: [38, 95], // size of the icon
     shadowSize: [50, 64], // size of the shadow
@@ -61,7 +61,7 @@ const dataLoad = (rawData) => {
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "/site/data/shapes.txt",
+        url: "/DECO1800-7180/site/data/shapes.txt",
         dataType: "text",
         success: function(data) {
             dataLoad(data);

@@ -1,5 +1,5 @@
 var artIcon = L.icon({
-    iconUrl: "/site/public/assets/art-icons/mona-lisa.png",
+    iconUrl: "/DECO1800-7180/site/public/assets/art-icons/mona-lisa.png",
     // shadowUrl: 'images/mona-lisa.png',
 
     iconSize: [40, 40], // size of the icon
@@ -34,7 +34,7 @@ function iterateEventRecords(results, lat, lon) {
             <h3>${recordItem}</h3>
             <div>
                 <p>${recordLocation}</p>
-                <img src="/site/public/assets/images/blanchflower.jpg" alt="blanchflower" />
+                <img src="/DECO1800-7180/site/public/assets/images/blanchflower.jpg" alt="blanchflower" />
                 <p>${recordDescription}</p>
             </div>
             <div class="wrapper">

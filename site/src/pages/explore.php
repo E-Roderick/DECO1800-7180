@@ -20,9 +20,9 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-    <script src="/site/src/js/map.js"></script>
-    <script src="/site/src/js/distance.js"></script>
-    <script src="/site/src/js/events.js"></script>
-    <script src="/site/src/js/handle_file.js"></script>
+    <script src="/DECO1800-7180/site/src/js/map.js"></script>
+    <script src="/DECO1800-7180/site/src/js/distance.js"></script>
+    <script src="/DECO1800-7180/site/src/js/events.js"></script>
+    <script src="/DECO1800-7180/site/src/js/handle_file.js"></script>
 
 <?php include("../components/footer.php"); ?>
