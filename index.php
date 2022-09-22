@@ -6,7 +6,9 @@
         <a class="explore-select-btn" href="src/pages/routes.php">
             By Route
         </a>
-        <p class="explore-select-btn">By Location</p>
+        <a class="explore-select-btn" href="src/pages/location.php">
+            By Location
+        </a>
     </nav>
 </main>
 
