@@ -35,7 +35,7 @@ const generatePopup = (state, record) => {
                 <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
                 <label id = ${id} class="heart" for="heart-checkbox" 
                     onclick="collectCallback('${
-                        encodeURIComponent(JSON.stringify(record)).replace(/'/g, '&quot;')
+                        encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
                     }');"></label>
             </div>
         </div>
@@ -88,6 +88,7 @@ function iterateEventRecords(results, lat, lon) {
 
 function collectCallback(record) {
     record = JSON.parse(decodeURIComponent(record));
+    console.log(record);
     const id = record.id;
 
     if (collectedEvents.find(record => findCollectedEvent(record, id))) {
