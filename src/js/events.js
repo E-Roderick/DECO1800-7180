@@ -1,14 +1,3 @@
-var artIcon = L.icon({
-    iconUrl: "/DECO1800-7180/public/assets/art-icons/mona-lisa.png",
-    // shadowUrl: 'images/mona-lisa.png',
-
-    iconSize: [40, 40], // size of the icon
-    // shadowSize:   [50, 64], // size of the shadow
-    iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62], // the same for the shadow
-    popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
-});
-
 var nearbyMarkers = []; // the event marker within a certain range of the user
 let collectedEvents = [];
 
@@ -57,6 +46,22 @@ function iterateEventRecords(results, lat, lon) {
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
 
+        var recordIcon;
+        if (recordID % 2) 
+            recordIcon = "/DECO1800-7180/public/assets/art-icons/mona-lisa.png";
+        else
+            recordIcon = "/DECO1800-7180/public/assets/art-icons/art.png";
+        var artIcon = L.icon({
+            iconUrl: recordIcon,
+            // shadowUrl: 'images/mona-lisa.png',
+
+            iconSize: [40, 40], // size of the icon
+            // shadowSize:   [50, 64], // size of the shadow
+            iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62], // the same for the shadow
+            popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
+        });
+
         var checkState = '';
         if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
             checkState = 'checked';
@@ -66,7 +71,8 @@ function iterateEventRecords(results, lat, lon) {
             id: recordID, 
             item: recordItem, 
             location: recordLocation, 
-            desc: recordDescription
+            desc: recordDescription,
+            icon: recordIcon
         };
         var popupText = generatePopup(checkState, record);
 
@@ -109,7 +115,7 @@ function updateCollection() {
     collectedEvents.forEach(collected => {
         $("#collection").append(
             $('<section class="collected-event">').append(
-                '<img src="/DECO1800-7180/public/assets/art-icons/mona-lisa.png" height="64px" width="64px">'
+                `<img src=${collected.icon} height="64px" width="64px">`
             )
         );
     });
