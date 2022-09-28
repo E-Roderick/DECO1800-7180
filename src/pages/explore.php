@@ -1,6 +1,6 @@
 <?php require_once("../util/events.php") ?>
 
-<?php include("../components/header.php"); ?>
+<?php include("../components/header_default.php"); ?>
 
     <main class="explore-page">
         <!-- Container for the map -->
@@ -21,4 +21,4 @@
     <script src="/DECO1800-7180/src/js/events.js"></script>
     <script src="/DECO1800-7180/src/js/handle_file.js"></script>
 
-<?php include("../components/footer.php"); ?>
+<?php include("../components/footer_default.php"); ?>

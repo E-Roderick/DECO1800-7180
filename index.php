@@ -1,5 +1,5 @@
 
-<?php include("src/components/header.php"); ?>
+<?php include("src/components/header_default.php"); ?>
 
 <main class="home-page">
     <nav id="explore-select">
@@ -12,4 +12,4 @@
     </nav>
 </main>
 
-<?php include("src/components/footer.php"); ?>
+<?php include("src/components/footer_default.php"); ?>
