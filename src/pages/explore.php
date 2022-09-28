@@ -5,10 +5,19 @@
     include("../components/html_pre.php"); 
     // Need to include </head> and <body> tag now that header is not included 
 ?>
+
+<!-- Stylesheets -->
+<link rel='stylesheet' href='/DECO1800-7180/styles/map.css' />
+
+<!-- Scripts -->
+
+
 </head>
     <body>
         <main class="explore-page">
-            <article id="map-help"></article>
+            <article id="map-" class="flex-center">
+                <p>Hello<p>
+            </article>
 
             <!-- Container for the map -->
             <section id="map"></section>
@@ -28,6 +37,7 @@
             crossorigin="">
         </script>
         <script src="/DECO1800-7180/src/js/map.js"></script>
+        <script>create_map();</script>
         <script src="/DECO1800-7180/src/js/distance.js"></script>
         <script src="/DECO1800-7180/src/js/events.js"></script>
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
