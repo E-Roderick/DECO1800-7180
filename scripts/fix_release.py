@@ -1,4 +1,4 @@
-from genericpath import isdir
+from typing import List
 import os
 
 DEV_URL = "/DECO1800-7180/"
@@ -16,7 +16,7 @@ def _is_invalid_file(file: str):
     """ Returns true if the file is invalid. False otherwise. """
     return any(ignored in file for ignored in IGNORED_FILES)
 
-def _get_valid_files(files: 'List'):
+def _get_valid_files(files: List[str]):
     """ Filter list of files to those that are valid """
     return list(filter(lambda file: not _is_invalid_file(file), files))
 
@@ -36,7 +36,6 @@ def fix_release():
 
             data = None
             with open(file, "r") as target:
-                print(f"Reading file {file}...", end="")
                 contents = target.read()
 
                 if DEV_URL in contents:
@@ -46,8 +45,8 @@ def fix_release():
             if data:
                 with open(file, "w") as target:
                     target.write(data)                    
-                    print(f" UPDATED file paths.")
+                    print(f"UPDATED file: {file}")
             else:
-                print(" Made no changes.")
+                print(f"Read file: {file}")
 
 fix_release()
