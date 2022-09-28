@@ -170,6 +170,7 @@ function get_bus_data() {
         url: "/DECO1800-7180/data/shapes.txt",
         dataType: "text",
         success: data => {
+            $("main").addClass("loaded");
             loadedAllData(data); //NOTE Possible spot to add the loaded class
         }
     });

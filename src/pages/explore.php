@@ -15,8 +15,9 @@
 </head>
     <body>
         <main class="explore-page">
-            <article id="map-" class="flex-center">
-                <p>Hello<p>
+            <article id="map-help" class="flex-center flex-col">
+                <h2>The Explore Page is Loading</h2>
+                <p>Please wait while the explore page loads...</p>
             </article>
 
             <!-- Container for the map -->
@@ -29,7 +30,7 @@
             <section id="collection"></section>
         
         </main>
-        
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script 
             src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" 
@@ -39,8 +40,8 @@
         <script src="/DECO1800-7180/src/js/map.js"></script>
         <script>create_map();</script>
         <script src="/DECO1800-7180/src/js/distance.js"></script>
-        <script src="/DECO1800-7180/src/js/events.js"></script>
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
+        <script src="/DECO1800-7180/src/js/events.js"></script>
     </body>
 
 <?php include("../components/html_post.php"); ?>
