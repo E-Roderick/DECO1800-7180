@@ -1,7 +1,16 @@
-var nearbyMarkers = []; // the event marker within a certain range of the user
+/* Constants */
+const LS_EVENT_DATA = "eventData"; 
+
+/* Globals */
+let nearbyMarkers = []; // the event marker within a certain range of the user
 let collectedEvents = [];
 
-// Function to find a collected event
+/**
+ * Find a collected event based on ID.
+ * @param {obj} ce The collected event object
+ * @param {int} id The target ID
+ * @returns True if the event object's ID matches the target. False otherwise
+ */
 const findCollectedEvent = (ce, id) => ce.id === id; 
 
 /**
@@ -92,6 +101,10 @@ function iterateEventRecords(results, lat, lon) {
     });
 }
 
+/**
+ * Handle the collection of an event icon.
+ * @param {obj} record Information pertaining to the collected event.
+ */
 function collectCallback(record) {
     record = JSON.parse(decodeURIComponent(record));
     console.log(record);
@@ -107,6 +120,10 @@ function collectCallback(record) {
     updateCollection();
 }
 
+/**
+ * Update the collection tray on the map page, based on the actual collected
+ * events.
+ */
 function updateCollection() {
     // Empty container
     $("#collection").empty();
@@ -121,43 +138,52 @@ function updateCollection() {
     });
 }
 
+function get_local_data_events() {
+    return JSON.parse(localStorage.getItem(LS_EVENT_DATA));
+}
+
+function set_local_data_events(data) {
+    localStorage.setItem(LS_EVENT_DATA, JSON.stringify(data));
+}
+
+function get_remote_data_events() {
+    const request = {
+        resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
+        limit: 100
+    }
+
+    $.ajax({
+        url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
+        data: request,
+        dataType: "jsonp",
+        cache: true,
+        success: data => {
+            set_local_data_events(data);
+            get_bus_data();
+        }
+    });
+}
+
+function get_bus_data() {
+    $.ajax({
+        type: "GET",
+        url: "/DECO1800-7180/data/shapes.txt",
+        dataType: "text",
+        success: data => {
+            loadedAllData(data); //NOTE Possible spot to add the loaded class
+        }
+    });
+}
+
 console.log(updatedEvents)
 $(document).ready(function() {
-    eventData = JSON.parse(localStorage.getItem("eventData"));
+    eventData = get_local_data_events()
 
     if (eventData) {
         console.log("Source: localStorage");
-        $.ajax({
-            type: "GET",
-            url: "/DECO1800-7180/data/shapes.txt",
-            dataType: "text",
-            success: function(data) {
-                dataLoad(data);
-            }
-        });
+        get_bus_data();
     } else {
-        var data = {
-            resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
-            limit: 100
-        }
-
-        $.ajax({
-            url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
-            data: data,
-            dataType: "jsonp",
-            cache: true,
-            success: function(data) {
-                eventData = data;
-                localStorage.setItem("eventData", JSON.stringify(data));
-                $.ajax({
-                    type: "GET",
-                    url: "/DECO1800-7180/data/shapes.txt",
-                    dataType: "text",
-                    success: function(data) {
-                        dataLoad(data);
-                    }
-                });
-            }
-        });
+        console.log("Source: API");
+        get_remote_data_events();
     }
 });

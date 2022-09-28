@@ -5,12 +5,6 @@ const LON_OFF = -152;
 const SCALAR = 10;
 const INC = 3; // the number of route coordinate points the user goes through on each move
 
-// var map = L.map("map").setView([-27, 152], 8);
-// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//     maxZoom: 18,
-//     attribution: '© OpenStreetMap'
-// }).addTo(map);
-
 var eventData; // the event records
 
 var greenIcon = L.icon({
@@ -31,9 +25,14 @@ var routeCoordinates; // coordinates of the route points
 var maxIndex; // the max index of route points
 var circle; // circle round the user marker
 
-const dataLoad = (rawData) => {
+/**
+ * Handles the main logic of the map interactibles setup, once all data is
+ * loaded in on the user's end.
+ * @param {*} buslineData The raw busline data to be parsed and drawn
+ */
+const loadedAllData = (buslineData) => {
 
-    routeCoordinates = rawData.split("\n")
+    routeCoordinates = buslineData.split("\n")
         .map(line => line.split(','))
         .filter(line => line.includes(TARGET))
         .map(vals => [Number(vals[1]), Number(vals[2])]);
