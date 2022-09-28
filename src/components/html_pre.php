@@ -6,4 +6,3 @@
         <link rel='stylesheet' href='/DECO1800-7180/styles/reset.css' />
         <link rel='stylesheet' href='/DECO1800-7180/styles/util.css' />
         <link rel='stylesheet' href='/DECO1800-7180/styles/main.css' />
-    </head>
