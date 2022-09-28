@@ -57,39 +57,41 @@ const loadedAllData = (buslineData) => {
     }
 }
 
-// Add event listener on keydown of 'A' and 'D'
-document.addEventListener('keydown', (event) => {
-    var code = event.code;
+function registerKeyPress() {
+    // Add event listener on keydown of 'A' and 'D'
+    document.addEventListener('keydown', (event) => {
+        var code = event.code;
 
-    if (code == "KeyA") {
-        index += INC;
-        if (index > maxIndex) {
-            index = 0;
+        if (code == "KeyA") {
+            index += INC;
+            if (index > maxIndex) {
+                index = 0;
+            }
+        } else if (code == "KeyD") {
+            index -= INC;
+            if (index < 0) {
+                index = maxIndex;
+            }
+        } else {
+            return;
         }
-    } else if (code == "KeyD") {
-        index -= INC;
-        if (index < 0) {
-            index = maxIndex;
-        }
-    } else {
-        return;
-    }
 
-    // remove all the pervious event markers, the user marker and the circle
-    nearbyMarkers.forEach((marker) => {
-        map.removeLayer(marker);
-    })
-    nearbyMarkers = [];
-    map.removeLayer(userMarker);
-    map.removeLayer(circle);
+        // remove all the pervious event markers, the user marker and the circle
+        nearbyMarkers.forEach((marker) => {
+            map.removeLayer(marker);
+        })
+        nearbyMarkers = [];
+        map.removeLayer(userMarker);
+        map.removeLayer(circle);
 
-    // redraw all the markers.
-    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
-    circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(map);
-    iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
-}, false);
+        // redraw all the markers.
+        userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+        circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+        iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
+    }, false);
+}
