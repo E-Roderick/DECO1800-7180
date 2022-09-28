@@ -34,18 +34,20 @@ def fix_release():
         for file in _get_valid_files(files):
             file = os.path.join(root, file)
 
-            with open(file, "r+") as target:
+            data = None
+            with open(file, "r") as target:
                 print(f"Reading file {file}...", end="")
                 contents = target.read()
 
                 if DEV_URL in contents:
+                    data = contents.replace(DEV_URL, RELEASE_URL)
+
+            # If changes were made, update the file
+            if data:
+                with open(file, "w") as target:
+                    target.write(data)                    
                     print(f" UPDATED file paths.")
-                    contents = contents.replace(DEV_URL, RELEASE_URL)
-                    # Reset file position and overwrite
-                    target.seek(0, 0)
-                    target.write(contents)
-                    
-                else:
-                    print(" Made no changes.")
+            else:
+                print(" Made no changes.")
 
 fix_release()
