@@ -1,5 +1,4 @@
 <?php require_once("../util/events.php") ?>
-<?php require_once("../util/routes.php") ?>
 
 <?php
     // Don't need a header on this page, so only include bare HTML information
@@ -42,6 +41,7 @@
         <script src="/DECO1800-7180/src/js/distance.js"></script>
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
         <script src="/DECO1800-7180/src/js/events.js"></script>
+        <script src="/DECO1800-7180/src/js/url.js"></script>
         <script>
             createMap();
             
@@ -56,8 +56,9 @@
                 }
 
                 // Load busline data from server
-                let busline = "<?php echo getRouteData($_GET['route']); ?>";
-                process_bus_data(busline);
+                // process_bus_data(busline);
+                const route = getUrlParam(window.location.href, "route");
+                getRouteData(route);
             });
         </script>
     </body>

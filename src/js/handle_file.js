@@ -109,3 +109,15 @@ function registerKeyPress() {
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
     }, false);
 }
+
+function getRouteData(route) {
+    $.ajax({
+        url: `../util/getRouteData.php?route=${route}`,
+        type: "GET",
+        contentType: "html",    
+        success: data => {
+            console.log(data);
+            process_bus_data(data);
+        }
+    });
+}
