@@ -18,6 +18,9 @@
             <article id="map-help" class="flex-center flex-col">
                 <h2>The Explore Page is Loading</h2>
                 <p>Please wait while the explore page loads...</p>
+                <button id="help-skip-btn" onclick="helpSkipOnClick()" type="button" disabled>
+                    Loading...
+                </button>
             </article>
 
             <!-- Container for the map -->
@@ -42,7 +45,7 @@
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
         <script src="/DECO1800-7180/src/js/events.js"></script>
         <script>
-            create_map();
+            createMap();
         </script>
     </body>
 

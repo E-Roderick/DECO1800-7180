@@ -10,7 +10,7 @@
     padding: 0;
 }
 
-main.loaded #map-help {
+#map-help.complete {
     display: none;
 }
 

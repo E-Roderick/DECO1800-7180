@@ -170,9 +170,9 @@ function get_bus_data() {
         url: "/DECO1800-7180/data/shapes.txt",
         dataType: "text",
         success: data => {
-            $("main").addClass("loaded"); // Flag page as loaded
+            handleMapLoad(); // Take actions once the map is loaded
             registerKeyPress(); // Enable interaction with map
-            loadedAllData(data); //NOTE Possible spot to add the loaded class
+            loadedAllData(data);
         }
     });
 }
