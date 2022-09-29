@@ -6,7 +6,7 @@ function getRouteData($target) {
     $data = [];
 
     if ($fd) {
-        // Iterate manually for memory efficieny
+        // Iterate manually for memory efficiency
         while (!feof($fd)) {
             $line = fgets($fd);
     
