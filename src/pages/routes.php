@@ -28,7 +28,9 @@ $ROUTES = array(
     </form>
 
 <?php
+// If the route has been selected, move to route page
 if(isset($_POST['target-route'])) {
+    // Add specified route as arg on URL
     $url = "/DECO1800-7180/src/pages/explore.php?route=".$_POST['target-route'];
     header("Location: $url");
 }
