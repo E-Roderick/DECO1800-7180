@@ -159,7 +159,6 @@ function get_remote_data_events() {
         cache: true,
         success: data => {
             set_local_data_events(data);
-            get_bus_data();
         }
     });
 }
@@ -177,15 +176,8 @@ function get_bus_data() {
     });
 }
 
-console.log(updatedEvents)
-$(document).ready(function() {
-    eventData = get_local_data_events()
-
-    if (eventData) {
-        console.log("Source: localStorage");
-        get_bus_data();
-    } else {
-        console.log("Source: API");
-        get_remote_data_events();
-    }
-});
+function process_bus_data(busline) {
+    handleMapLoad(); // Take actions once the map is loaded
+    registerKeyPress(); // Enable interaction with map
+    loadedAllData(busline);
+}

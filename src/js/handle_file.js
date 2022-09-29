@@ -43,10 +43,13 @@ var circle; // circle round the user marker
  */
 const loadedAllData = (buslineData) => {
 
-    routeCoordinates = buslineData.split("\n")
-        .map(line => line.split(','))
-        .filter(line => line.includes(TARGET))
-        .map(vals => [Number(vals[1]), Number(vals[2])]);
+    console.log(buslineData);
+    routeCoordinates = JSON.parse(buslineData);
+
+    // routeCoordinates = buslineData.split("\n")
+    //     .map(line => line.split(','))
+    //     .filter(line => line.includes(TARGET))
+    //     .map(vals => [Number(vals[1]), Number(vals[2])]);
 
     // console.log(routeCoordinates);
     console.log(routeCoordinates[index][0]);

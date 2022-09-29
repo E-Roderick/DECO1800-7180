@@ -19,7 +19,7 @@ function getRouteData($target) {
             }
             
             // Pull out coordinates
-            array_push($data, [(float) $line[1], (float) $line[0]]);
+            array_push($data, [(float) $line[1], (float) $line[2]]);
         }
 
         return json_encode($data);

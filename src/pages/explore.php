@@ -1,4 +1,5 @@
 <?php require_once("../util/events.php") ?>
+<?php require_once("../util/routes.php") ?>
 
 <?php
     // Don't need a header on this page, so only include bare HTML information
@@ -8,9 +9,6 @@
 
 <!-- Stylesheets -->
 <link rel='stylesheet' href='/DECO1800-7180/styles/map.css' />
-
-<!-- Scripts -->
-
 
 </head>
     <body>
@@ -46,6 +44,21 @@
         <script src="/DECO1800-7180/src/js/events.js"></script>
         <script>
             createMap();
+            
+            $(document).ready(function() {
+                eventData = get_local_data_events()
+
+                if (eventData) {
+                    console.log("Source: localStorage");
+                } else {
+                    console.log("Source: API");
+                    get_remote_data_events();
+                }
+
+                // Load busline data from server
+                let busline = "<?php echo getRouteData($_GET['route']); ?>";
+                process_bus_data(busline);
+            });
         </script>
     </body>
 
