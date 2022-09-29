@@ -1,4 +1,4 @@
-<?php require_once("../util/events.php") ?>
+<?php require_once("../util/getEventData.php") ?>
 
 <?php
     // Don't need a header on this page, so only include bare HTML information
@@ -22,9 +22,6 @@
 
             <!-- Container for the map -->
             <section id="map"></section>
-            
-            <!-- Grab events data from Brisbane Events API -->
-            <script> var updatedEvents = <?php echo(getEventData()); ?>; </script>
 
             <!-- Container for collected events -->
             <section id="collection"></section>
@@ -42,11 +39,18 @@
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
         <script src="/DECO1800-7180/src/js/events.js"></script>
         <script src="/DECO1800-7180/src/js/url.js"></script>
+        
         <script>
+            /* Main page logic */
+
+            // Create the map and load tiles
             createMap();
             
             $(document).ready(function() {
-                eventData = get_local_data_events()
+
+                // Load event data
+                eventData = get_local_data_events();
+                var updatedEvents = <?php echo(getEventData()); ?>;
 
                 if (eventData) {
                     console.log("Source: localStorage");
@@ -56,9 +60,8 @@
                 }
 
                 // Load busline data from server
-                // process_bus_data(busline);
                 const route = getUrlParam(window.location.href, "route");
-                getRouteData(route);
+                getServerRouteData(route);
             });
         </script>
     </body>

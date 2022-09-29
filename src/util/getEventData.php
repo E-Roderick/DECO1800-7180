@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ * Retrieves event data from the Brisbane City Council.
  */
 function getEventData() {
     $api_url ='http://www.trumba.com/calendars/brisbane-city-council.json';

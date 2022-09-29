@@ -1,5 +1,3 @@
-const TARGET = "P2060002";
-
 const ROUTES = {
     /* Route: [route_ids]*/
     "61": ["610003", "610142"],
@@ -11,8 +9,6 @@ const ROUTES = {
 }
 
 // Data is id, lat, long, sequence
-const LAT_OFF = 27;
-const LON_OFF = -152;
 const SCALAR = 10;
 const INC = 3; // the number of route coordinate points the user goes through on each move
 
@@ -46,12 +42,6 @@ const loadedAllData = (buslineData) => {
     console.log(buslineData);
     routeCoordinates = JSON.parse(buslineData);
 
-    // routeCoordinates = buslineData.split("\n")
-    //     .map(line => line.split(','))
-    //     .filter(line => line.includes(TARGET))
-    //     .map(vals => [Number(vals[1]), Number(vals[2])]);
-
-    // console.log(routeCoordinates);
     console.log(routeCoordinates[index][0]);
     maxIndex = routeCoordinates.length - 1;
     index = maxIndex;
@@ -110,7 +100,7 @@ function registerKeyPress() {
     }, false);
 }
 
-function getRouteData(route) {
+function getServerRouteData(route) {
     $.ajax({
         url: `../util/getRouteData.php?route=${route}`,
         type: "GET",
@@ -120,4 +110,10 @@ function getRouteData(route) {
             process_bus_data(data);
         }
     });
+}
+
+function process_bus_data(busline) {
+    registerKeyPress(); // Enable interaction with map
+    loadedAllData(busline); // Draw map related data
+    handleMapLoad(); // Take actions once the map is loaded
 }

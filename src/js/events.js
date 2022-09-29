@@ -163,21 +163,14 @@ function get_remote_data_events() {
     });
 }
 
-function get_bus_data() {
+function getServerEventData() {
     $.ajax({
+        url: `../util/getRouteData.php?route=${route}`,
         type: "GET",
-        url: "/DECO1800-7180/data/shapes.txt",
-        dataType: "text",
+        contentType: "html",    
         success: data => {
-            handleMapLoad(); // Take actions once the map is loaded
-            registerKeyPress(); // Enable interaction with map
-            loadedAllData(data);
+            console.log(data);
+            process_bus_data(data);
         }
     });
-}
-
-function process_bus_data(busline) {
-    handleMapLoad(); // Take actions once the map is loaded
-    registerKeyPress(); // Enable interaction with map
-    loadedAllData(busline);
 }
