@@ -46,17 +46,26 @@
             // Create the map and load tiles
             createMap();
             
-            $(document).ready(function() {
+            $( window ).on( "load", function() {
 
                 // Load event data
-                eventData = get_local_data_events();
-                var updatedEvents = <?php echo(getEventData()); ?>;
+                // TODO Combine the get local and get remote into one get call
+                // TODO Neaten up all functions and naming
+                eventData = get_local_data_events(LS_EVENT_DATA);
+                let updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
                 if (eventData) {
                     console.log("Source: localStorage");
                 } else {
                     console.log("Source: API");
                     get_remote_data_events();
+                }
+
+                if (updatedEvents) {
+                    console.log("Source: localStorage");
+                } else {
+                    console.log("Source: API");
+                    getServerEventData();
                 }
 
                 // Load busline data from server

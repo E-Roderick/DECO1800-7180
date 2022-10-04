@@ -28,4 +28,6 @@ function getEventData() {
     return "null";
 }
 
+echo getEventData();
+
 ?>

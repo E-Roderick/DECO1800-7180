@@ -1,5 +1,6 @@
 /* Constants */
 const LS_EVENT_DATA = "eventData"; 
+const LS_UPDATE_EVENT_DATA = "updatedEventData"; 
 
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
@@ -138,12 +139,12 @@ function updateCollection() {
     });
 }
 
-function get_local_data_events() {
-    return JSON.parse(localStorage.getItem(LS_EVENT_DATA));
+function get_local_data_events(localVar) {
+    return JSON.parse(localStorage.getItem(localVar));
 }
 
-function set_local_data_events(data) {
-    localStorage.setItem(LS_EVENT_DATA, JSON.stringify(data));
+function set_local_data_events(data, localVar) {
+    localStorage.setItem(localVar, JSON.stringify(data));
 }
 
 function get_remote_data_events() {
@@ -158,19 +159,19 @@ function get_remote_data_events() {
         dataType: "jsonp",
         cache: true,
         success: data => {
-            set_local_data_events(data);
+            set_local_data_events(data, LS_EVENT_DATA);
         }
     });
 }
 
 function getServerEventData() {
     $.ajax({
-        url: `../util/getRouteData.php?route=${route}`,
+        url: `../util/getEventData.php`,
         type: "GET",
-        contentType: "html",    
+        contentType: "html",
         success: data => {
             console.log(data);
-            process_bus_data(data);
+            set_local_data_events(data, LS_UPDATE_EVENT_DATA);
         }
     });
 }
