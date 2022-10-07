@@ -216,24 +216,24 @@ function get_remote_data_events() {
         limit: 100
     }
 
-    $.ajax({
+    return $.ajax({
         url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
         data: request,
         dataType: "jsonp",
         cache: true,
         success: data => {
+            eventData = data;
             set_local_data_events(data, LS_EVENT_DATA);
         }
     });
 }
 
 function getServerEventData() {
-    $.ajax({
+    return $.ajax({
         url: `../util/getEventData.php`,
         dataType: "json",
-        async: false,
         success: data => {
-            console.log(data);
+            updatedEvents = data;
             set_local_data_events(data, LS_UPDATE_EVENT_DATA);
         }
     });

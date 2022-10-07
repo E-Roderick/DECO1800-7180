@@ -50,24 +50,18 @@
                 eventData = get_local_data_events(LS_EVENT_DATA);
                 updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
-                if (eventData) {
-                    console.log("Source: localStorage");
-                } else {
-                    console.log("Source: API");
-                    get_remote_data_events();
-                }
-
-                if (updatedEvents) {
-                    console.log("Source: localStorage");
-                } else {
-                    console.log("Source: API");
-                    getServerEventData();
-                }
-
-                //console.log(updatedEvents);
-                // Load busline data from server
                 const route = getUrlParam(window.location.href, "route");
-                getServerRouteData(route);
+                if (eventData && updatedEvents) {
+                    console.log("Source: localStorage");
+                    // Load busline data from server
+                    getServerRouteData(route);
+                } else {
+                    console.log("Source: API");
+                    $.when(get_remote_data_events(), getServerEventData()).done(function() {
+                        // Load busline data from server
+                        getServerRouteData(route);
+                    });
+                }
             });
         </script>
     </body>
