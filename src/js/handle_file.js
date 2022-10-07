@@ -13,6 +13,7 @@ const SCALAR = 10;
 const INC = 3; // the number of route coordinate points the user goes through on each move
 
 var eventData; // the event records
+var updatedEvents; // the updated event records
 
 var greenIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/avatar.png",
@@ -39,7 +40,7 @@ var circle; // circle round the user marker
  */
 const loadedAllData = (buslineData) => {
 
-    console.log(buslineData);
+    //console.log(buslineData);
     routeCoordinates = JSON.parse(buslineData);
 
     console.log(routeCoordinates[index][0]);
@@ -58,6 +59,7 @@ const loadedAllData = (buslineData) => {
     if (eventData) {
         console.log("Source: localStorage");
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
+        iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
     }
 }
 
@@ -97,6 +99,7 @@ function registerKeyPress() {
             radius: 500
         }).addTo(map);
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
+        iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
     }, false);
 }
 
@@ -104,9 +107,9 @@ function getServerRouteData(route) {
     $.ajax({
         url: `../util/getRouteData.php?route=${route}`,
         type: "GET",
-        contentType: "html",    
+        contentType: "html",
         success: data => {
-            console.log(data);
+            //console.log(data);
             process_bus_data(data);
         }
     });
