@@ -41,12 +41,10 @@
         <script src="/DECO1800-7180/src/js/url.js"></script>
         
         <script>
-            /* Main page logic */
-
-            // Create the map and load tiles
-            createMap();
-            
-            $( window ).on( "load", function() {
+            /* Main page logic */            
+            $( window ).on( "load", function() {              
+                // Create the map and load tiles
+                createMap();
 
                 // Load event data
                 // TODO Combine the get local and get remote into one get call
