@@ -1,6 +1,6 @@
 /* Constants */
-const LS_EVENT_DATA = "eventData"; 
-const LS_UPDATE_EVENT_DATA = "updatedEventData"; 
+const LS_EVENT_DATA = "eventData";
+const LS_UPDATE_EVENT_DATA = "updatedEventData";
 
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
@@ -12,7 +12,7 @@ let collectedEvents = [];
  * @param {int} id The target ID
  * @returns True if the event object's ID matches the target. False otherwise
  */
-const findCollectedEvent = (ce, id) => ce.id === id; 
+const findCollectedEvent = (ce, id) => ce.id === id;
 
 /**
  * Generates HTML for an event's popup.
@@ -21,13 +21,14 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @returns String of popup's inner HTML.
  */
 const generatePopup = (state, record) => {
-    const { id, item, location, desc } = record;
+    const { id, item, location, desc, image } = record;
+
     return `
         <div id='popup'>
             <h3>${item}</h3>
             <div>
                 <p>${location}</p>
-                <img src="/DECO1800-7180/public/assets/images/blanchflower.jpg" alt="blanchflower" />
+                <img src=${image} alt="blanchflower" />
                 <p>${desc}</p>
             </div>
             <div class="wrapper">
@@ -57,7 +58,7 @@ function iterateEventRecords(results, lat, lon) {
         var recordLocation = recordValue["The_Location"];
 
         var recordIcon;
-        if (recordID % 2) 
+        if (recordID % 2)
             recordIcon = "/DECO1800-7180/public/assets/art-icons/mona-lisa.png";
         else
             recordIcon = "/DECO1800-7180/public/assets/art-icons/art.png";
@@ -78,11 +79,73 @@ function iterateEventRecords(results, lat, lon) {
         }
 
         let record = {
-            id: recordID, 
-            item: recordItem, 
-            location: recordLocation, 
+            id: recordID,
+            item: recordItem,
+            location: recordLocation,
             desc: recordDescription,
-            icon: recordIcon
+            icon: recordIcon,
+            image: "/DECO1800-7180/public/assets/images/blanchflower.jpg"
+        };
+        var popupText = generatePopup(checkState, record);
+
+        // Make sure the event coordinates exist and it's within 500m from the user's position.  
+        if (recordLatitude && recordLatitude &&
+            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
+            var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map);
+            nearbyMarkers.push(marker);
+            var myPopup = L.DomUtil.create('div', 'infoWindow');
+            myPopup.innerHTML = popupText;
+            // marker.bindPopup(`<button type="button" onclick="alert('Hello world!')">Click Me!</button>`);
+            marker.bindPopup(myPopup);
+            $('#popup', myPopup).on('load', function() {
+                console.log("popup");
+            });
+        }
+    });
+}
+
+/**
+ * Iterate over all the given updated event records and draw markers for those that are near given coordinate.
+ *
+ * @param {any} results The event data.
+ * @param {number} lat the latitude of the user's current position.
+ * @param {number} lon the longitude of the user's current position.
+ */
+function iterateUpdatedEvents(results, lat, lon) {
+    $.each(results, function(recordID, recordValue) {
+        //console.log(recordValue);
+        var recordLatitude = recordValue["lat"];
+        var recordLongitud = recordValue["lon"]
+        var recordItem = recordValue["title"];
+        var recordDescription = recordValue["description"];
+        var recordLocation = recordValue["location"];
+        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
+        if ('eventImage' in recordValue)
+            recordImage = recordValue["eventImage"]["url"];
+
+        var artIcon = L.icon({
+            iconUrl: "/DECO1800-7180/public/assets/art-icons/party.png",
+            // shadowUrl: 'images/mona-lisa.png',
+
+            iconSize: [40, 40], // size of the icon
+            // shadowSize:   [50, 64], // size of the shadow
+            iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62], // the same for the shadow
+            popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
+        });
+
+        var checkState = '';
+        if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
+            checkState = 'checked';
+        }
+
+        let record = {
+            id: recordID,
+            item: recordItem,
+            location: recordLocation,
+            desc: recordDescription,
+            icon: "/DECO1800-7180/public/assets/art-icons/party.png",
+            image: recordImage
         };
         var popupText = generatePopup(checkState, record);
 
@@ -153,24 +216,24 @@ function get_remote_data_events() {
         limit: 100
     }
 
-    $.ajax({
+    return $.ajax({
         url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
         data: request,
         dataType: "jsonp",
         cache: true,
         success: data => {
+            eventData = data;
             set_local_data_events(data, LS_EVENT_DATA);
         }
     });
 }
 
 function getServerEventData() {
-    $.ajax({
+    return $.ajax({
         url: `../util/getEventData.php`,
-        type: "GET",
-        contentType: "html",
+        dataType: "json",
         success: data => {
-            console.log(data);
+            updatedEvents = data;
             set_local_data_events(data, LS_UPDATE_EVENT_DATA);
         }
     });

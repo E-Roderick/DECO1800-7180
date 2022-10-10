@@ -1,5 +1,3 @@
-<?php require_once("../util/getEventData.php") ?>
-
 <?php
     // Don't need a header on this page, so only include bare HTML information
     include("../components/html_pre.php"); 
@@ -38,7 +36,7 @@
         <script src="/DECO1800-7180/src/js/distance.js"></script>
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
         <script src="/DECO1800-7180/src/js/events.js"></script>
-        <script src="/DECO1800-7180/src/js/url.js"></script>
+        <script src="/DECO1800-7180/src/js/url.js"></script> -->
         
         <script>
             /* Main page logic */            
@@ -50,25 +48,20 @@
                 // TODO Combine the get local and get remote into one get call
                 // TODO Neaten up all functions and naming
                 eventData = get_local_data_events(LS_EVENT_DATA);
-                let updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
+                updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
-                if (eventData) {
-                    console.log("Source: localStorage");
-                } else {
-                    console.log("Source: API");
-                    get_remote_data_events();
-                }
-
-                if (updatedEvents) {
-                    console.log("Source: localStorage");
-                } else {
-                    console.log("Source: API");
-                    getServerEventData();
-                }
-
-                // Load busline data from server
                 const route = getUrlParam(window.location.href, "route");
-                getServerRouteData(route);
+                if (eventData && updatedEvents) {
+                    console.log("Source: localStorage");
+                    // Load busline data from server
+                    getServerRouteData(route);
+                } else {
+                    console.log("Source: API");
+                    $.when(get_remote_data_events(), getServerEventData()).done(function() {
+                        // Load busline data from server
+                        getServerRouteData(route);
+                    });
+                }
             });
         </script>
     </body>

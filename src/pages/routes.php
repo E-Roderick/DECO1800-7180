@@ -12,7 +12,6 @@ $ROUTES = array(
 ?>
 
 <main class="flex-center all-height all-width">
-
     <form method="post">
         <select name="target-route">
             <option value="none" selected disabled hidden>Select a route</option>
