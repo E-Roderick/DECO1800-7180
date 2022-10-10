@@ -29,7 +29,8 @@ if __name__ == "__main__":
         raise ValueError("No routes provided")
 
     for target_route in routes:
-        print(f"Creating route file for {target_route}...")
+        print(f"\nCreating route file for {target_route}...")
 
         route = get_route(target_route)
-        route.to_csv(f"{target_route}{FILE_TYPE}", index=False)
+        print(route.head(2)) # Print for confirmation
+        route.to_csv(f"{target_route}{FILE_TYPE}", index=False, header=None)
