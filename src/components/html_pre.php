@@ -1,5 +1,3 @@
-<?php ini_set('memory_limit', '256M'); ?>
-
 <html>
     <head>
         <meta charset='utf-8'>
