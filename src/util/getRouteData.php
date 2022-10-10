@@ -1,8 +1,8 @@
 <?php
 
 function getRouteData($target) {
-    $shape_file = "../../data/shapes.txt";
-    $fd = fopen($shape_file, "r");
+    $route_file = "../../data/".$target.".txt";
+    $fd = fopen($route_file, "r");
     $data = [];
 
     if ($fd) {
@@ -12,14 +12,14 @@ function getRouteData($target) {
     
             // Split lines on comma
             $line = explode(',', $line);
-            
-            // Filter for target
-            if (!in_array($target, $line)) {
+
+            // Ignore invalid lines
+            if (count($line) === 1) {
                 continue;
             }
             
             // Pull out coordinates
-            array_push($data, [(float) $line[1], (float) $line[2]]);
+            array_push($data, [(float) $line[0], (float) $line[1]]);
         }
 
         return json_encode($data);
