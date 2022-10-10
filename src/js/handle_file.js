@@ -25,7 +25,6 @@ var greenIcon = L.icon({
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-const uploadInput = document.getElementById("fileinput");
 var index = 0; // the index of route points which the user is currently at
 var userMarker; // marker of the user
 var routeCoordinates; // coordinates of the route points
