@@ -32,7 +32,16 @@ function angleBetweenCoordinates(coord1, coord2) {
 
     const dy = lon2 - lon1;
     // Convert lat/lon into appropriate x coordinate
-    const dx = Math.cos(degreesToRadians(lon1)) * (lat2 - lat1);
+    const x = Math.cos(lat2) * Math.sin(dy);
+    const y = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dy)
+    //const dx = Math.cos(degreesToRadians(lon1)) * (lat2 - lat1);
 
-    return radiansToDegrees(Math.atan(dx / dy));
+    return radiansToDegrees(Math.atan2(y, x));
 }
+
+/**
+ * Invert an angle as in rotate it 180 degrees.
+ * @param {*} angle the reference angle.
+ * @returns A wrapped, inverted angle.
+ */
+const invertAngle = angle => (angle + 180) % 360;

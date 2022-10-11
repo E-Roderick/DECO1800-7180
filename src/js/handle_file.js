@@ -11,6 +11,8 @@ const ROUTES = {
 // Data is id, lat, long, sequence
 const SCALAR = 10;
 const INC = 3; // the number of route coordinate points the user goes through on each move
+const POSITIVE = 1;
+const NEGATIVE = -1;
 
 var eventData; // the event records
 var updatedEvents; // the updated event records
@@ -23,16 +25,18 @@ var greenIcon = L.icon({
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var index = 0; // the index of route points which the user is currently at
-var userMarker; // marker of the user
-var routeCoordinates; // coordinates of the route points
-var maxIndex; // the max index of route points
-var circle; // circle round the user marker
+var index = 0;          // the index of route points which the user is currently at
+let nextIndex;          // The next position to move to 
+let angle = 0;          // The angle of the user's marker
+var userMarker;         // marker of the user
+var routeCoordinates;   // coordinates of the route points
+var maxIndex;           // the max index of route points
+var circle;             // circle round the user marker
 
-let currentPoint, nextPoint;
+const getPoint = index => routeCoordinates[index];
 
-const angleToNextPoint = (c1, c2) => 
-    rotToMarkerAngle(radiansToDegrees(angleBetweenCoordinates(c1, c2)));
+const angleToPoint = (c1, c2) => 
+    rotToMarkerAngle(angleBetweenCoordinates(c1, c2));
 
 /**
  * Handles the main logic of the map interactibles setup, once all data is
@@ -40,23 +44,20 @@ const angleToNextPoint = (c1, c2) =>
  * @param {*} buslineData The raw busline data to be parsed and drawn
  */
 const loadedAllData = (buslineData) => {
-
-    //console.log(buslineData);
     routeCoordinates = JSON.parse(buslineData);
 
-    console.log(routeCoordinates[index][0]);
+    // Set the initial position
+    // TODO Need to update this so it works with bot types of route
     maxIndex = routeCoordinates.length - 1;
     index = maxIndex;
-    currentPoint = routeCoordinates[maxIndex];
-    nextPoint = routeCoordinates[maxIndex - INC];
+    nextIndex = maxIndex - INC;
 
     console.log(maxIndex);
     
     // Player
     userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
-    userMarker.setRotationAngle(
-        angleToNextPoint(currentPoint, nextPoint)
-    );
+    angle = angleToPoint(getPoint(index), getPoint(nextIndex));
+    userMarker.setRotationAngle(angle);
     
     // Radius
     circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
@@ -75,25 +76,35 @@ const loadedAllData = (buslineData) => {
     }
 }
 
+const getNewIndex = (index, max, inc, direction) => {
+    if (direction === POSITIVE) {
+        return index + inc > max ? 0 : index + inc;
+    } else if (direction === NEGATIVE) {
+        return index - inc < 0 ? max : index - inc;
+    }
+}
+
 function registerKeyPress() {
     // Add event listener on keydown of 'A' and 'D'
     document.addEventListener('keydown', (event) => {
         var code = event.code;
 
+        // Cannot use next index as new current as user may change direction
         if (code == "KeyA") {
-            index += INC;
-            if (index > maxIndex) {
-                index = 0;
-            }
+            index = getNewIndex(index, maxIndex, INC, POSITIVE);
+            nextIndex = getNewIndex(index, maxIndex, INC, POSITIVE);
         } else if (code == "KeyD") {
-            index -= INC;
-            if (index < 0) {
-                index = maxIndex;
-            }
+            index = getNewIndex(index, maxIndex, INC, NEGATIVE);
+            nextIndex = getNewIndex(index, maxIndex, INC, NEGATIVE);
         } else {
             return;
         }
 
+        /* Calculate new angle */
+        // Check for route wrapping
+        let angle = (Math.abs(index - nextIndex) > INC) ? 
+            angle : angleToPoint(getPoint(index), getPoint(nextIndex));
+        
         // remove all the pervious event markers, the user marker and the circle
         nearbyMarkers.forEach((marker) => {
             map.removeLayer(marker);
@@ -104,6 +115,8 @@ function registerKeyPress() {
 
         // redraw all the markers.
         userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+        userMarker.setRotationAngle(angle);
+
         circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
             color: 'red',
             fillColor: '#f03',

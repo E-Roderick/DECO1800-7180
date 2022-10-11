@@ -19,4 +19,4 @@ function helpSkipOnClick() {
     $("#map-help").addClass("complete");
 }
 
-const rotToMarkerAngle = angle => -1 * (angle - 90) % 360;
+const rotToMarkerAngle = angle => (1 * angle - 90) % 360;
