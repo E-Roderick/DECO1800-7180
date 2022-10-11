@@ -16,13 +16,10 @@ var eventData; // the event records
 var updatedEvents; // the updated event records
 
 var greenIcon = L.icon({
-    iconUrl: "/DECO1800-7180/public/assets/avatar/avatar.png",
-    shadowUrl: "/DECO1800-7180/public/assets/avatar/avatar-shadow.png",
+    iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
 
-    iconSize: [38, 95], // size of the icon
-    shadowSize: [50, 64], // size of the shadow
-    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62], // the same for the shadow
+    iconSize: [50, 50], // size of the icon
+    iconAnchor: [24, 24], // point of the icon which will correspond to marker's location
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
@@ -55,7 +52,7 @@ const loadedAllData = (buslineData) => {
     }).addTo(map);
 
     L.polyline(routeCoordinates, { color: 'red' }).addTo(map);
-    if (eventData) {
+    if (eventData != "null" && updatedEvents != "null") {
         console.log("Source: localStorage");
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
         iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);

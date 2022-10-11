@@ -51,7 +51,7 @@
                 updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
                 const route = getUrlParam(window.location.href, "route");
-                if (eventData && updatedEvents) {
+                if (eventData != "null" && updatedEvents != "null") {
                     console.log("Source: localStorage");
                     // Load busline data from server
                     getServerRouteData(route);
