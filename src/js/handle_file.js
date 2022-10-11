@@ -29,6 +29,11 @@ var routeCoordinates; // coordinates of the route points
 var maxIndex; // the max index of route points
 var circle; // circle round the user marker
 
+let currentPoint, nextPoint;
+
+const angleToNextPoint = (c1, c2) => 
+    rotToMarkerAngle(radiansToDegrees(angleBetweenCoordinates(c1, c2)));
+
 /**
  * Handles the main logic of the map interactibles setup, once all data is
  * loaded in on the user's end.
@@ -42,8 +47,18 @@ const loadedAllData = (buslineData) => {
     console.log(routeCoordinates[index][0]);
     maxIndex = routeCoordinates.length - 1;
     index = maxIndex;
+    currentPoint = routeCoordinates[maxIndex];
+    nextPoint = routeCoordinates[maxIndex - INC];
+
     console.log(maxIndex);
+    
+    // Player
     userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+    userMarker.setRotationAngle(
+        angleToNextPoint(currentPoint, nextPoint)
+    );
+    
+    // Radius
     circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
         color: 'red',
         fillColor: '#f03',
@@ -51,7 +66,8 @@ const loadedAllData = (buslineData) => {
         radius: 500
     }).addTo(map);
 
-    L.polyline(routeCoordinates, { color: 'red' }).addTo(map);
+    // Route
+    L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
     if (eventData != "null" && updatedEvents != "null") {
         console.log("Source: localStorage");
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);

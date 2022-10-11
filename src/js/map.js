@@ -1,5 +1,6 @@
 // Globally store the map
 let map;
+let rotation = 0;
 
 function createMap() {
     map = L.map("map").setView([-27.491457, 153.102629], 13);
@@ -17,3 +18,5 @@ function handleMapLoad() {
 function helpSkipOnClick() {
     $("#map-help").addClass("complete");
 }
+
+const rotToMarkerAngle = angle => -1 * (angle - 90) % 360;

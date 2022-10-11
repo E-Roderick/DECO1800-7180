@@ -32,6 +32,7 @@
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" 
             crossorigin="">
         </script>
+        <script src="/DECO1800-7180/src/js/package/leaflet.rotatedmarker.js"></script>
         <script src="/DECO1800-7180/src/js/map.js"></script>
         <script src="/DECO1800-7180/src/js/distance.js"></script>
         <script src="/DECO1800-7180/src/js/handle_file.js"></script>
