@@ -145,6 +145,14 @@ header {
     margin: 0 auto;
 }
 
+.back_button{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 998;
+}
+
+/* Main page features */
 .main_features{
     position: relative;
     display: flex;
@@ -157,15 +165,14 @@ header {
 .feature_box {
     width: 40%;
     height: 30%;
- 
 }
+
 .box_touch_area {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* width: 35%;
-    height: 25%; */
+
     padding-top: 35%;
     padding-bottom: 35%;
     padding-left: 40%;
@@ -182,12 +189,8 @@ header {
     text-align: center;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* width: 35%;
-    height: 25%; */
-   
+    transform: translate(-50%, -50%); 
 }
-
 
 .feature_icon img{
     width: 40%;  
@@ -199,6 +202,85 @@ header {
     padding: 5%;
 }
 
+/* Sub page */
+.sub_page {
+    max-width: 1440px;
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+}
+
+.sub_container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.features_icon {
+    margin-right: 2%;
+}
+
+.route_name {
+    text-decoration: none;
+}
+
+.map_container {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    padding-top: 2%;
+
+}
+
+.game_objects_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:  50%;
+    left: 50%;
+}
+
+.player_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:  20%;
+    left: 60%;
+}
+
+.gmae_object {
+    margin: 4%;
+}
+
+.icon_car {
+    margin: 0 auto;
+}
+
+.player {
+    position: relative;
+    z-index: 99;
+}
+
+.trigger_scale {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 188px;
+    height: 188px;
+}
+
+.route_stop_container {
+    position: absolute;
+    z-index: 98;
+    top: 10%;
+    left: 40%;
+}
+
+
+/* Footer */
 .footer_section {
     position: absolute;
     width: 100%;
