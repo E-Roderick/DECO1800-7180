@@ -3,49 +3,119 @@
  * page. More specific styles may overwrite.
  */
 
+html,
 body {
+    height: 100%;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
     height: 100vh;
     display: flex;
     flex-direction: column;
-
-    font-family: sans-serif;
-}
-
-header, footer {
-    width: 100vw;
-    text-align: center;
 }
 
 header {
-    height: 64pt;
-    
-    font-size: 24pt;
-    
-    /* background-color: aquamarine; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
 
-footer {
-    height: 42pt;
-    align-self: flex-end;
-
-    font-size: 12pt;
-
-    /* background-color: salmon; */
+main {
+    background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
 }
+
+h4 {
+    font-size: 18px;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+option {
+    background-color: #9ba5ff;
+}
+
+.web {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar_container {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 20%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1440px;
+    height: 20%;
+}
+
+.nav_logo {
+    line-height: 64px;
+    color: #ffffff;
+}
+
+.nav_right_menu {
+    display: flex;
+}
+
+.nav_link {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    line-height: 16px;
+    padding: 6px 0;
+    margin-left: 32px;
+}
+
+.nav_link:hover {
+    color: #9ba5ff;
+}
+
+.nav_icon_word {
+    margin-left: 12px;
+}
+
+.footer_section {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    bottom: 0%;
+    z-index: 999;
+}
+
+.footer_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+}
+
 
 /* main {
     background-color: palegoldenrod;
 } */
 
-/* These styles are quite specific. Might move later. */
-main.home-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    width: 100%;
-    height: 100%;
-}
+/* These styles are quite specific. Might move later. */
 
 main.explore-page {
     position: absolute;

@@ -1,6 +1,7 @@
 <?php ini_set('memory_limit', '256M'); ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset='utf-8'>
         <title>DECO1800 RDS Idea - Transit Maps</title>
@@ -8,3 +9,7 @@
         <link rel='stylesheet' href='/DECO1800-7180/styles/reset.css' />
         <link rel='stylesheet' href='/DECO1800-7180/styles/util.css' />
         <link rel='stylesheet' href='/DECO1800-7180/styles/main.css' />
+        <link rel='stylesheet' href='/DECO1800-7180/styles/home.css' />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
