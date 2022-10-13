@@ -4,7 +4,7 @@
         <header class="web">
         <nav class="navbar_container">
           <div class="navbar">
-            <a href="#!" class="nav_logo"><h4>City Mario</h4></a>
+            <a href="/DECO1800-7180/index.php" class="nav_logo"><h4>City Mario</h4></a>
             
             <ul class="nav_right_menu">
               <li class="nav_icon">

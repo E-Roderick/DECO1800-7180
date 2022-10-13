@@ -87,6 +87,48 @@ option {
     margin-left: 12px;
 }
 
+
+/* Section */
+
+.container {
+    height: 100vh;
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+    background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
+}
+
+.wrapper {
+    max-width: 1440px;
+    position: relative;
+    top: 20%;
+    margin: 0 auto;
+}
+
+.back_button {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 998;
+}
+
+.sub_page {
+    max-width: 1440px;
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+}
+
+.sub_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-features h4 {
+    margin: 20px 0 30px 0;
+}
+
 .footer_section {
     position: absolute;
     width: 100%;
@@ -117,10 +159,11 @@ option {
 
 /* These styles are quite specific. Might move later. */
 
-main.explore-page {
+
+/* main.explore-page {
     position: absolute;
     height: 100%;
-}
+} */
 
 #explore-select {
     display: flex;
