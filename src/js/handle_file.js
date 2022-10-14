@@ -17,7 +17,7 @@ const NEGATIVE = -1;
 var eventData; // the event records
 var updatedEvents; // the updated event records
 
-var greenIcon = L.icon({
+var playerIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
 
     iconSize: [50, 50], // size of the icon
@@ -55,7 +55,7 @@ const loadedAllData = (buslineData) => {
     console.log(maxIndex);
     
     // Player
-    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
     angle = angleToPoint(getPoint(index), getPoint(nextIndex));
     userMarker.setRotationAngle(angle);
     
@@ -114,7 +114,7 @@ function registerKeyPress() {
         map.removeLayer(circle);
 
         // redraw all the markers.
-        userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+        userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
         userMarker.setRotationAngle(angle);
 
         circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
