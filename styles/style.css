@@ -1,0 +1,240 @@
+/* home page */
+
+.home-page h1 {
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: bold;
+}
+
+.home-page h2 {
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.home-page h3 {
+    font-size: 24px;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+.home-page h5 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.home-page ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.home-page img {
+    max-width: 100%;
+    height: auto;
+}
+
+.home-page picture {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Section */
+
+.home-page .main_features {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    top: 40%;
+}
+
+.home-page .feature_box {
+    width: 40%;
+    height: 30%;
+}
+
+.home-page .box_touch_area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 35%;
+    height: 25%; */
+    padding-top: 35%;
+    padding-bottom: 35%;
+    padding-left: 40%;
+    padding-right: 40%;
+    border: 5px solid #3EF3FF;
+    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+    border-radius: 8px;
+}
+
+.home-page .feature_content {
+    position: absolute;
+    display: block;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 35%;
+    height: 25%; */
+}
+
+.home-page .feature_icon img {
+    width: 40%;
+    height: 40%;
+}
+
+.home-page .feature_title {
+    text-align: center;
+    padding: 5%;
+}
+
+
+/* route_entry page */
+
+.route-page select {
+    text-decoration: none;
+    width: 45%;
+    padding: 8px;
+    line-height: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+
+.route-page input[type='submit'] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.route-page input[type='submit'],
+.nearby-page .btn {
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 30px;
+    padding: 1.2rem 5rem;
+    border: 4px solid #3EF3FF;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+.dropdwon-wrap~ul {
+    position: relative;
+    left: 27.5%;
+    width: 45%;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    /* visibility: hidden; */
+}
+
+.route-page option {
+    text-align: left;
+    background-color: #fff;
+    border-left: 3px solid transparent;
+    padding: 10px;
+    color: #000;
+}
+
+.route-page option:hover {
+    background-color: rgb(236, 230, 230);
+    border-left: 3px solid #3EF3FF;
+}
+
+
+/* neaby_entry page */
+
+.nearby-page .neabybs_sec,
+.nearby-page .nearbybs-next {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.nearby-page .neabybs_sec ul,
+.nearby-page .nearbybs-next ul {
+    display: flex;
+    justify-content: center;
+    margin: 10px 20px;
+}
+
+.nearby-page .neabybs_sec a {
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    padding: 80px 15px;
+    line-height: 1.2rem;
+    background-color: rgb(236, 230, 230, 0.2);
+    border: 5px solid #3EF3FF;
+    border-radius: 50%;
+}
+
+.nearby-page .nearbybs-next a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0 15px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+
+/* map page */
+
+.map_container {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    padding-top: 2%;
+}
+
+.game_objects_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+}
+
+.player_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 60%;
+}
+
+.gmae_object {
+    margin: 4%;
+}
+
+.icon_car {
+    margin: 0 auto;
+}
+
+.player {
+    position: relative;
+    z-index: 99;
+}
+
+.trigger_scale {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 188px;
+    height: 188px;
+}
+
+.route_stop_container {
+    position: absolute;
+    z-index: 98;
+    top: 10%;
+    left: 40%;
+}
