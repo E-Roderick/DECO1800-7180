@@ -15,7 +15,9 @@ const POSITIVE = 1;
 const NEGATIVE = -1;
 
 const FORWARD_KEY = "ArrowUp";
+const FORWARD_KEY_ALT = "KeyW";
 const BACKWARD_KEY = "ArrowDown";
+const BACKWARD_KEY_ALT = "KeyS";
 const DIR_CHANGE_KEY = "KeyR"
 
 var eventData; // the event records
@@ -94,19 +96,37 @@ function registerKeyPress() {
         var code = event.code;
 
         // Cannot use next index as new current as user may change direction
-        if (code === FORWARD_KEY) {
-            event.preventDefault();
-            handleMove(FORWARD_DIR);
-        } else if (code === BACKWARD_KEY) {
-            event.preventDefault();
-            handleMove(BACKWARD_DIR);
-        } else if (code === DIR_CHANGE_KEY) {
-            handleTurn();
-        } else {
-            return;
+        switch (code) {
+            case FORWARD_KEY:
+            case FORWARD_KEY_ALT:
+                event.preventDefault();
+                handleMove(FORWARD_DIR);
+                break;
+
+            case BACKWARD_KEY:
+            case BACKWARD_KEY_ALT:
+                event.preventDefault();
+                handleMove(BACKWARD_DIR);
+                break;
+
+            case DIR_CHANGE_KEY:
+                handleTurn();
+                break;
+            
+            default:
+                return;
         }
 
     }, false);
+}
+
+function setMarkerAngleFromPoints(p1, p2) {
+    // Check for route wrapping
+    let angle = (Math.abs(index - nextIndex) > INC) ? 
+    angle : angleToPoint(getPoint(p1), getPoint(p2));
+    
+    // Update angle
+    userMarker.setRotationAngle(angle);
 }
 
 function handleMove(move_dir) {
@@ -116,10 +136,9 @@ function handleMove(move_dir) {
     index = getNewIndex(index, maxIndex, INC, move_sign);
     nextIndex = getNewIndex(index, maxIndex, INC, move_sign);
 
-    /* Calculate new angle */
-    // Check for route wrapping
-    let angle = (Math.abs(index - nextIndex) > INC) ? 
-        angle : angleToPoint(getPoint(index), getPoint(nextIndex));
+    // Get the two indexes in the correct order
+    let points = move_dir === FORWARD_DIR ? 
+        [index, nextIndex] : [nextIndex, index];
     
     // remove all the pervious event markers, the user marker and the circle
     nearbyMarkers.forEach((marker) => {
@@ -131,7 +150,7 @@ function handleMove(move_dir) {
 
     // redraw all the markers.
     userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
-    userMarker.setRotationAngle(angle);
+    setMarkerAngleFromPoints(points[0], points[1])
 
     circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
         color: 'red',
