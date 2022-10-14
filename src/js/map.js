@@ -2,8 +2,13 @@
 let map;
 let rotation = 0;
 
+const FORWARD_DIR = 0;
+const BACKWARD_DIR = 1;
+
+let direction = FORWARD_DIR;
+
 function createMap() {
-    map = L.map("map").setView([-27.491457, 153.102629], 13);
+    map = L.map("map", { keyboard: false }).setView([-27.491457, 153.102629], 13);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
         attribution: '© OpenStreetMap'

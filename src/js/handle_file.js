@@ -14,6 +14,10 @@ const INC = 3; // the number of route coordinate points the user goes through on
 const POSITIVE = 1;
 const NEGATIVE = -1;
 
+const FORWARD_KEY = "ArrowUp";
+const BACKWARD_KEY = "ArrowDown";
+const DIR_CHANGE_KEY = "KeyR"
+
 var eventData; // the event records
 var updatedEvents; // the updated event records
 
@@ -90,42 +94,65 @@ function registerKeyPress() {
         var code = event.code;
 
         // Cannot use next index as new current as user may change direction
-        if (code == "KeyA") {
-            index = getNewIndex(index, maxIndex, INC, POSITIVE);
-            nextIndex = getNewIndex(index, maxIndex, INC, POSITIVE);
-        } else if (code == "KeyD") {
-            index = getNewIndex(index, maxIndex, INC, NEGATIVE);
-            nextIndex = getNewIndex(index, maxIndex, INC, NEGATIVE);
+        if (code === FORWARD_KEY) {
+            event.preventDefault();
+            handleMove(FORWARD_DIR);
+        } else if (code === BACKWARD_KEY) {
+            event.preventDefault();
+            handleMove(BACKWARD_DIR);
+        } else if (code === DIR_CHANGE_KEY) {
+            handleTurn();
         } else {
             return;
         }
 
-        /* Calculate new angle */
-        // Check for route wrapping
-        let angle = (Math.abs(index - nextIndex) > INC) ? 
-            angle : angleToPoint(getPoint(index), getPoint(nextIndex));
-        
-        // remove all the pervious event markers, the user marker and the circle
-        nearbyMarkers.forEach((marker) => {
-            map.removeLayer(marker);
-        })
-        nearbyMarkers = [];
-        map.removeLayer(userMarker);
-        map.removeLayer(circle);
-
-        // redraw all the markers.
-        userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
-        userMarker.setRotationAngle(angle);
-
-        circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(map);
-        iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
-        iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
     }, false);
+}
+
+function handleMove(move_dir) {
+    // The forward direction corresponds to negative increment
+    const move_sign = move_dir === FORWARD_DIR ? NEGATIVE : POSITIVE;
+
+    index = getNewIndex(index, maxIndex, INC, move_sign);
+    nextIndex = getNewIndex(index, maxIndex, INC, move_sign);
+
+    /* Calculate new angle */
+    // Check for route wrapping
+    let angle = (Math.abs(index - nextIndex) > INC) ? 
+        angle : angleToPoint(getPoint(index), getPoint(nextIndex));
+    
+    // remove all the pervious event markers, the user marker and the circle
+    nearbyMarkers.forEach((marker) => {
+        map.removeLayer(marker);
+    })
+    nearbyMarkers = [];
+    map.removeLayer(userMarker);
+    map.removeLayer(circle);
+
+    // redraw all the markers.
+    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
+    userMarker.setRotationAngle(angle);
+
+    circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
+    iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
+    iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
+}
+
+function handleTurn() {
+    return;
+}
+
+function handleTurn() {
+    if (direction === FORWARD_DIR) {
+        direction = BACKWARD_DIR;
+    } else if (direction === BACKWARD_DIR) {
+        direction = FORWARD_DIR;
+    }
 }
 
 function getServerRouteData(route) {
