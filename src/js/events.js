@@ -31,13 +31,11 @@ const generatePopup = (state, record) => {
                 <img src=${image} alt="blanchflower" />
                 <p>${desc}</p>
             </div>
-            <div class="wrapper">
-                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
-                <label id = ${id} class="heart" for="heart-checkbox" 
-                    onclick="collectCallback('${
-                        encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
-                    }');"></label>
-            </div>
+            <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
+            <label id = ${id} class="heart" for="heart-checkbox" 
+                onclick="collectCallback('${
+                    encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
+                }');"></label>
         </div>
     `;
 }

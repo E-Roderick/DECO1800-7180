@@ -11,20 +11,29 @@ $ROUTES = array(
 );
 ?>
 
-<main class="flex-center all-height all-width">
-    <form method="post">
-        <select name="target-route">
-            <option value="none" selected disabled hidden>Select a route</option>
-            <?php
+<main class="route-page">
+    <section class="container all-height all-width">
+        <article class="sub_page">
+            <a href="/DECO1800-7180/index.php" class="back_button"> &lt; Back</a>
+        </article>
+        <section class="wrapper main-features">
+            <img src="/DECO1800-7180/public/assets/images/ic_outline_route_selection.svg" alt="">
+            <h4>SEARCH FOR A ROUTE</h4>
+            <form method="post">
+                <select name="target-route">
+                    <option value="none" selected disabled hidden>Select a route</option>
+                    <?php
 
-            foreach($ROUTES as $route => $id) {
-                echo "<option value={$id}>{$route}</option>";
-            }
+                    foreach($ROUTES as $route => $id) {
+                        echo "<option value={$id}>{$route}</option>";
+                    }
 
-            ?>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
+                    ?>
+                </select>
+                <input type="submit" value="Next Step">
+            </form>
+        </section>
+    </section>
 
 <?php
 // If the route has been selected, move to route page
