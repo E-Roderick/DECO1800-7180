@@ -2,10 +2,10 @@
 let map;
 let rotation = 0;
 
-const FORWARD_DIR = 0;
-const BACKWARD_DIR = 1;
+const FORWARD_DIR = 1;
+const BACKWARD_DIR = -1;
 
-let direction = FORWARD_DIR;
+let car_orientation = FORWARD_DIR;
 
 function createMap() {
     map = L.map("map", { keyboard: false }).setView([-27.491457, 153.102629], 13);

@@ -84,9 +84,9 @@ const loadedAllData = (buslineData) => {
 
 const getNewIndex = (index, max, inc, direction) => {
     if (direction === POSITIVE) {
-        return index + inc > max ? 0 : index + inc;
+        return index - inc > max ? 0 : index - inc;
     } else if (direction === NEGATIVE) {
-        return index - inc < 0 ? max : index - inc;
+        return index + inc < 0 ? max : index + inc;
     }
 }
 
@@ -100,13 +100,13 @@ function registerKeyPress() {
             case FORWARD_KEY:
             case FORWARD_KEY_ALT:
                 event.preventDefault();
-                handleMove(FORWARD_DIR);
+                handleMove(car_orientation);
                 break;
 
             case BACKWARD_KEY:
             case BACKWARD_KEY_ALT:
                 event.preventDefault();
-                handleMove(BACKWARD_DIR);
+                handleMove(getOppositeDirection(car_orientation));
                 break;
 
             case DIR_CHANGE_KEY:
@@ -131,14 +131,19 @@ function setMarkerAngleFromPoints(p1, p2) {
 
 function handleMove(move_dir) {
     // The forward direction corresponds to negative increment
-    const move_sign = move_dir === FORWARD_DIR ? NEGATIVE : POSITIVE;
+    index = getNewIndex(index, maxIndex, INC, move_dir);
+    nextIndex = getNewIndex(index, maxIndex, INC, move_dir);
 
-    index = getNewIndex(index, maxIndex, INC, move_sign);
-    nextIndex = getNewIndex(index, maxIndex, INC, move_sign);
-
-    // Get the two indexes in the correct order
+    /**
+     * Get the point indexes. This should be dependent on the move direction and
+     * the car orientation. Each of the conditions is separate.
+     */
+    // Check move direction to possibly reverse direction
     let points = move_dir === FORWARD_DIR ? 
         [index, nextIndex] : [nextIndex, index];
+    // Check car orientation to possibly reverse direction again
+    points = car_orientation === FORWARD_DIR ?
+        points : points.reverse();
     
     // remove all the pervious event markers, the user marker and the circle
     nearbyMarkers.forEach((marker) => {
@@ -163,15 +168,18 @@ function handleMove(move_dir) {
 }
 
 function handleTurn() {
-    return;
+    changeDirection();
+    // Swap indexes and update the angle
+    [index, nextIndex] = [nextIndex, index];
+    setMarkerAngleFromPoints(index, nextIndex);
 }
 
-function handleTurn() {
-    if (direction === FORWARD_DIR) {
-        direction = BACKWARD_DIR;
-    } else if (direction === BACKWARD_DIR) {
-        direction = FORWARD_DIR;
-    }
+function changeDirection() {
+    car_orientation = getOppositeDirection(car_orientation);
+}
+
+function getOppositeDirection(direction) {
+    return direction == FORWARD_DIR? BACKWARD_DIR : FORWARD_DIR;
 }
 
 function getServerRouteData(route) {
