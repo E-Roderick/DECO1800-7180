@@ -11,26 +11,38 @@ const ROUTES = {
 // Data is id, lat, long, sequence
 const SCALAR = 10;
 const INC = 3; // the number of route coordinate points the user goes through on each move
+const POSITIVE = 1;
+const NEGATIVE = -1;
+
+const FORWARD_KEY = "ArrowUp";
+const FORWARD_KEY_ALT = "KeyW";
+const BACKWARD_KEY = "ArrowDown";
+const BACKWARD_KEY_ALT = "KeyS";
+const DIR_CHANGE_KEY = "KeyR"
 
 var eventData; // the event records
 var updatedEvents; // the updated event records
 
-var greenIcon = L.icon({
-    iconUrl: "/DECO1800-7180/public/assets/avatar/avatar.png",
-    shadowUrl: "/DECO1800-7180/public/assets/avatar/avatar-shadow.png",
+var playerIcon = L.icon({
+    iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
 
-    iconSize: [38, 95], // size of the icon
-    shadowSize: [50, 64], // size of the shadow
-    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62], // the same for the shadow
+    iconSize: [50, 50], // size of the icon
+    iconAnchor: [24, 24], // point of the icon which will correspond to marker's location
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var index = 0; // the index of route points which the user is currently at
-var userMarker; // marker of the user
-var routeCoordinates; // coordinates of the route points
-var maxIndex; // the max index of route points
-var circle; // circle round the user marker
+var index = 0;          // the index of route points which the user is currently at
+let nextIndex;          // The next position to move to 
+let angle = 0;          // The angle of the user's marker
+var userMarker;         // marker of the user
+var routeCoordinates;   // coordinates of the route points
+var maxIndex;           // the max index of route points
+var circle;             // circle round the user marker
+
+const getPoint = index => routeCoordinates[index];
+
+const angleToPoint = (c1, c2) => 
+    rotToMarkerAngle(angleBetweenCoordinates(c1, c2));
 
 /**
  * Handles the main logic of the map interactibles setup, once all data is
@@ -38,15 +50,22 @@ var circle; // circle round the user marker
  * @param {*} buslineData The raw busline data to be parsed and drawn
  */
 const loadedAllData = (buslineData) => {
-
-    //console.log(buslineData);
     routeCoordinates = JSON.parse(buslineData);
 
-    console.log(routeCoordinates[index][0]);
+    // Set the initial position
+    // TODO Need to update this so it works with bot types of route
     maxIndex = routeCoordinates.length - 1;
     index = maxIndex;
+    nextIndex = maxIndex - INC;
+
     console.log(maxIndex);
-    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
+    
+    // Player
+    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
+    angle = angleToPoint(getPoint(index), getPoint(nextIndex));
+    userMarker.setRotationAngle(angle);
+    
+    // Radius
     circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
         color: 'red',
         fillColor: '#f03',
@@ -54,11 +73,20 @@ const loadedAllData = (buslineData) => {
         radius: 500
     }).addTo(map);
 
-    L.polyline(routeCoordinates, { color: 'red' }).addTo(map);
-    if (eventData) {
+    // Route
+    L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
+    if (eventData != "null" && updatedEvents != "null") {
         console.log("Source: localStorage");
         iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
         iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
+    }
+}
+
+const getNewIndex = (index, max, inc, direction) => {
+    if (direction === POSITIVE) {
+        return index - inc > max ? 0 : index - inc;
+    } else if (direction === NEGATIVE) {
+        return index + inc < 0 ? max : index + inc;
     }
 }
 
@@ -67,39 +95,91 @@ function registerKeyPress() {
     document.addEventListener('keydown', (event) => {
         var code = event.code;
 
-        if (code == "KeyA") {
-            index += INC;
-            if (index > maxIndex) {
-                index = 0;
-            }
-        } else if (code == "KeyD") {
-            index -= INC;
-            if (index < 0) {
-                index = maxIndex;
-            }
-        } else {
-            return;
+        // Cannot use next index as new current as user may change direction
+        switch (code) {
+            case FORWARD_KEY:
+            case FORWARD_KEY_ALT:
+                event.preventDefault();
+                handleMove(car_orientation);
+                break;
+
+            case BACKWARD_KEY:
+            case BACKWARD_KEY_ALT:
+                event.preventDefault();
+                handleMove(getOppositeDirection(car_orientation));
+                break;
+
+            case DIR_CHANGE_KEY:
+                handleTurn();
+                break;
+            
+            default:
+                return;
         }
 
-        // remove all the pervious event markers, the user marker and the circle
-        nearbyMarkers.forEach((marker) => {
-            map.removeLayer(marker);
-        })
-        nearbyMarkers = [];
-        map.removeLayer(userMarker);
-        map.removeLayer(circle);
-
-        // redraw all the markers.
-        userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: greenIcon }).addTo(map);
-        circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 500
-        }).addTo(map);
-        iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
-        iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
     }, false);
+}
+
+function setMarkerAngleFromPoints(p1, p2) {
+    // Check for route wrapping
+    let angle = (Math.abs(index - nextIndex) > INC) ? 
+    angle : angleToPoint(getPoint(p1), getPoint(p2));
+    
+    // Update angle
+    userMarker.setRotationAngle(angle);
+}
+
+function handleMove(move_dir) {
+    // The forward direction corresponds to negative increment
+    index = getNewIndex(index, maxIndex, INC, move_dir);
+    nextIndex = getNewIndex(index, maxIndex, INC, move_dir);
+
+    /**
+     * Get the point indexes. This should be dependent on the move direction and
+     * the car orientation. Each of the conditions is separate.
+     */
+    // Check move direction to possibly reverse direction
+    let points = move_dir === FORWARD_DIR ? 
+        [index, nextIndex] : [nextIndex, index];
+    // Check car orientation to possibly reverse direction again
+    points = car_orientation === FORWARD_DIR ?
+        points : points.reverse();
+    
+    // remove all the pervious event markers, the user marker and the circle
+    nearbyMarkers.forEach((marker) => {
+        map.removeLayer(marker);
+    })
+    nearbyMarkers = [];
+    map.removeLayer(userMarker);
+    map.removeLayer(circle);
+
+    // redraw all the markers.
+    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
+    setMarkerAngleFromPoints(points[0], points[1])
+
+    circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
+    iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
+    iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
+}
+
+function handleTurn() {
+    changeDirection();
+    // Swap indexes and update the angle
+    nextIndex = getNewIndex(index, maxIndex, INC, car_orientation);
+    setMarkerAngleFromPoints(index, nextIndex);
+}
+
+function changeDirection() {
+    car_orientation = getOppositeDirection(car_orientation);
+}
+
+function getOppositeDirection(direction) {
+    return direction == FORWARD_DIR? BACKWARD_DIR : FORWARD_DIR;
 }
 
 function getServerRouteData(route) {

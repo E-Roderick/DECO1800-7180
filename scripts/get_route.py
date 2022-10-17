@@ -15,6 +15,7 @@ def get_route(target_route) -> pd.DataFrame:
     shapes = shapes[shapes[ID] == target_route]
     shapes = shapes[[LAT, LON]]
     return shapes
+    return shapes[::-1] # For reversed
 
 if __name__ == "__main__":
 
