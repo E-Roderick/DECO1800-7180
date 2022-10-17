@@ -238,3 +238,51 @@
     top: 10%;
     left: 40%;
 }
+
+/* neaby_entry page */
+
+.neabybs_sec,
+.nearbybs-next,
+.inventory-sec,
+.inventory-next {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.neabybs_sec ul,
+.nearbybs-next ul,
+.inventory-sec ul,
+.inventory-next ul {
+    display: flex;
+    justify-content: center;
+    margin: 10px 20px;
+}
+
+.neabybs_sec a,
+.inventory-sec a {
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    padding: 80px 15px;
+    line-height: 1.2rem;
+    background-color: rgb(236, 230, 230, 0.2);
+    border: 5px solid #3EF3FF;
+    border-radius: 50%;
+}
+
+.nearbybs-next a,
+.inventory-next a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0 15px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* inventory page */
+.inventory-sec a {
+    border-radius: 0;
+    border: 5px solid transparent;
+}
