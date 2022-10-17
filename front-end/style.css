@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -62,9 +63,9 @@ ul {
     padding: 0px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+img{
+    max-width:100%; 
+    height:auto;
 }
 
 picture {
@@ -84,7 +85,7 @@ header {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.navbar_container {
+.navbar_container{
     position: relative;
     margin: 0 auto;
     width: 100%;
@@ -98,6 +99,7 @@ header {
     margin: 0 auto;
     max-width: 1440px;
     height: 20%;
+
 }
 
 .nav_logo {
@@ -127,9 +129,7 @@ header {
     margin-left: 12px;
 }
 
-
 /* Section */
-
 .container {
     height: 100vh;
     position: absolute;
@@ -145,17 +145,15 @@ header {
     margin: 0 auto;
 }
 
-.back_button {
+.back_button{
     position: absolute;
     top: 0%;
     left: 0%;
     z-index: 998;
 }
 
-
 /* Main page features */
-
-.main_features {
+.main_features{
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -174,6 +172,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     padding-top: 35%;
     padding-bottom: 35%;
     padding-left: 40%;
@@ -190,11 +189,11 @@ header {
     text-align: center;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
 }
 
-.feature_icon img {
-    width: 40%;
+.feature_icon img{
+    width: 40%;  
     height: 40%;
 }
 
@@ -203,9 +202,7 @@ header {
     padding: 5%;
 }
 
-
 /* Sub page */
-
 .sub_page {
     max-width: 1440px;
     position: relative;
@@ -216,7 +213,7 @@ header {
 .sub_container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 
 .features_icon {
@@ -232,6 +229,7 @@ header {
     margin: 0 auto;
     width: 90%;
     padding-top: 2%;
+
 }
 
 .game_objects_container {
@@ -239,7 +237,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50%;
+    top:  50%;
     left: 50%;
 }
 
@@ -248,7 +246,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 20%;
+    top:  20%;
     left: 60%;
 }
 
@@ -269,7 +267,7 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
     width: 188px;
     height: 188px;
 }
@@ -282,98 +280,7 @@ header {
 }
 
 
-/* route_entry page */
-
-.main-features h4 {
-    margin: 20px 0 30px 0;
-}
-
-input[type="text"] {
-    text-decoration: none;
-    width: 45%;
-    padding: 8px;
-    line-height: 1rem;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #000;
-}
-
-input[type='submit'] {
-    cursor: pointer;
-}
-
-.btn {
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 30px;
-    padding: 1.2rem 5rem;
-    border: 4px solid #3EF3FF;
-    border-radius: 8px;
-    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
-}
-
-.dropdwon-wrap~ul {
-    position: relative;
-    left: 27.5%;
-    width: 45%;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    /* visibility: hidden; */
-}
-
-.dropdwon-wrap~ul li {
-    text-align: left;
-    background-color: #fff;
-    border-left: 3px solid transparent;
-    padding: 10px;
-    color: #000;
-}
-
-.dropdwon-wrap~ul li:hover {
-    background-color: rgb(236, 230, 230);
-    border-left: 3px solid #3EF3FF;
-}
-
-
-/* neaby_entry page */
-
-.neabybs_sec,
-.nearbybs-next {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.neabybs_sec ul,
-.nearbybs-next ul {
-    display: flex;
-    justify-content: center;
-    margin: 10px 20px;
-}
-
-.neabybs_sec a {
-    display: block;
-    width: 220px;
-    height: 220px;
-    margin: 10px;
-    padding: 80px 15px;
-    line-height: 1.2rem;
-    background-color: rgb(236, 230, 230, 0.2);
-    border: 5px solid #3EF3FF;
-    border-radius: 50%;
-}
-
-.nearbybs-next a {
-    display: block;
-    width: 15px;
-    height: 15px;
-    margin: 0 15px;
-    background-color: #fff;
-    border-radius: 50%;
-}
-
-
 /* Footer */
-
 .footer_section {
     position: absolute;
     width: 100%;
@@ -388,6 +295,7 @@ input[type='submit'] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
     width: 1440px;
     height: 64px;
     display: flex;
@@ -395,3 +303,4 @@ input[type='submit'] {
     align-items: center;
     width: 1440px;
 }
+

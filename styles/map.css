@@ -3,7 +3,6 @@
  */
 
 #map {
-    color: black;
     position: absolute;
     top: 11%;
     left: 50%;
@@ -17,8 +16,10 @@
     padding: 0;
 }
 
-#map .leaflet-popup-content-wrapper {
-    background-color: #2e2e56;
+#map span,
+#popup h3,
+#popup p {
+    color: black;
 }
 
 #map-help.complete {
@@ -36,8 +37,8 @@
 
 #collection {
     position: absolute;
-    right: 0;
-    bottom: 10%;
+    right: 15%;
+    bottom: 7%;
     z-index: 1001;
     margin: 6pt;
     padding: 12pt;
