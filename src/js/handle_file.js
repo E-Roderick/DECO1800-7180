@@ -170,7 +170,7 @@ function handleMove(move_dir) {
 function handleTurn() {
     changeDirection();
     // Swap indexes and update the angle
-    [index, nextIndex] = [nextIndex, index];
+    nextIndex = getNewIndex(index, maxIndex, INC, car_orientation);
     setMarkerAngleFromPoints(index, nextIndex);
 }
 
