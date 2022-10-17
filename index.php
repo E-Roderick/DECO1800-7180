@@ -7,7 +7,7 @@
               <div class="box_touch_area"></div>
               <section class="feature_content">
                 <picture class="feature_icon">
-                  <img src="./public/assets/images/ic_outline_route_selection.svg" alt="">
+                  <img src="./public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
                 </picture>
                 <h4 class="feature_title">Route selections</h4>
               </section>
@@ -16,7 +16,7 @@
               <div class="box_touch_area"></div>
               <section class="feature_content">
                 <picture class="feature_icon">
-                  <img src="./public/assets/images/ic_outline_nearby_bus_stops.svg" alt="">
+                  <img src="./public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
                 </picture>
                 <h4 class="feature_title">Nearby bus stops</h4>
               </section>

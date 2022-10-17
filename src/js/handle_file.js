@@ -20,14 +20,17 @@ const BACKWARD_KEY = "ArrowDown";
 const BACKWARD_KEY_ALT = "KeyS";
 const DIR_CHANGE_KEY = "KeyR"
 
+const ICON_WIDTH = 56;
+const ICON_HEIGHT = 75;
+
 var eventData; // the event records
 var updatedEvents; // the updated event records
 
 var playerIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
 
-    iconSize: [50, 50], // size of the icon
-    iconAnchor: [24, 24], // point of the icon which will correspond to marker's location
+    iconSize: [ICON_WIDTH, ICON_HEIGHT], // size of the icon
+    iconAnchor: [ICON_WIDTH/2, ICON_HEIGHT/2], // point of the icon which will correspond to marker's location
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 

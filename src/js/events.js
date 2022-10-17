@@ -57,9 +57,9 @@ function iterateEventRecords(results, lat, lon) {
 
         var recordIcon;
         if (recordID % 2)
-            recordIcon = "/DECO1800-7180/public/assets/art-icons/mona-lisa.png";
+            recordIcon = "/DECO1800-7180/public/assets/event-icons/mona-lisa.png";
         else
-            recordIcon = "/DECO1800-7180/public/assets/art-icons/art.png";
+            recordIcon = "/DECO1800-7180/public/assets/event-icons/art.png";
         var artIcon = L.icon({
             iconUrl: recordIcon,
             // shadowUrl: 'images/mona-lisa.png',
@@ -122,7 +122,7 @@ function iterateUpdatedEvents(results, lat, lon) {
             recordImage = recordValue["eventImage"]["url"];
 
         var artIcon = L.icon({
-            iconUrl: "/DECO1800-7180/public/assets/art-icons/party.png",
+            iconUrl: "/DECO1800-7180/public/assets/event-icons/party.png",
             // shadowUrl: 'images/mona-lisa.png',
 
             iconSize: [40, 40], // size of the icon
@@ -142,7 +142,7 @@ function iterateUpdatedEvents(results, lat, lon) {
             item: recordItem,
             location: recordLocation,
             desc: recordDescription,
-            icon: "/DECO1800-7180/public/assets/art-icons/party.png",
+            icon: "/DECO1800-7180/public/assets/event-icons/party.png",
             image: recordImage
         };
         var popupText = generatePopup(checkState, record);

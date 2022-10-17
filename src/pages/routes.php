@@ -17,7 +17,7 @@ $ROUTES = array(
             <a href="/DECO1800-7180/index.php" class="back_button"> &lt; Back</a>
         </article>
         <section class="wrapper main-features">
-            <img src="/DECO1800-7180/public/assets/images/ic_outline_route_selection.svg" alt="">
+            <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SEARCH FOR A ROUTE</h4>
             <form method="post">
                 <select name="target-route">

@@ -12,7 +12,7 @@
     <article class="sub_page">
         <a href="./routes.php" class="back_button"> &lt; Back</a>
         <section class="sub_container">
-            <img class="features_icon" src="/DECO1800-7180/public/assets/images/ic_outline_route_selection.svg" alt="">
+            <img class="features_icon" src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h3 class="route_title">Route <dfn id="route_number">61</dfn></h3>
         </section>
         <article class="map_container">
