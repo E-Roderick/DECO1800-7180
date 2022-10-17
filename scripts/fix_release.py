@@ -4,7 +4,7 @@ import os
 DEV_URL = "/DECO1800-7180/"
 RELEASE_URL = "/"
 
-IGNORED_DIRS = ["scripts", ".git"]
+IGNORED_DIRS = ["scripts", ".git", "front-end"]
 IGNORED_FILES = [".git", ".png", ".jpg"]
 TARGET_DIR = "release/"
 
