@@ -77,7 +77,7 @@
         eventData = get_local_data_events(LS_EVENT_DATA);
         updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
-        const route = getUrlParam(window.location.href, "route");
+        const route = <?php echo $_POST["route"]?>; // Pull from post
         if (isValid(eventData) && isValid(updatedEvents)) {
             console.log("Source: localStorage");
             // Load busline data from server
