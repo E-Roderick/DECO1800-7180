@@ -197,6 +197,17 @@ function getServerRouteData(route) {
     });
 }
 
+function getServerStopData(route) {
+    $.ajax({
+        url: `../util/getStopData.php?route=${route}`,
+        type: "GET",
+        contentType: "html",
+        success: data => {
+            console.log(data);
+        }
+    });
+}
+
 function process_bus_data(busline) {
     registerKeyPress(); // Enable interaction with map
     loadedAllData(busline); // Draw map related data

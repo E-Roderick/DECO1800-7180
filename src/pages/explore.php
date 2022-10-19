@@ -76,8 +76,9 @@
         // TODO Neaten up all functions and naming
         eventData = get_local_data_events(LS_EVENT_DATA);
         updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
-
+        
         const route = getUrlParam(window.location.href, "route");
+        getServerStopData(route);
         if (isValid(eventData) && isValid(updatedEvents)) {
             console.log("Source: localStorage");
             // Load busline data from server
@@ -85,6 +86,7 @@
             getServerRouteData(route);
         } else {
             console.log("Source: API");
+            // Load event information
             $.when(get_remote_data_events(), getServerEventData()).done(function() {
                 // Load busline data from server
                 console.log(route);
