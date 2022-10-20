@@ -15,6 +15,18 @@ const ROUTES = {
 
 /* Functions */
 
+function routeSelectSubmit() {
+    // Cancel immediate submission
+    // event.preventDefault();
+
+    // Get new page location
+    const sel = document.getElementById("route-select");
+    const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}`;
+
+    // Route to new page
+    window.location.href = url;
+}
+
 /**
  * Initialises the map with loaded route data.
  * @param {*} busline list of coordinates making up a route shape
