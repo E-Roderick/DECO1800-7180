@@ -116,9 +116,9 @@ function drawUser(index, angleIndexes) {
     setMarkerAngleFromPointsIndexes(...angleIndexes);
 
     circle = L.circle([...getPoint(index)], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
+        color: '#1aeefc',
+        fillColor: '#3ef3ff',
+        fillOpacity: 0.3,
         radius: 500
     }).addTo(map);
 }
@@ -244,7 +244,7 @@ const initialiseMap = (buslineData, stops) => {
     console.log(maxIndex);
 
     // Route
-    L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
+    L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
         iterateEventRecords(eventsPublicArt, ...getPoint(index));
