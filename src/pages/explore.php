@@ -66,35 +66,8 @@
 
 <script>
     /* Main page logic */            
-<<<<<<< HEAD
     $( window ).on( "load", function() {
         doPageOperation();
-=======
-    $( window ).on( "load", function() {              
-        // Create the map and load tiles
-        createMap();
-
-        // Load event data
-        // TODO Combine the get local and get remote into one get call
-        // TODO Neaten up all functions and naming
-        eventData = get_local_data_events(LS_EVENT_DATA);
-        updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
-
-        const route = <?php echo $_POST["route"]?>; // Pull from post
-        if (isValid(eventData) && isValid(updatedEvents)) {
-            console.log("Source: localStorage");
-            // Load busline data from server
-            console.log(route);
-            getServerRouteData(route);
-        } else {
-            console.log("Source: API");
-            $.when(get_remote_data_events(), getServerEventData()).done(function() {
-                // Load busline data from server
-                console.log(route);
-                getServerRouteData(route);
-            });
-        }
->>>>>>> main
     });
 </script>
 <?php include("../components/footer_default.php"); ?>
