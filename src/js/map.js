@@ -89,21 +89,6 @@ function createMap() {
 }
 
 /**
- * Handles the tutorial page upon map load.
- */
-function handleMapLoad() {
-    $("#help-skip-btn").prop("disabled", false); // Enable button
-    $("#help-skip-btn").text("Skip Tutorial"); // Update text
-}
-
-/**
- * On-click event for the skip button in the tutorial page.
- */
-function helpSkipOnClick() {
-    $("#map-help").addClass("complete");
-}
-
-/**
  * Set the angle of the player's marker based on two points indexes.
  * @param {int} p1 The reference point index (should be player's index)
  * @param {int} p2 The next point index

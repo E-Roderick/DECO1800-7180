@@ -3,6 +3,21 @@
  ******************************************************************************/
 
 /**
+ * Handles the tutorial page upon map load.
+ */
+ function handleMapLoad() {
+    $("#help-skip-btn").prop("disabled", false); // Enable button
+    $("#help-skip-btn").text("Skip Tutorial"); // Update text
+}
+
+/**
+ * On-click event for the skip button in the tutorial page.
+ */
+function helpSkipOnClick() {
+    $("#map-help").addClass("complete");
+}
+
+/**
  * The main page operation for the explore page. Loads all requisite data and 
  * the map, sets up listeners.
  */
