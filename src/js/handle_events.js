@@ -20,7 +20,7 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @param {Any} record Record obj containing the event's information.
  * @returns String of popup's inner HTML.
  */
-const generatePopup = (state, record) => {
+const generateEventPopup = (state, record) => {
     const { id, item, location, desc, image } = record;
 
     return `
@@ -84,7 +84,7 @@ function iterateEventRecords(results, lat, lon) {
             icon: recordIcon,
             image: "/DECO1800-7180/public/assets/images/blanchflower.jpg"
         };
-        var popupText = generatePopup(checkState, record);
+        var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
@@ -145,7 +145,7 @@ function iterateUpdatedEvents(results, lat, lon) {
             icon: "/DECO1800-7180/public/assets/event-icons/party.png",
             image: recordImage
         };
-        var popupText = generatePopup(checkState, record);
+        var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
