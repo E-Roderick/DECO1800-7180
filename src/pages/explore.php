@@ -62,6 +62,7 @@
 <script src="/DECO1800-7180/src/js/handle_data.js"></script>
 <script src="/DECO1800-7180/src/js/handle_events.js"></script>
 <script src="/DECO1800-7180/src/js/url.js"></script>
+<script src="/DECO1800-7180/src/js/explore.js"></script>
 
 <script>
     function isValid(data) {
@@ -69,32 +70,8 @@
     }
 
     /* Main page logic */            
-    $( window ).on( "load", function() {              
-        // Create the map and load tiles
-        createMap();
-
-        // Load event data
-        // TODO Combine the get local and get remote into one get call
-        // TODO Neaten up all functions and naming
-        eventData = get_local_data_events(LS_EVENT_ART_DATA);
-        updatedEvents = get_local_data_events(LS_EVENT_BCC_DATA);
-        
-        const route = getUrlParam(window.location.href, "route");
-        getServerStopData(route);
-        if (isValid(eventData) && isValid(updatedEvents)) {
-            console.log("Source: localStorage");
-            // Load busline data from server
-            console.log(route);
-            getServerRouteData(route);
-        } else {
-            console.log("Source: API");
-            // Load event information
-            $.when(get_remote_data_events(), getServerEventData()).done(function() {
-                // Load busline data from server
-                console.log(route);
-                getServerRouteData(route);
-            });
-        }
+    $( window ).on( "load", function() {
+        doPageOperation();
     });
 </script>
 <?php include("../components/footer_default.php"); ?>
