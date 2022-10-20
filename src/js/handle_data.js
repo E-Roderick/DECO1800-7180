@@ -1,3 +1,7 @@
+/******************************************************************************
+ * Functions and variables relating to accessing/retrieving data.        *
+ ******************************************************************************/
+
 var eventData; // the event records
 var updatedEvents; // the updated event records
 
