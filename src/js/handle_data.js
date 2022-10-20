@@ -11,15 +11,40 @@ let eventsPublicArt;    // Events from the public art API
 let eventsBCC;          // Events from the BCC event site
 
 /* Functions */
-function get_local_data_events(localVar) {
+
+/**
+ * Retrieve data from local storage.
+ * @param {str} localVar the name of the local storage item
+ * @returns The data from local storage
+ */
+function getLocalStorage(localVar) {
     return JSON.parse(localStorage.getItem(localVar));
 }
 
-function set_local_data_events(data, localVar) {
+/**
+ * Place an item into local storage
+ * @param {*} data the data to store
+ * @param {str} localVar the name of the local storage item
+ */
+function setLocalStorage(data, localVar) {
     localStorage.setItem(localVar, JSON.stringify(data));
 }
 
-function get_remote_data_events() {
+/**
+ * Check if data exists and is not null.
+ * @param {*} data the data to check.
+ * @returns True if the data is valid. False otherwise.
+ */
+function isValidData(data) {
+    return data && data != "null";
+}
+
+/**
+ * Retrieve remote information regarding public art events. Retrieved 
+ * information is stored in local storage, and a global variable.
+ * @returns A promise regarding the public art events.
+ */
+function getRemoteArtEvents() {
     const request = {
         resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
         limit: 100
@@ -32,46 +57,88 @@ function get_remote_data_events() {
         cache: true,
         success: data => {
             eventsPublicArt = data;
-            set_local_data_events(data, LS_EVENT_ART_DATA);
+            setLocalStorage(data, LS_EVENT_ART_DATA);
         }
     });
 }
 
-function getServerEventData() {
+/**
+ * Retrieve remote information regarding BCC local events. Retrieved 
+ * information is stored in local storage, and a global variable.
+ * @returns A promise regarding the BCC events.
+ */
+function getServerBccData() {
     return $.ajax({
         url: `../util/getEventData.php`,
         dataType: "json",
         success: data => {
             eventsBCC = data;
-            set_local_data_events(data, LS_EVENT_BCC_DATA);
+            setLocalStorage(data, LS_EVENT_BCC_DATA);
         }
     });
 }
 
+/**
+ * Retrieve remote information regarding translink bus routes. The information
+ * retreived is the route shape coordinate points, and the coordinates, name,
+ * and URL for the bus stops along the given route.
+ * @param {str} route A route identifier
+ */
 function getServerRouteData(route) {
-    $.ajax({
+    let routeData;
+    let stops;
+
+    // Request route information from the server
+    let routeResolver = $.ajax({
         url: `../util/getRouteData.php?route=${route}`,
         type: "GET",
         contentType: "html",
-        success: data => {
-            process_bus_data(data);
-        }
+        success: data => { routeData = data; }
     });
-}
 
-function getServerStopData(route) {
-    $.ajax({
+    // Request stop information from the server
+    let stopResolver = $.ajax({
         url: `../util/getStopData.php?route=${route}`,
         type: "GET",
         contentType: "html",
-        success: data => {
-            console.log(data);
-        }
+        success: data => { stops = data; }
+    });
+
+    $.when(routeResolver, stopResolver).done(function() {
+        processRouteData(routeData);
+        console.log(stops);
     });
 }
 
+/**
+ * Gets all of the event data, and stores it in the respective globals. 
+ * Currently, the event data is the public art events, and the BCC local events.
+ */
+async function getEventData() {
+    let resolving = [];
+
+    // Get public art event data
+    eventsPublicArt = getLocalStorage(LS_EVENT_ART_DATA);
+    if (!isValidData(eventsPublicArt)) {
+        // Track that we have something to resolve
+        resolving.push(getRemoteArtEvents())
+    }
+
+    // Get BCC event data
+    eventsBCC = getLocalStorage(LS_EVENT_BCC_DATA);
+    if (!isValidData(eventsBCC)) {
+        // Track that we have something to resolve
+        resolving.push(getServerBccData())
+    }
+    
+    // Wait for any outstanding data requests
+    if (resolving) {
+        await Promise.all(resolving);
+    }
+}
+
 //TODO Make this with a nicer structure
-function process_bus_data(busline) {
+function processRouteData(busline) {
     registerKeyPress(); // Enable interaction with map
     initialiseMap(busline); // Draw map related data
     handleMapLoad(); // Take actions once the map is loaded

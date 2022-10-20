@@ -65,10 +65,6 @@
 <script src="/DECO1800-7180/src/js/explore.js"></script>
 
 <script>
-    function isValid(data) {
-        return data && data != "null";
-    }
-
     /* Main page logic */            
     $( window ).on( "load", function() {
         doPageOperation();
