@@ -80,7 +80,9 @@ const getNewIndex = (index, max, inc, direction) => {
  * Create the leaflet map.
  */
 function createMap() {
-    map = L.map("map", { keyboard: false }).setView([-27.491457, 153.102629], 13);
+    map = L.map("map", { keyboard: false })
+        .setView([-27.491457, 153.102629], 13);
+    
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
         attribution: '© OpenStreetMap'
@@ -132,6 +134,7 @@ function handleMove(move_dir) {
     // Check move direction to possibly reverse direction
     let points = move_dir === FORWARD_DIR ? 
         [index, nextIndex] : [nextIndex, index];
+    
     // Check car orientation to possibly reverse direction again
     points = car_orientation === FORWARD_DIR ?
         points : points.reverse();
@@ -145,17 +148,18 @@ function handleMove(move_dir) {
     map.removeLayer(circle);
 
     // redraw all the markers.
-    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
-    setMarkerAngleFromPointsIndexes(points[0], points[1])
+    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
+        .addTo(map);
+    setMarkerAngleFromPointsIndexes(...points);
 
-    circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
+    circle = L.circle([...getPoint(index)], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
         radius: 500
     }).addTo(map);
-    iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
-    iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
+    iterateEventRecords(eventData, ...getPoint(index));
+    iterateUpdatedEvents(updatedEvents, ...getPoint(index));
 }
 
 /**
@@ -230,12 +234,13 @@ const initialiseMap = (buslineData) => {
     console.log(maxIndex);
     
     // Player
-    userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
+    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
+        .addTo(map);
     angle = angleToPoint(getPoint(index), getPoint(nextIndex));
     userMarker.setRotationAngle(angle);
     
     // Radius
-    circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
+    circle = L.circle([...getPoint(index)], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
@@ -246,7 +251,7 @@ const initialiseMap = (buslineData) => {
     L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
     if (eventData != "null" && updatedEvents != "null") {
         console.log("Source: localStorage");
-        iterateEventRecords(eventData, routeCoordinates[index][0], routeCoordinates[index][1]);
-        iterateUpdatedEvents(updatedEvents, routeCoordinates[index][0], routeCoordinates[index][1]);
+        iterateEventRecords(eventData, ...getPoint(index));
+        iterateUpdatedEvents(updatedEvents, ...getPoint(index));
     }
 }
