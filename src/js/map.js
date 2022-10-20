@@ -2,7 +2,7 @@
  *  Functions relating the the explore page map.                              *
  ******************************************************************************/
 
-//// Constants ////
+/* Constants */
 const INC = 3; // Route coordinates skipped per move
 const POSITIVE = 1;
 const NEGATIVE = -1;
@@ -16,7 +16,7 @@ const BACKWARD_KEY = "ArrowDown";
 const BACKWARD_KEY_ALT = "KeyS";
 const DIR_CHANGE_KEY = "KeyR"
 
-//// Globals ////
+/* Globals */
 let map;                // Map holder
 
 // Car
@@ -32,8 +32,7 @@ let nextIndex;          // The next position to move to
 let routeCoordinates;   // Store all coordinate pairs for the route
 let maxIndex;           // The max index of route points
 
-//// Functions ////
-
+/* Functions */
 /**
  * Get the lat/lon of a route position for a given index.
  * @param {int} index The index to find the route positions for
@@ -168,8 +167,8 @@ function handleMove(move_dir) {
     // Put the user on the map
     drawUser(index, points);
 
-    iterateEventRecords(eventData, ...getPoint(index));
-    iterateUpdatedEvents(updatedEvents, ...getPoint(index));
+    iterateEventRecords(eventsPublicArt, ...getPoint(index));
+    iterateUpdatedEvents(eventsBCC, ...getPoint(index));
 }
 
 /**
@@ -248,9 +247,9 @@ const initialiseMap = (buslineData) => {
 
     // Route
     L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
-    if (eventData != "null" && updatedEvents != "null") {
+    if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
-        iterateEventRecords(eventData, ...getPoint(index));
-        iterateUpdatedEvents(updatedEvents, ...getPoint(index));
+        iterateEventRecords(eventsPublicArt, ...getPoint(index));
+        iterateUpdatedEvents(eventsBCC, ...getPoint(index));
     }
 }

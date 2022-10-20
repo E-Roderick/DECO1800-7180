@@ -55,12 +55,12 @@
     crossorigin="">
 </script>
 <script src="/DECO1800-7180/src/js/package/leaflet.rotatedmarker.js"></script>
-<script src="/DECO1800-7180/src/js/map_icons.js"></script>
-<script src="/DECO1800-7180/src/js/handle_routes.js"></script>
-<script src="/DECO1800-7180/src/js/map.js"></script>
 <script src="/DECO1800-7180/src/js/distance.js"></script>
+<script src="/DECO1800-7180/src/js/map_icons.js"></script>
+<script src="/DECO1800-7180/src/js/map.js"></script>
+<script src="/DECO1800-7180/src/js/handle_routes.js"></script>
 <script src="/DECO1800-7180/src/js/handle_data.js"></script>
-<script src="/DECO1800-7180/src/js/events.js"></script>
+<script src="/DECO1800-7180/src/js/handle_events.js"></script>
 <script src="/DECO1800-7180/src/js/url.js"></script>
 
 <script>
@@ -76,8 +76,8 @@
         // Load event data
         // TODO Combine the get local and get remote into one get call
         // TODO Neaten up all functions and naming
-        eventData = get_local_data_events(LS_EVENT_DATA);
-        updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
+        eventData = get_local_data_events(LS_EVENT_ART_DATA);
+        updatedEvents = get_local_data_events(LS_EVENT_BCC_DATA);
         
         const route = getUrlParam(window.location.href, "route");
         getServerStopData(route);

@@ -1,15 +1,11 @@
 /******************************************************************************
  * Functions and variables relating to the map events.                       *
  ******************************************************************************/
-
-/* Constants */
-const LS_EVENT_DATA = "eventData";
-const LS_UPDATE_EVENT_DATA = "updatedEventData";
-
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
 let collectedEvents = [];
 
+/* Functions */
 /**
  * Find a collected event based on ID.
  * @param {obj} ce The collected event object
@@ -201,42 +197,5 @@ function updateCollection() {
                 `<img src=${collected.icon} height="64px" width="64px">`
             )
         );
-    });
-}
-
-function get_local_data_events(localVar) {
-    return JSON.parse(localStorage.getItem(localVar));
-}
-
-function set_local_data_events(data, localVar) {
-    localStorage.setItem(localVar, JSON.stringify(data));
-}
-
-function get_remote_data_events() {
-    const request = {
-        resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
-        limit: 100
-    }
-
-    return $.ajax({
-        url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
-        data: request,
-        dataType: "jsonp",
-        cache: true,
-        success: data => {
-            eventData = data;
-            set_local_data_events(data, LS_EVENT_DATA);
-        }
-    });
-}
-
-function getServerEventData() {
-    return $.ajax({
-        url: `../util/getEventData.php`,
-        dataType: "json",
-        success: data => {
-            updatedEvents = data;
-            set_local_data_events(data, LS_UPDATE_EVENT_DATA);
-        }
     });
 }

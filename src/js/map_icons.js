@@ -2,15 +2,11 @@
  * Creation of map icons to display on the map.                          *
  ******************************************************************************/
 
-/**
- * Constants
- */
+/* Constants */
 const ICON_PLAYER_WIDTH = 56;
 const ICON_PLAYER_HEIGHT = 75;
 
-/**
- * Icons
- */
+/* Icons */
 var playerIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
     // SPecify size of the icon
