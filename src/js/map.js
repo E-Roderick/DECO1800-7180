@@ -1,3 +1,7 @@
+/******************************************************************************
+ *  Functions relating the the explore page map.                              *
+ ******************************************************************************/
+
 //// Constants ////
 const INC = 3; // Route coordinates skipped per move
 const POSITIVE = 1;

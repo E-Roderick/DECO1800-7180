@@ -1,3 +1,7 @@
+/******************************************************************************
+ * Functions and variables relating to the map events.                       *
+ ******************************************************************************/
+
 /* Constants */
 const LS_EVENT_DATA = "eventData";
 const LS_UPDATE_EVENT_DATA = "updatedEventData";

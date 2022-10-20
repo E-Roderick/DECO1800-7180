@@ -59,7 +59,7 @@
 <script src="/DECO1800-7180/src/js/handle_routes.js"></script>
 <script src="/DECO1800-7180/src/js/map.js"></script>
 <script src="/DECO1800-7180/src/js/distance.js"></script>
-<script src="/DECO1800-7180/src/js/handle_file.js"></script>
+<script src="/DECO1800-7180/src/js/handle_data.js"></script>
 <script src="/DECO1800-7180/src/js/events.js"></script>
 <script src="/DECO1800-7180/src/js/url.js"></script>
 
