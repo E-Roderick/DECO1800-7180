@@ -14,7 +14,10 @@ const FORWARD_KEY = "ArrowUp";
 const FORWARD_KEY_ALT = "KeyW";
 const BACKWARD_KEY = "ArrowDown";
 const BACKWARD_KEY_ALT = "KeyS";
-const DIR_CHANGE_KEY = "KeyR"
+const DIR_CHANGE_KEY = "KeyR";
+
+const MIN_ZOOM = 16;
+const MAX_ZOOM = 16;
 
 /* Globals */
 let map;                // Map holder
@@ -82,11 +85,12 @@ const getNewIndex = (index, max, inc, direction) => {
  * Create the leaflet map.
  */
 function createMap() {
-    map = L.map("map", { keyboard: false })
-        .setView([-27.491457, 153.102629], 13);
+    map = L.map("map", { keyboard: false, zoomControl: false })
+        .setView([-27.491457, 153.102629], MIN_ZOOM);
     
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
+        minZoom: MIN_ZOOM,
+        maxZoom: MAX_ZOOM,
         attribution: '© OpenStreetMap'
     }).addTo(map);
 }
