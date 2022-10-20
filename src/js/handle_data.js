@@ -136,14 +136,3 @@ async function getEventData() {
         await Promise.all(resolving);
     }
 }
-
-/**
- * Initialises the map with loaded route data.
- * @param {*} busline list of coordinates making up a route shape
- * @param {*} stops list of stop information for stops along the busline 
- */
-function processRouteData(busline, stops) {
-    console.log(stops);
-    initialiseMap(busline); // Draw map related data
-    handleMapLoad(); // Take actions once the map is loaded
-}
