@@ -55,6 +55,8 @@
     crossorigin="">
 </script>
 <script src="/DECO1800-7180/src/js/package/leaflet.rotatedmarker.js"></script>
+<script src="/DECO1800-7180/src/js/map_icons.js"></script>
+<script src="/DECO1800-7180/src/js/handle_routes.js"></script>
 <script src="/DECO1800-7180/src/js/map.js"></script>
 <script src="/DECO1800-7180/src/js/distance.js"></script>
 <script src="/DECO1800-7180/src/js/handle_file.js"></script>
