@@ -20,8 +20,8 @@ $ROUTES = array(
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SEARCH FOR A ROUTE</h4>
             
-            <form method="post" action="/DECO1800-7180/src/pages/explore.php" >
-                <select name="route">
+            <form method="post" id="select-form">
+                <select id="route-select" name="route">
                     <option value="none" selected disabled hidden>
                         Select a route
                     </option>
@@ -30,7 +30,7 @@ $ROUTES = array(
                         foreach($ROUTES as $route => $id) {
                             echo "<option value={$id}>{$route}</option>";
                         }
-                     ?>
+                    ?>
                 </select>
                 <input type="submit" name="submit" value="Next Step">
             </form>
@@ -38,4 +38,21 @@ $ROUTES = array(
     </section>
 
 </main>
+
+<script>
+    document.getElementById("select-form").onsubmit = event => {
+        // Cancel immediate submission
+        event.preventDefault();
+
+        // Get new page location
+        const sel = document.getElementById("route-select");
+        const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}`;
+
+        if (sel.value != "none") {
+            // Route to new page
+            window.location.href = url
+        }
+    };
+</script>
+
 <?php include("../components/footer_default.php"); ?>
