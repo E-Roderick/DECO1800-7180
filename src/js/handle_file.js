@@ -27,6 +27,6 @@ function getServerStopData(route) {
 
 function process_bus_data(busline) {
     registerKeyPress(); // Enable interaction with map
-    loadedAllData(busline); // Draw map related data
+    initialiseMap(busline); // Draw map related data
     handleMapLoad(); // Take actions once the map is loaded
 }
