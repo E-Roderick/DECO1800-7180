@@ -137,9 +137,7 @@ async function getEventData() {
     }
 }
 
-//TODO Make this with a nicer structure
 function processRouteData(busline) {
-    registerKeyPress(); // Enable interaction with map
     initialiseMap(busline); // Draw map related data
     handleMapLoad(); // Take actions once the map is loaded
 }

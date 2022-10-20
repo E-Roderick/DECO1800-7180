@@ -14,6 +14,7 @@
  * On-click event for the skip button in the tutorial page.
  */
 function helpSkipOnClick() {
+    registerKeyPress(); // Enable interaction with map
     $("#map-help").addClass("complete");
 }
 
