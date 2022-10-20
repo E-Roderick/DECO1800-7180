@@ -119,6 +119,24 @@ function setMarkerAngleFromPointsIndexes(p1, p2) {
 }
 
 /**
+ * Draw's the player's marker and the surrounding circle to the map.
+ * @param {*} index The current index of the players position.
+ * @param {*} angleIndexes Indexes to calculate the angle for the player marker
+ */
+function drawUser(index, angleIndexes) {
+    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
+        .addTo(map);
+    setMarkerAngleFromPointsIndexes(...angleIndexes);
+
+    circle = L.circle([...getPoint(index)], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
+}
+
+/**
  * Handle a move occurring for the player.
  * @param {*} move_dir The direction to move in. 
  */
@@ -147,17 +165,9 @@ function handleMove(move_dir) {
     map.removeLayer(userMarker);
     map.removeLayer(circle);
 
-    // redraw all the markers.
-    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
-        .addTo(map);
-    setMarkerAngleFromPointsIndexes(...points);
+    // Put the user on the map
+    drawUser(index, points);
 
-    circle = L.circle([...getPoint(index)], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(map);
     iterateEventRecords(eventData, ...getPoint(index));
     iterateUpdatedEvents(updatedEvents, ...getPoint(index));
 }
@@ -234,18 +244,7 @@ const initialiseMap = (buslineData) => {
     console.log(maxIndex);
     
     // Player
-    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
-        .addTo(map);
-    angle = angleToPoint(getPoint(index), getPoint(nextIndex));
-    userMarker.setRotationAngle(angle);
-    
-    // Radius
-    circle = L.circle([...getPoint(index)], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(map);
+    drawUser(index, [index, nextIndex])
 
     // Route
     L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
