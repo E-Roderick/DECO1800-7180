@@ -88,6 +88,7 @@
     $( window ).on( "load", function() {              
         // Create the map and load tiles
         createMap();
+        getServerArtImage();
 
         // Load event data
         // TODO Combine the get local and get remote into one get call
@@ -95,7 +96,7 @@
         eventData = get_local_data_events(LS_EVENT_DATA);
         updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
 
-        const route = <?php echo $_POST["route"]?>; // Pull from post
+        const route = "<?php echo $_POST["route"]?>"; // Pull from post
         if (isValid(eventData) && isValid(updatedEvents)) {
             console.log("Source: localStorage");
             // Load busline data from server
