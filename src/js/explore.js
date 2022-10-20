@@ -11,7 +11,8 @@
 }
 
 /**
- * On-click event for the skip button in the tutorial page.
+ * On-click event for the skip button in the tutorial page. Also enables
+ * movement on the map. This is done here to stop movement during the tutorial.
  */
 function helpSkipOnClick() {
     registerKeyPress(); // Enable interaction with map
