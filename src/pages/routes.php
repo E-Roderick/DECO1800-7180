@@ -19,30 +19,23 @@ $ROUTES = array(
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SEARCH FOR A ROUTE</h4>
-            <form method="post">
-                <select name="target-route">
-                    <option value="none" selected disabled hidden>Select a route</option>
+            
+            <form method="post" action="/DECO1800-7180/src/pages/explore.php" >
+                <select name="route">
+                    <option value="none" selected disabled hidden>
+                        Select a route
+                    </option>
+                    
                     <?php
-
-                    foreach($ROUTES as $route => $id) {
-                        echo "<option value={$id}>{$route}</option>";
-                    }
-
-                    ?>
+                        foreach($ROUTES as $route => $id) {
+                            echo "<option value={$id}>{$route}</option>";
+                        }
+                     ?>
                 </select>
-                <input type="submit" value="Next Step">
+                <input type="submit" name="submit" value="Next Step">
             </form>
         </section>
     </section>
-
-<?php
-// If the route has been selected, move to route page
-if(isset($_POST['target-route'])) {
-    // Add specified route as arg on URL
-    $url = "/DECO1800-7180/src/pages/explore.php?route=".$_POST['target-route'];
-    header("Location: $url");
-}
-?>
 
 </main>
 <?php include("../components/footer_default.php"); ?>
