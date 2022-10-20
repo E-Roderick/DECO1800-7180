@@ -1,7 +1,7 @@
 <?php
 
 function getRouteData($target) {
-    $route_file = "../../data/".$target.".txt";
+    $route_file = "../../data/routes/".$target.".txt";
     $fd = fopen($route_file, "r");
     $data = [];
 
