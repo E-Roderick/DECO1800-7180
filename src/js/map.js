@@ -121,6 +121,8 @@ function drawUser(index, angleIndexes) {
         fillOpacity: 0.3,
         radius: 500
     }).addTo(map);
+
+    map.panTo(userMarker.getLatLng());
 }
 
 function drawBusStops(stops) {
