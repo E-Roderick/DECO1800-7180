@@ -105,8 +105,7 @@ function getServerRouteData(route) {
     });
 
     $.when(routeResolver, stopResolver).done(function() {
-        processRouteData(routeData);
-        console.log(stops);
+        processRouteData(routeData, stops);
     });
 }
 

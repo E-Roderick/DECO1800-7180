@@ -5,7 +5,7 @@
 /* Constants */
 const ICON_PLAYER_WIDTH = 56;
 const ICON_PLAYER_HEIGHT = 75;
-const ICON_STOP_SIZE = 30;
+const ICON_STOP_SIZE = 50;
 
 /* Icons */
 const playerIcon = L.icon({
@@ -18,7 +18,7 @@ const playerIcon = L.icon({
     popupAnchor: [-3, -76]
 });
 
-const busStop = L.icon({
+const busStopIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/ui/icons/ic_bus_stop.svg",
     iconSize: [ICON_STOP_SIZE, ICON_STOP_SIZE],
     iconAnchor: [ICON_STOP_SIZE/2, ICON_STOP_SIZE/2],

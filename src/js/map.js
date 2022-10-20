@@ -32,6 +32,9 @@ let nextIndex;          // The next position to move to
 let routeCoordinates;   // Store all coordinate pairs for the route
 let maxIndex;           // The max index of route points
 
+// Bus stops
+let busStopMarkers;     // Container for all bus stops
+
 /* Functions */
 /**
  * Get the lat/lon of a route position for a given index.
@@ -118,6 +121,19 @@ function drawUser(index, angleIndexes) {
         fillOpacity: 0.5,
         radius: 500
     }).addTo(map);
+}
+
+function drawBusStops(stops) {
+    // NOTE Stops has been double stringified for some reason
+    stops = JSON.parse(stops);
+
+    // Store each marker after adding to the map
+    busStopMarkers = stops.map(stop => {
+        const [c1, c2, name, url] = stop;
+        stopMarker = L.marker([c1, c2], { icon: busStopIcon })
+            .addTo(map);
+        // TODO Add popup for bus stop
+    });
 }
 
 /**
@@ -217,7 +233,7 @@ function registerKeyPress() {
  * loaded in on the user's end.
  * @param {*} buslineData The raw busline data to be parsed and drawn
  */
-const initialiseMap = (buslineData) => {
+const initialiseMap = (buslineData, stops) => {
     routeCoordinates = JSON.parse(buslineData);
 
     // Set the initial position
@@ -226,9 +242,6 @@ const initialiseMap = (buslineData) => {
     nextIndex = maxIndex - INC;
 
     console.log(maxIndex);
-    
-    // Player
-    drawUser(index, [index, nextIndex])
 
     // Route
     L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
@@ -237,4 +250,10 @@ const initialiseMap = (buslineData) => {
         iterateEventRecords(eventsPublicArt, ...getPoint(index));
         iterateUpdatedEvents(eventsBCC, ...getPoint(index));
     }
+
+    // Put the bus stops on the map
+    drawBusStops(stops)
+
+    // Put player marker on the map
+    drawUser(index, [index, nextIndex])
 }
