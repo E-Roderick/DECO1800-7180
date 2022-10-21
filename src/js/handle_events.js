@@ -47,13 +47,16 @@ const generateEventPopup = (state, record) => {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateEventRecords(results, lat, lon) {
+function iteratArtEvents(results, lat, lon) {
     $.each(results.result.records, function(recordID, recordValue) {
         var recordLatitude = recordValue["Latitude"];
         var recordLongitud = recordValue["Longitude"]
         var recordItem = recordValue["Item_title"];
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
+        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
+        if (artImage.hasOwnProperty(recordItem))
+            recordImage = artImage[recordItem];
 
         var recordIcon;
         if (recordID % 2)
@@ -82,7 +85,7 @@ function iterateEventRecords(results, lat, lon) {
             location: recordLocation,
             desc: recordDescription,
             icon: recordIcon,
-            image: "/DECO1800-7180/public/assets/images/blanchflower.jpg"
+            image: recordImage
         };
         var popupText = generateEventPopup(checkState, record);
 
@@ -109,7 +112,7 @@ function iterateEventRecords(results, lat, lon) {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateUpdatedEvents(results, lat, lon) {
+function iterateBccEvents(results, lat, lon) {
     $.each(results, function(recordID, recordValue) {
         //console.log(recordValue);
         var recordLatitude = recordValue["lat"];

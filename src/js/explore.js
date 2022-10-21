@@ -27,6 +27,9 @@ async function doPageOperation() {
     // Create the map and load tiles
     createMap();
 
+    // Load images
+    getServerArtImage();
+
     // Load event data   
     await getEventData();
 

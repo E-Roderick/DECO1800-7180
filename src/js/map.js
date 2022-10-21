@@ -35,6 +35,8 @@ let nextIndex;          // The next position to move to
 let routeCoordinates;   // Store all coordinate pairs for the route
 let maxIndex;           // The max index of route points
 
+let artImage;           // Stores information about all art images
+
 // Bus stops
 let busStopMarkers;     // Container for all bus stops
 
@@ -178,8 +180,8 @@ function handleMove(move_dir) {
     // Put the user on the map
     drawUser(index, points);
 
-    iterateEventRecords(eventsPublicArt, ...getPoint(index));
-    iterateUpdatedEvents(eventsBCC, ...getPoint(index));
+    iteratArtEvents(eventsPublicArt, ...getPoint(index));
+    iterateBccEvents(eventsBCC, ...getPoint(index));
 }
 
 /**
@@ -257,8 +259,8 @@ const initialiseMap = (buslineData, stops) => {
     L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
-        iterateEventRecords(eventsPublicArt, ...getPoint(index));
-        iterateUpdatedEvents(eventsBCC, ...getPoint(index));
+        iteratArtEvents(eventsPublicArt, ...getPoint(index));
+        iterateBccEvents(eventsBCC, ...getPoint(index));
     }
 
     // Put the bus stops on the map

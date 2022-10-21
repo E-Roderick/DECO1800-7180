@@ -135,3 +135,15 @@ async function getEventData() {
         await Promise.all(resolving);
     }
 }
+
+function getServerArtImage() {
+    return $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/DECO1800-7180/data/images.json',
+        success: function(data) {
+            // console.log(data);
+            artImage = data;
+        }
+    });
+}
