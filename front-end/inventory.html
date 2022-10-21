@@ -90,5 +90,15 @@
         </div>
       </footer>    
 </body>
+<script>
+  var oDiv1=document.getElementById("motion-1");
+  
+  if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+  //Mobile device
+  oDiv1.style.display="none";
+  }else{
+  oDiv1.style.display="block";
+  }
+  </script>
 </html>
 
