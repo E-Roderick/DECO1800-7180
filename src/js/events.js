@@ -55,8 +55,9 @@ function iterateEventRecords(results, lat, lon) {
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
         var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
-        if (artImage.hasOwnProperty(recordItem))
-            recordImage = artImage[recordItem];
+        if (artImage.hasOwnProperty(recordItem)) {
+            recordImage = artImage[recordItem][0];
+        }
 
         var recordIcon;
         if (recordID % 2)
