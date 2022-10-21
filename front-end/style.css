@@ -541,6 +541,9 @@ input[type='submit'] {
   }
 
 /* inventory page */
+.inventory-sec .overflow-wrapper{
+    margin: 0 auto;
+}
 .inventory-sec a {
     border-radius: 0;
     border: 5px solid transparent;
