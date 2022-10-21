@@ -43,102 +43,122 @@ const generateEventPopup = (state, record) => {
 }
 
 /**
- * Iterate over all the given event records and draw markers for those that are near given coordinate.
+ * Iterate over all the given art events and draw markers for those that are 
+ * near given coordinate.
  *
  * @param {any} results The event data.
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
 function iteratArtEvents(results, lat, lon) {
-    $.each(results.result.records, function(recordID, recordValue) {
-        var recordLatitude = recordValue["Latitude"];
-        var recordLongitud = recordValue["Longitude"]
-        var recordItem = recordValue["Item_title"];
-        var recordDescription = recordValue["Description"];
-        var recordLocation = recordValue["The_Location"];
-        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
-        if (artImage.hasOwnProperty(recordItem))
-            recordImage = artImage[recordItem];
+    $.each(results.result.records, function(eventID, eventData) {
+        let latitude = eventData["Latitude"];
+        let longitude = eventData["Longitude"]
+        let title = eventData["Item_title"];
+        let description = eventData["Description"];
+        let location = eventData["The_Location"];
+        
+        let image;
+        if (artImage.hasOwnProperty(title))
+            image = artImage[title];
 
-        var checkState = '';
-        if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
-            checkState = 'checked';
-        }
+            let collected = collectedEvents.find(
+                event => findCollectedEvent(event, eventID)
+            ) ? 'checked' : '';
 
-        let record = {
-            id: recordID,
-            item: recordItem,
-            location: recordLocation,
-            desc: recordDescription,
+        let event = {
+            id: eventID,
+            item: title,
+            location: location,
+            desc: description,
             icon: artEventIcon.iconUrl,
-            image: recordImage
+            image: image
         };
-        var popupText = generateEventPopup(checkState, record);
 
-        // Make sure the event coordinates exist and it's within 500m from the user's position.  
-        if (recordLatitude && recordLatitude &&
-            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < EVENT_RADIUS) {
-            var marker = L.marker([recordLatitude, recordLongitud], { icon: artEventIcon }).addTo(map);
-            nearbyMarkers.push(marker);
-            var myPopup = L.DomUtil.create('div', 'infoWindow');
-            myPopup.innerHTML = popupText;
-            // marker.bindPopup(`<button type="button" onclick="alert('Hello world!')">Click Me!</button>`);
-            marker.bindPopup(myPopup);
-            $('#popup', myPopup).on('load', function() {
-                console.log("popup");
-            });
-        }
+        // Handle the event data
+        handleSingleEvent(
+            event, 
+            collected, 
+            [lat, lon], 
+            [latitude, longitude],
+            artEventIcon
+        );
     });
 }
 
 /**
- * Iterate over all the given updated event records and draw markers for those that are near given coordinate.
+ * Iterate over all the given BCC local events records and draw markers for 
+ * those that are near given coordinate.
  *
  * @param {any} results The event data.
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
 function iterateBccEvents(results, lat, lon) {
-    $.each(results, function(recordID, recordValue) {
-        //console.log(recordValue);
-        var recordLatitude = recordValue["lat"];
-        var recordLongitud = recordValue["lon"]
-        var recordItem = recordValue["title"];
-        var recordDescription = recordValue["description"];
-        var recordLocation = recordValue["location"];
-        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
-        if ('eventImage' in recordValue)
-            recordImage = recordValue["eventImage"]["url"];
+    $.each(results, function(eventID, eventData) {
 
-        var checkState = '';
-        if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
-            checkState = 'checked';
-        }
+        // Retrieve relevant event information
+        let latitude = eventData["lat"];
+        let longitude = eventData["lon"]
+        let title = eventData["title"];
+        let description = eventData["description"];
+        let location = eventData["location"];
+        
+        let recordImage;
+        if ("eventImage" in eventData)
+            recordImage = eventData["eventImage"]["url"];
 
-        let record = {
-            id: recordID,
-            item: recordItem,
-            location: recordLocation,
-            desc: recordDescription,
+        let collected = collectedEvents.find(
+            event => findCollectedEvent(event, eventID)
+        ) ? 'checked' : '';
+
+        // Create event object
+        let event = {
+            id: eventID,
+            item: title,
+            location: location,
+            desc: description,
             icon: culturalEventIcon.iconUrl,
             image: recordImage
         };
-        var popupText = generateEventPopup(checkState, record);
 
-        // Make sure the event coordinates exist and it's within 500m from the user's position.  
-        if (recordLatitude && recordLatitude &&
-            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < EVENT_RADIUS) {
-            var marker = L.marker([recordLatitude, recordLongitud], { icon: culturalEventIcon }).addTo(map);
-            nearbyMarkers.push(marker);
-            var myPopup = L.DomUtil.create('div', 'infoWindow');
-            myPopup.innerHTML = popupText;
-            // marker.bindPopup(`<button type="button" onclick="alert('Hello world!')">Click Me!</button>`);
-            marker.bindPopup(myPopup);
-            $('#popup', myPopup).on('load', function() {
-                console.log("popup");
-            });
-        }
+        // Handle the event data
+        handleSingleEvent(
+            event, 
+            collected, 
+            [lat, lon], 
+            [latitude, longitude],
+            culturalEventIcon
+        );
     });
+}
+
+/**
+ * Creates a marker for a given event if it is close enough to the given 
+ * position.
+ * 
+ * @param {*} event The event details as an object
+ * @param {*} collectState The state of collection for the event
+ * @param {*} refPos The reference position as a latLon
+ * @param {*} eventPos The event's position as a latLon
+ * @param {*} icon The icon to display as the events marker
+ */
+function handleSingleEvent(event, collectState, refPos, eventPos, icon) {
+    // Find the distance between car and event
+    let distance = eventPos[0] && eventPos[1] ? 
+        distanceInKmBetweenCoords(...refPos, ...eventPos) 
+        : null;
+    
+    // Make sure the event is within 500m from the user's position.  
+    if (distance * 1000 < EVENT_RADIUS) {
+        // Create a new marker
+        let marker = L.marker(eventPos, { icon: icon }).addTo(map);
+        nearbyMarkers.push(marker);
+        
+        let popup = L.DomUtil.create('div', 'infoWindow');
+        popup.innerHTML = generateEventPopup(collectState, event);
+        marker.bindPopup(popup);
+    }
 }
 
 /**

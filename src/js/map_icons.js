@@ -5,7 +5,7 @@
 /* Constants */
 const ICON_PLAYER_WIDTH = 56;
 const ICON_PLAYER_HEIGHT = 75;
-const ICON_STOP_SIZE = 50;
+const ICON_STOP_SIZE = 40;
 const ICON_EVENT_SIZE = 50;
 
 /* Icons */

@@ -256,7 +256,7 @@ const initialiseMap = (buslineData, stops) => {
     console.log(maxIndex);
 
     // Route
-    L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);
+    L.polyline(routeCoordinates, { color: '#b12defff', weight: 4 }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
         iteratArtEvents(eventsPublicArt, ...getPoint(index));
