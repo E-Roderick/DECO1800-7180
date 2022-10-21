@@ -47,7 +47,7 @@ const generatePopup = (state, record) => {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateEventRecords(results, lat, lon) {
+function iteratArtEvents(results, lat, lon) {
     $.each(results.result.records, function(recordID, recordValue) {
         var recordLatitude = recordValue["Latitude"];
         var recordLongitud = recordValue["Longitude"]
@@ -109,7 +109,7 @@ function iterateEventRecords(results, lat, lon) {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateUpdatedEvents(results, lat, lon) {
+function iterateBccEvents(results, lat, lon) {
     $.each(results, function(recordID, recordValue) {
         //console.log(recordValue);
         var recordLatitude = recordValue["lat"];

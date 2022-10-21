@@ -152,8 +152,8 @@ function handleMove(move_dir) {
     // Put the user on the map
     drawUser(index, points);
 
-    iterateEventRecords(eventsPublicArt, ...getPoint(index));
-    iterateUpdatedEvents(eventsBCC, ...getPoint(index));
+    iteratArtEvents(eventsPublicArt, ...getPoint(index));
+    iterateBccEvents(eventsBCC, ...getPoint(index));
 }
 
 /**
@@ -234,7 +234,7 @@ const initialiseMap = (buslineData) => {
     L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
-        iterateEventRecords(eventsPublicArt, ...getPoint(index));
-        iterateUpdatedEvents(eventsBCC, ...getPoint(index));
+        iteratArtEvents(eventsPublicArt, ...getPoint(index));
+        iterateBccEvents(eventsBCC, ...getPoint(index));
     }
 }
