@@ -54,6 +54,9 @@ function iteratArtEvents(results, lat, lon) {
         var recordItem = recordValue["Item_title"];
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
+        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
+        if (artImage.hasOwnProperty(recordItem))
+            recordImage = artImage[recordItem];
 
         var recordIcon;
         if (recordID % 2)
@@ -82,7 +85,7 @@ function iteratArtEvents(results, lat, lon) {
             location: recordLocation,
             desc: recordDescription,
             icon: recordIcon,
-            image: "/DECO1800-7180/public/assets/images/blanchflower.jpg"
+            image: recordImage
         };
         var popupText = generatePopup(checkState, record);
 

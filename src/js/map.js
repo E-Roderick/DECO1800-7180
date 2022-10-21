@@ -32,6 +32,8 @@ let nextIndex;          // The next position to move to
 let routeCoordinates;   // Store all coordinate pairs for the route
 let maxIndex;           // The max index of route points
 
+let artImage;
+
 /* Functions */
 /**
  * Get the lat/lon of a route position for a given index.

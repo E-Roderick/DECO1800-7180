@@ -239,6 +239,7 @@
     left: 40%;
 }
 
+
 /* neaby_entry page */
 
 .neabybs_sec,
@@ -281,13 +282,17 @@
     border-radius: 50%;
 }
 
+
 /* inventory page */
+
 .inventory-sec a {
     border-radius: 0;
     border: 5px solid transparent;
 }
 
+
 /* about page */
+
 .wrapper.about-sec {
     top: 12%;
     display: flex;
