@@ -54,6 +54,9 @@ function iterateEventRecords(results, lat, lon) {
         var recordItem = recordValue["Item_title"];
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
+        var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
+        if (artImage.hasOwnProperty(recordItem))
+            recordImage = artImage[recordItem];
 
         var recordIcon;
         if (recordID % 2)
@@ -82,7 +85,7 @@ function iterateEventRecords(results, lat, lon) {
             location: recordLocation,
             desc: recordDescription,
             icon: recordIcon,
-            image: "/DECO1800-7180/public/assets/images/blanchflower.jpg"
+            image: recordImage
         };
         var popupText = generatePopup(checkState, record);
 
@@ -233,6 +236,18 @@ function getServerEventData() {
         success: data => {
             updatedEvents = data;
             set_local_data_events(data, LS_UPDATE_EVENT_DATA);
+        }
+    });
+}
+
+function getServerArtImage() {
+    return $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/DECO1800-7180/data/images.json',
+        success: function(data) {
+            // console.log(data);
+            artImage = data;
         }
     });
 }

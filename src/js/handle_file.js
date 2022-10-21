@@ -25,26 +25,27 @@ const ICON_HEIGHT = 75;
 
 var eventData; // the event records
 var updatedEvents; // the updated event records
+var artImage; // the  updated event records
 
 var playerIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/avatar/player.svg",
 
     iconSize: [ICON_WIDTH, ICON_HEIGHT], // size of the icon
-    iconAnchor: [ICON_WIDTH/2, ICON_HEIGHT/2], // point of the icon which will correspond to marker's location
+    iconAnchor: [ICON_WIDTH / 2, ICON_HEIGHT / 2], // point of the icon which will correspond to marker's location
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var index = 0;          // the index of route points which the user is currently at
-let nextIndex;          // The next position to move to 
-let angle = 0;          // The angle of the user's marker
-var userMarker;         // marker of the user
-var routeCoordinates;   // coordinates of the route points
-var maxIndex;           // the max index of route points
-var circle;             // circle round the user marker
+var index = 0; // the index of route points which the user is currently at
+let nextIndex; // The next position to move to
+let angle = 0; // The angle of the user's marker
+var userMarker; // marker of the user
+var routeCoordinates; // coordinates of the route points
+var maxIndex; // the max index of route points
+var circle; // circle round the user marker
 
 const getPoint = index => routeCoordinates[index];
 
-const angleToPoint = (c1, c2) => 
+const angleToPoint = (c1, c2) =>
     rotToMarkerAngle(angleBetweenCoordinates(c1, c2));
 
 /**
@@ -62,12 +63,12 @@ const loadedAllData = (buslineData) => {
     nextIndex = maxIndex - INC;
 
     console.log(maxIndex);
-    
+
     // Player
     userMarker = L.marker([routeCoordinates[index][0], routeCoordinates[index][1]], { icon: playerIcon }).addTo(map);
     angle = angleToPoint(getPoint(index), getPoint(nextIndex));
     userMarker.setRotationAngle(angle);
-    
+
     // Radius
     circle = L.circle([routeCoordinates[index][0], routeCoordinates[index][1]], {
         color: 'red',
@@ -115,7 +116,7 @@ function registerKeyPress() {
             case DIR_CHANGE_KEY:
                 handleTurn();
                 break;
-            
+
             default:
                 return;
         }
@@ -125,9 +126,9 @@ function registerKeyPress() {
 
 function setMarkerAngleFromPoints(p1, p2) {
     // Check for route wrapping
-    let angle = (Math.abs(index - nextIndex) > INC) ? 
-    angle : angleToPoint(getPoint(p1), getPoint(p2));
-    
+    let angle = (Math.abs(index - nextIndex) > INC) ?
+        angle : angleToPoint(getPoint(p1), getPoint(p2));
+
     // Update angle
     userMarker.setRotationAngle(angle);
 }
@@ -142,12 +143,11 @@ function handleMove(move_dir) {
      * the car orientation. Each of the conditions is separate.
      */
     // Check move direction to possibly reverse direction
-    let points = move_dir === FORWARD_DIR ? 
-        [index, nextIndex] : [nextIndex, index];
+    let points = move_dir === FORWARD_DIR ? [index, nextIndex] : [nextIndex, index];
     // Check car orientation to possibly reverse direction again
     points = car_orientation === FORWARD_DIR ?
         points : points.reverse();
-    
+
     // remove all the pervious event markers, the user marker and the circle
     nearbyMarkers.forEach((marker) => {
         map.removeLayer(marker);
@@ -182,7 +182,7 @@ function changeDirection() {
 }
 
 function getOppositeDirection(direction) {
-    return direction == FORWARD_DIR? BACKWARD_DIR : FORWARD_DIR;
+    return direction == FORWARD_DIR ? BACKWARD_DIR : FORWARD_DIR;
 }
 
 function getServerRouteData(route) {

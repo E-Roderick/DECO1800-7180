@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li class="nav_icon">
-                <a href="" class="nav_link">
+                <a href="/DECO1800-7180/src/pages/about.php" class="nav_link">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="5" y="4" width="22" height="23" rx="1" stroke="white" stroke-width="3"/>
                     <path d="M10 12H22" stroke="white" stroke-width="3"/>
