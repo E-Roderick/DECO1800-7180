@@ -5,6 +5,8 @@
 let nearbyMarkers = []; // the event marker within a certain range of the user
 let collectedEvents = [];
 
+const EVENT_RADIUS = 500;
+
 /* Functions */
 /**
  * Find a collected event based on ID.
@@ -58,22 +60,6 @@ function iteratArtEvents(results, lat, lon) {
         if (artImage.hasOwnProperty(recordItem))
             recordImage = artImage[recordItem];
 
-        var recordIcon;
-        if (recordID % 2)
-            recordIcon = "/DECO1800-7180/public/assets/event-icons/mona-lisa.png";
-        else
-            recordIcon = "/DECO1800-7180/public/assets/event-icons/art.png";
-        var artIcon = L.icon({
-            iconUrl: recordIcon,
-            // shadowUrl: 'images/mona-lisa.png',
-
-            iconSize: [40, 40], // size of the icon
-            // shadowSize:   [50, 64], // size of the shadow
-            iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62], // the same for the shadow
-            popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
-        });
-
         var checkState = '';
         if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
             checkState = 'checked';
@@ -84,15 +70,15 @@ function iteratArtEvents(results, lat, lon) {
             item: recordItem,
             location: recordLocation,
             desc: recordDescription,
-            icon: recordIcon,
+            icon: artEventIcon.iconUrl,
             image: recordImage
         };
         var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
-            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
-            var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map);
+            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < EVENT_RADIUS) {
+            var marker = L.marker([recordLatitude, recordLongitud], { icon: artEventIcon }).addTo(map);
             nearbyMarkers.push(marker);
             var myPopup = L.DomUtil.create('div', 'infoWindow');
             myPopup.innerHTML = popupText;
@@ -124,17 +110,6 @@ function iterateBccEvents(results, lat, lon) {
         if ('eventImage' in recordValue)
             recordImage = recordValue["eventImage"]["url"];
 
-        var artIcon = L.icon({
-            iconUrl: "/DECO1800-7180/public/assets/event-icons/party.png",
-            // shadowUrl: 'images/mona-lisa.png',
-
-            iconSize: [40, 40], // size of the icon
-            // shadowSize:   [50, 64], // size of the shadow
-            iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62], // the same for the shadow
-            popupAnchor: [0, -20] // point from which the popup should open relative to the iconAnchor
-        });
-
         var checkState = '';
         if (collectedEvents.find(record => findCollectedEvent(record, recordID))) {
             checkState = 'checked';
@@ -145,15 +120,15 @@ function iterateBccEvents(results, lat, lon) {
             item: recordItem,
             location: recordLocation,
             desc: recordDescription,
-            icon: "/DECO1800-7180/public/assets/event-icons/party.png",
+            icon: culturalEventIcon.iconUrl,
             image: recordImage
         };
         var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
-            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < 500) {
-            var marker = L.marker([recordLatitude, recordLongitud], { icon: artIcon }).addTo(map);
+            distanceInKmBetweenEarthCoordinates(lat, lon, recordLatitude, recordLongitud) * 1000 < EVENT_RADIUS) {
+            var marker = L.marker([recordLatitude, recordLongitud], { icon: culturalEventIcon }).addTo(map);
             nearbyMarkers.push(marker);
             var myPopup = L.DomUtil.create('div', 'infoWindow');
             myPopup.innerHTML = popupText;
