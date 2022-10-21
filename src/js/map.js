@@ -138,7 +138,11 @@ function drawBusStops(stops) {
         const [id, coords, name, url] = stop;
         stopMarker = L.marker(coords, { icon: busStopIcon })
             .addTo(map);
-        // TODO Add popup for bus stop
+        
+        // Add popup for on click
+        let popup = L.DomUtil.create('div', 'infoWindow');
+        popup.innerHTML = generateStopPopup(stop);
+        stopMarker.bindPopup(popup);
     });
 }
 

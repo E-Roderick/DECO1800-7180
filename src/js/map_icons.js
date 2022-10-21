@@ -22,5 +22,5 @@ const busStopIcon = L.icon({
     iconUrl: "/DECO1800-7180/public/assets/ui/icons/ic_bus_stop.svg",
     iconSize: [ICON_STOP_SIZE, ICON_STOP_SIZE],
     iconAnchor: [ICON_STOP_SIZE/2, ICON_STOP_SIZE/2],
-    popupAnchor: [ICON_STOP_SIZE/2, ICON_STOP_SIZE/2],
+    popupAnchor: [0, 0],
 });
