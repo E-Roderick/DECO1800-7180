@@ -541,12 +541,24 @@ input[type='submit'] {
   }
 
 /* inventory page */
-.inventory-sec .overflow-wrapper{
+.inventory-sec .overflow-wrapper {
     margin: 0 auto;
 }
+
 .inventory-sec a {
     border-radius: 0;
     border: 5px solid transparent;
+}
+
+.inventory-sec .overflow-wrapper .slide a{
+    padding-top: 10%;
+}
+
+.inventory-sec .overflow-wrapper .slide img{
+    width: 200px;
+    height: auto;
+    overflow: hidden; 
+    margin-top: 5%;
 }
 
 
