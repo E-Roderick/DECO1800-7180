@@ -18,11 +18,14 @@ function getStopData($target) {
                 continue;
             }
             
+            // Get the name of the stop
+            $name = trim($line[3], '"');
+
             // Pull out data
             array_push($data, [
                 $line[0],                               // Stop ID
                 [(float) $line[1], (float) $line[2]],   // LatLng
-                $line[3],                               // Name
+                $name,                                  // Name
                 $line[4]                                // URL
             ]);
         }
