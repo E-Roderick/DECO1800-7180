@@ -20,10 +20,10 @@ function getStopData($target) {
             
             // Pull out data
             array_push($data, [
-                (float) $line[0],   // Lat
-                (float) $line[1],   // Lon
-                $line[2],           // Name
-                $line[3]            // URL
+                $line[0],                               // Stop ID
+                [(float) $line[1], (float) $line[2]],   // LatLng
+                $line[3],                               // Name
+                $line[4]                                // URL
             ]);
         }
 

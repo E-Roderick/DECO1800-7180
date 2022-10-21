@@ -130,13 +130,13 @@ function drawUser(index, angleIndexes) {
 }
 
 function drawBusStops(stops) {
-    // NOTE Stops has been double stringified for some reason
+    // BUG Stops has been double stringified for some reason
     stops = JSON.parse(stops);
 
     // Store each marker after adding to the map
     busStopMarkers = stops.map(stop => {
-        const [c1, c2, name, url] = stop;
-        stopMarker = L.marker([c1, c2], { icon: busStopIcon })
+        const [id, coords, name, url] = stop;
+        stopMarker = L.marker(coords, { icon: busStopIcon })
             .addTo(map);
         // TODO Add popup for bus stop
     });
