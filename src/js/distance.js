@@ -1,3 +1,7 @@
+/******************************************************************************
+ * Numerical functions for distance and angles.                               *
+ ******************************************************************************/
+
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
 }

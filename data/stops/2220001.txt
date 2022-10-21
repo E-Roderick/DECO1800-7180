@@ -1,0 +1,13 @@
+ -27.494703, 153.058566,Old Cleveland Rd at Coorparoo Stop 23,https://translink.com.au/stop/010190/gtfs/
+ -27.467949, 153.023547,"King George Square, 2E",https://translink.com.au/stop/010788/gtfs/
+ -27.465942, 153.019200,"Roma Street busway, platform 2",https://translink.com.au/stop/010792/gtfs/
+ -27.497218, 153.039513,"Buranda busway, platform 2",https://translink.com.au/stop/010813/gtfs/
+ -27.474230, 153.017866,Cultural Centre temporary platform 2,https://translink.com.au/stop/012110/gtfs/
+ -27.484413, 153.028393,"Mater Hill station, platform 2",https://translink.com.au/stop/019063/gtfs/
+ -27.481023, 153.022209,"South Bank busway station, platform 2",https://translink.com.au/stop/019064/gtfs/
+ -27.491798, 153.065981,Old Cleveland Rd at Kismet Street Stop 26,https://translink.com.au/stop/002572/gtfs/
+ -27.492507, 153.074614,Old Cleveland Rd at Camp Hill,https://translink.com.au/stop/002576/gtfs/
+ -27.495620, 153.088293,Old Cleveland Rd at Carina Stop 35,https://translink.com.au/stop/002581/gtfs/
+ -27.498513, 153.049707,"Langlands Park station, platform 2",https://translink.com.au/stop/003001/gtfs/
+ -27.497829, 153.044650,"Stones Corner station, platform 2",https://translink.com.au/stop/003072/gtfs/
+ -27.503401, 153.102566,Carindale Shopping Centre Interchange,https://translink.com.au/stop/006291/gtfs/

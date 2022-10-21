@@ -1,3 +1,7 @@
+/******************************************************************************
+ * Functions and variables relating to dealing with the site URL.          *
+ ******************************************************************************/
+
 const PARAM_START = '?';
 
 function urlToObj(url) {

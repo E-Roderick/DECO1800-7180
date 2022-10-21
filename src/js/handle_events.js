@@ -1,11 +1,11 @@
-/* Constants */
-const LS_EVENT_DATA = "eventData";
-const LS_UPDATE_EVENT_DATA = "updatedEventData";
-
+/******************************************************************************
+ * Functions and variables relating to the map events.                       *
+ ******************************************************************************/
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
 let collectedEvents = [];
 
+/* Functions */
 /**
  * Find a collected event based on ID.
  * @param {obj} ce The collected event object
@@ -47,7 +47,7 @@ const generatePopup = (state, record) => {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateEventRecords(results, lat, lon) {
+function iteratArtEvents(results, lat, lon) {
     $.each(results.result.records, function(recordID, recordValue) {
         var recordLatitude = recordValue["Latitude"];
         var recordLongitud = recordValue["Longitude"]
@@ -113,7 +113,7 @@ function iterateEventRecords(results, lat, lon) {
  * @param {number} lat the latitude of the user's current position.
  * @param {number} lon the longitude of the user's current position.
  */
-function iterateUpdatedEvents(results, lat, lon) {
+function iterateBccEvents(results, lat, lon) {
     $.each(results, function(recordID, recordValue) {
         //console.log(recordValue);
         var recordLatitude = recordValue["lat"];
@@ -201,54 +201,5 @@ function updateCollection() {
                 `<img src=${collected.icon} height="64px" width="64px">`
             )
         );
-    });
-}
-
-function get_local_data_events(localVar) {
-    return JSON.parse(localStorage.getItem(localVar));
-}
-
-function set_local_data_events(data, localVar) {
-    localStorage.setItem(localVar, JSON.stringify(data));
-}
-
-function get_remote_data_events() {
-    const request = {
-        resource_id: "3c972b8e-9340-4b6d-8c7b-2ed988aa3343",
-        limit: 100
-    }
-
-    return $.ajax({
-        url: "https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search",
-        data: request,
-        dataType: "jsonp",
-        cache: true,
-        success: data => {
-            eventData = data;
-            set_local_data_events(data, LS_EVENT_DATA);
-        }
-    });
-}
-
-function getServerEventData() {
-    return $.ajax({
-        url: `../util/getEventData.php`,
-        dataType: "json",
-        success: data => {
-            updatedEvents = data;
-            set_local_data_events(data, LS_UPDATE_EVENT_DATA);
-        }
-    });
-}
-
-function getServerArtImage() {
-    return $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '/DECO1800-7180/data/images.json',
-        success: function(data) {
-            // console.log(data);
-            artImage = data;
-        }
     });
 }

@@ -73,43 +73,19 @@
     crossorigin="">
 </script>
 <script src="/DECO1800-7180/src/js/package/leaflet.rotatedmarker.js"></script>
-<script src="/DECO1800-7180/src/js/map.js"></script>
 <script src="/DECO1800-7180/src/js/distance.js"></script>
-<script src="/DECO1800-7180/src/js/handle_file.js"></script>
-<script src="/DECO1800-7180/src/js/events.js"></script>
+<script src="/DECO1800-7180/src/js/map_icons.js"></script>
+<script src="/DECO1800-7180/src/js/map.js"></script>
+<script src="/DECO1800-7180/src/js/handle_routes.js"></script>
+<script src="/DECO1800-7180/src/js/handle_data.js"></script>
+<script src="/DECO1800-7180/src/js/handle_events.js"></script>
 <script src="/DECO1800-7180/src/js/url.js"></script>
+<script src="/DECO1800-7180/src/js/explore.js"></script>
 
 <script>
-    function isValid(data) {
-        return data && data != "null";
-    }
-
     /* Main page logic */            
-    $( window ).on( "load", function() {              
-        // Create the map and load tiles
-        createMap();
-        getServerArtImage();
-
-        // Load event data
-        // TODO Combine the get local and get remote into one get call
-        // TODO Neaten up all functions and naming
-        eventData = get_local_data_events(LS_EVENT_DATA);
-        updatedEvents = get_local_data_events(LS_UPDATE_EVENT_DATA);
-
-        const route = "<?php echo $_POST["route"]?>"; // Pull from post
-        if (isValid(eventData) && isValid(updatedEvents)) {
-            console.log("Source: localStorage");
-            // Load busline data from server
-            console.log(route);
-            getServerRouteData(route);
-        } else {
-            console.log("Source: API");
-            $.when(get_remote_data_events(), getServerEventData()).done(function() {
-                // Load busline data from server
-                console.log(route);
-                getServerRouteData(route);
-            });
-        }
+    $( window ).on( "load", function() {
+        doPageOperation();
     });
 </script>
 <?php include("../components/footer_default.php"); ?>
