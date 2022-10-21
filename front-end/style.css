@@ -588,7 +588,6 @@ input:checked + label {
         width: 80%;
         height: 48px;
         display: block;
-        /* justify-content: space-between; */
         align-items: center;
         font-size: 8px;
         line-height: 16px;
