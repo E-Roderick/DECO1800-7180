@@ -117,8 +117,10 @@ function setMarkerAngleFromPointsIndexes(p1, p2) {
  * @param {*} angleIndexes Indexes to calculate the angle for the player marker
  */
 function drawUser(index, angleIndexes) {
-    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
-        .addTo(map);
+    userMarker = L.marker(
+        [...getPoint(index)], 
+        { icon: playerIcon, zIndexOffset: -1000, }
+    ).addTo(map);
     setMarkerAngleFromPointsIndexes(...angleIndexes);
 
     circle = L.circle([...getPoint(index)], {
@@ -138,8 +140,10 @@ function drawBusStops(stops) {
     // Store each marker after adding to the map
     busStopMarkers = stops.map(stop => {
         const [id, coords, name, url] = stop;
-        stopMarker = L.marker(coords, { icon: busStopIcon })
-            .addTo(map);
+        stopMarker = L.marker(
+            coords, 
+            { icon: busStopIcon, zIndexOffset: -1500 }
+        ).addTo(map);
         
         // Add popup for on click
         let popup = L.DomUtil.create('div', 'infoWindow');
@@ -263,9 +267,10 @@ const initialiseMap = (buslineData, stops) => {
         iterateBccEvents(eventsBCC, ...getPoint(index));
     }
 
+    // Put player marker on the map
+    drawUser(index, [index, nextIndex])
+
     // Put the bus stops on the map
     drawBusStops(stops)
 
-    // Put player marker on the map
-    drawUser(index, [index, nextIndex])
 }
