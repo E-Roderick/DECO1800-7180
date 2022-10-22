@@ -2,7 +2,7 @@
 <main class="nearby-page">
     <section class="container">
         <article class="sub_page">
-            <a href="/DECO1800-7180/index.php" class="back_button"> &lt; Back</a>
+            <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
         </article>
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
