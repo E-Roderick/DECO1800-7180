@@ -16,6 +16,7 @@
  */
 function helpSkipOnClick() {
     registerKeyPress(); // Enable interaction with map
+    registerBtnClick(); // Enable button interaction
     $("#map-help").addClass("complete");
 }
 
