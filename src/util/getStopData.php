@@ -10,6 +10,18 @@ function getStopData($target) {
         while (!feof($fd)) {
             $line = fgets($fd);
 
+            // Remove comma and quotes from stop name
+            if (strpos($line, '"') !== false) {
+                // Remove quotes
+                $line = explode('"', $line);
+                
+                // Remove platform information from name
+                $name = explode(',', $line[1])[0];
+
+                // Add name back to line
+                $line = $line[0] . $name . $line[2];
+            }
+
             // Split lines on comma
             $line = explode(',', $line);
 
@@ -17,9 +29,6 @@ function getStopData($target) {
             if (count($line) === 1) {
                 continue;
             }
-            
-            // Get the name of the stop
-            $name = trim($line[3], '"');
 
             // Pull out data
             array_push($data, [
