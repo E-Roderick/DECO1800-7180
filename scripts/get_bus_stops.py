@@ -45,7 +45,8 @@ def find_stop_information(targets: List[str]):
 
         # Process the name to remove bad characters
         result_df["stop_name"] = result_df.loc[:,("stop_name")].copy().apply(
-            lambda name: (name.strip('"').split(','))[0]
+            # Remove " and , and rejoin resultant string
+            lambda name: "".join((name.strip('"').split(',')))
         )
 
         # Export result
