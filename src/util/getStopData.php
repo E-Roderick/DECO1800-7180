@@ -10,18 +10,6 @@ function getStopData($target) {
         while (!feof($fd)) {
             $line = fgets($fd);
 
-            // Remove comma and quotes from stop name
-            if (strpos($line, '"') !== false) {
-                // Remove quotes
-                $line = explode('"', $line);
-                
-                // Remove platform information from name
-                $name = explode(',', $line[1])[0];
-
-                // Add name back to line
-                $line = $line[0] . $name . $line[2];
-            }
-
             // Split lines on comma
             $line = explode(',', $line);
 
@@ -34,7 +22,7 @@ function getStopData($target) {
             array_push($data, [
                 $line[0],                               // Stop ID
                 [(float) $line[1], (float) $line[2]],   // LatLng
-                $name,                                  // Name
+                $line[3],                               // Name
                 $line[4]                                // URL
             ]);
         }
