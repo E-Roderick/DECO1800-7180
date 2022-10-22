@@ -185,6 +185,11 @@
 
 /* map page */
 
+a.game_btn {
+    /* Add hand pointer back to game page buttons */
+    cursor: pointer;
+}
+
 .map_container {
     position: relative;
     margin: 0 auto;

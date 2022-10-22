@@ -26,9 +26,9 @@
                 <!-- Draw the inventory icon... -->
                 <a href="#!" id="ic_inventory">
                     <g>
-                        <rect x="1133" y="130" width="62" height="22" rx="4" fill="black"/>
-                        <path d="M1139 154H1189V184C1189 186.209 1187.21 188 1185 188H1143C1140.79 188 1139 186.209 1139 184V154Z" fill="black"/>
-                        <path d="M1154 162H1174V169H1154V162Z" fill="#D9D9D9"/>
+                    <rect x="1133" y="130" width="62" height="22" rx="4" fill="black"/>
+                    <path d="M1139 154H1189V184C1189 186.209 1187.21 188 1185 188H1143C1140.79 188 1139 186.209 1139 184V154Z" fill="black"/>
+                    <path d="M1154 162H1174V169H1154V162Z" fill="#D9D9D9"/>
                     </g>
                 </a>
                 <!-- ...with inventory count -->
@@ -46,20 +46,20 @@
 
                 <!-- CONTROLS -->
                 <!-- Forward button -->
-                <a href="#!" id="ic_forward">
+                <a id="ic_forward" class="game_btn" >
                     <path d="M82.922 125.709C84.5215 123.781 87.4785 123.781 89.078 125.709L120.397 163.445C122.561 166.052 120.707 170 117.319 170H54.6808C51.2932 170 49.4393 166.052 51.6027 163.445L82.922 125.709Z" fill="black"/>
                 </a>
 
                 <!-- Change direction -->
-                <a href="#!" id="ic_rotate">
-                <g>
+                <a id="ic_rotate" class="game_btn" >
+                    <g>
                     <path d="M96.0632 298.558L110.86 299.991L108.028 314.584" stroke="black" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M104.675 304.5C99.8253 309.146 93.246 312 86 312C71.0883 312 59 299.912 59 285C59 270.088 71.0883 258 86 258C97.942 258 108.073 265.753 111.635 276.5" stroke="black" stroke-width="9" stroke-linecap="square"/>
-                </g>
+                    </g>
+                </a>
 
                 <!-- Backward button -->
-                </a>
-                <a href="#!" id="ic_backward">
+                <a id="ic_backward" class="game_btn" >
                     <path d="M89.078 446.291C87.4785 448.219 84.5215 448.219 82.922 446.291L51.6027 408.555C49.4393 405.948 51.2932 402 54.6807 402H117.319C120.707 402 122.561 405.948 120.397 408.555L89.078 446.291Z" fill="black"/>
                 </a>
 
