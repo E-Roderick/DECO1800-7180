@@ -13,7 +13,7 @@ $STOPS = array(
     "P2060002" => [5902, 228, 3071],
 );
 
-$target = "610142";
+$target = $_GET["route"];
 
 $STOP_DATA = json_decode(getStopData($target));
 ?>
