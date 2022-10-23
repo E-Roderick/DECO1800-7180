@@ -1,4 +1,5 @@
 <?php include("../components/header_default.php"); ?>
+<?php require_once("../components/nav.php"); ?>
 
 <?php
 $ROUTES = array(
@@ -13,9 +14,7 @@ $ROUTES = array(
 
 <main class="route-page">
     <section class="container all-height all-width">
-        <article class="sub_page">
-            <a href="/DECO1800-7180/" class="back_button"> &lt; Back</a>
-        </article>
+        <?php BackButton("/DECO1800-7180/") ?>
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SEARCH FOR A ROUTE</h4>

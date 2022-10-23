@@ -2,6 +2,7 @@
 
 <?php
 require_once("../util/stop_data.php");
+require_once("../components/nav.php");
 
 $STOPS = array(
     "610142" => [2481, 19050, 1960],
@@ -19,9 +20,7 @@ $STOP_DATA = json_decode(getStopData($target));
 
 <main>
 <section class="container">
-    <article class="sub_page">
-        <a href="/DECO1800-7180/src/pages/routes.php" class="back_button"> &lt; Back</a>
-    </article>
+    <?php BackButton("/DECO1800-7180/src/pages/routes.php") ?>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
         <h4>SELECT A BUS STOP ALONG ROUTE 61</h4>
