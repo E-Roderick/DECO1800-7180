@@ -18,8 +18,18 @@
 
 #map span,
 #popup h3,
-#popup p {
+#popup p,
+#popup strong,
+#popup .time {
     color: black;
+}
+
+#popup h3 {
+    font-size: 18px;
+}
+
+#popup .hide {
+    display: none;
 }
 
 #map-help.complete {
@@ -67,18 +77,55 @@
     width: 100%;
 }
 
+.leaflet-popup-content .detail {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#popup .desc {
+    width: 50%;
+    margin-right: 10px;
+}
+
+#popup .time {
+    margin-top: 3px;
+}
+
+#popup .desc p {
+    margin: 1.1em 0;
+}
+
+.case {
+    box-sizing: border-box;
+    flex-grow: 2;
+    margin-top: 20px;
+    height: 230px;
+    width: 230px;
+}
+
+.cover {
+    background-size: cover !important;
+}
+
+.ellipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
 .heart {
     color: gray;
     background-color: currentColor;
     display: inline-block;
     height: 20px;
     margin: 0 4px;
-    position: relative;
-    top: 0;
     transform: rotate(-45deg);
     position: absolute;
-    right: 10px;
-    top: 30px;
+    top: 10px;
+    right: 0;
     width: 20px;
 }
 

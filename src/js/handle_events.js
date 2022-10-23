@@ -21,22 +21,39 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @returns String of popup's inner HTML.
  */
 const generatePopup = (state, record) => {
-    const { id, item, location, desc, image } = record;
+    const { id, item, location, desc, image, start, end, source } = record;
+    var showTime = "";
+    if (!start || !end)
+        showTime = "hide";
+    var showSource;
+    if (!source)
+        showSource = "hide";
 
     return `
-        <div id='popup'>
-            <h3>${item}</h3>
-            <div>
-                <p>${location}</p>
-                <img src=${image} alt="blanchflower" />
-                <p>${desc}</p>
-            </div>
-            <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
-            <label id = ${id} class="heart" for="heart-checkbox" 
-                onclick="collectCallback('${
+        <section id='popup'>
+            <section class='title'>
+                <h3>${item}</h3>
+                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
+                <label id = ${id} class="heart" for="heart-checkbox" 
+                    onclick="collectCallback('${
                     encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
-                }');"></label>
-        </div>
+                    }');" ></label>
+            </section>
+            <section class='time ${showTime}'>
+                <span>${start}</span> ~
+                <span>${end}</span>
+            </section>
+            <section class='detail'>
+                <div class='desc'>
+                    <p>${location}</p>
+                    <p class='ellipsis'>${desc}</p>
+                </div>
+                <div class="case cover" style="background: url('${image}') center center;"></div>
+            </section>
+            <section class='${showSource}'>
+                <a href=${source} target='_blank' rel='noopener'>source</a>
+            </section>
+        </section>
     `;
 }
 
@@ -55,8 +72,10 @@ function iteratArtEvents(results, lat, lon) {
         var recordDescription = recordValue["Description"];
         var recordLocation = recordValue["The_Location"];
         var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
+        var recordSource;
         if (artImage.hasOwnProperty(recordItem)) {
             recordImage = artImage[recordItem][0];
+            recordSource = artImage[recordItem][1];
         }
 
         var recordIcon;
@@ -86,7 +105,10 @@ function iteratArtEvents(results, lat, lon) {
             location: recordLocation,
             desc: recordDescription,
             icon: recordIcon,
-            image: recordImage
+            image: recordImage,
+            start: '',
+            end: '',
+            source: recordSource
         };
         var popupText = generatePopup(checkState, record);
 
@@ -115,7 +137,7 @@ function iteratArtEvents(results, lat, lon) {
  */
 function iterateBccEvents(results, lat, lon) {
     $.each(results, function(recordID, recordValue) {
-        //console.log(recordValue);
+        console.log(recordValue);
         var recordLatitude = recordValue["lat"];
         var recordLongitud = recordValue["lon"]
         var recordItem = recordValue["title"];
@@ -124,6 +146,8 @@ function iterateBccEvents(results, lat, lon) {
         var recordImage = "/DECO1800-7180/public/assets/images/blanchflower.jpg";
         if ('eventImage' in recordValue)
             recordImage = recordValue["eventImage"]["url"];
+        var recordStartTime = recordValue["startDateTime"];
+        var recordEndTime = recordValue["endDateTime"];
 
         var artIcon = L.icon({
             iconUrl: "/DECO1800-7180/public/assets/event-icons/party.png",
@@ -147,7 +171,9 @@ function iterateBccEvents(results, lat, lon) {
             location: recordLocation,
             desc: recordDescription,
             icon: "/DECO1800-7180/public/assets/event-icons/party.png",
-            image: recordImage
+            image: recordImage,
+            start: recordStartTime,
+            end: recordEndTime
         };
         var popupText = generatePopup(checkState, record);
 
