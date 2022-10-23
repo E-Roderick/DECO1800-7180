@@ -20,7 +20,7 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @param {Any} record Record obj containing the event's information.
  * @returns String of popup's inner HTML.
  */
-const generatePopup = (state, record) => {
+const generateEventPopup = (state, record) => {
     const { id, item, location, desc, image, start, end, source } = record;
     var showTime = "";
     if (!start || !end)
