@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Return stop information based on a stop ID. Precondition is that the ID
+ * exists within the array.
+ * @param stops All stop information to search through, as an array.
+ * @param id The target stop's ID. 
+ */
+function getStopInfoByID($stops, $id) {
+    return array_values(array_filter($stops, function($stop) use ($id) {
+        return $stop[0] == $id;
+    }))[0];
+}
+
+/**
+ * Return JSON encoded data relating to all of the stops for a specific bus 
+ * route.
+ */
 function getStopData($target) {
     $stop_file = "../../data/stops/".$target.".txt";
     $fd = fopen($stop_file, "r");

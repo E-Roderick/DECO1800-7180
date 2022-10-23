@@ -1,6 +1,8 @@
 <?php include("../components/header_default.php"); ?>
 
 <?php
+require_once("../util/stop_data.php");
+
 $STOPS = array(
     "610142" => [2481, 19050, 1960],
     "660047" => [1880, 10793, 19051],
@@ -11,6 +13,8 @@ $STOPS = array(
 );
 
 $target = "610142";
+
+$STOP_DATA = json_decode(getStopData($target));
 ?>
 
 <main>
@@ -20,7 +24,7 @@ $target = "610142";
     </article>
     <section class="wrapper main-features">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
-        <h4>SELECT A NEARBY 61 BUS STOP</h4>
+        <h4>SELECT A BUS STOP ALONG ROUTE 61</h4>
         <div id="slider-wrapper">
         <div class="inner-wrapper">
             <!-- Stop lists -->
@@ -30,13 +34,14 @@ $target = "610142";
                     <?php
 
                     foreach ($STOPS[$target] as $stop) {
+                        $stop = getStopInfoByID($STOP_DATA, $stop);
                         echo '<li>';
-                        echo '<input type="radio" name="stop-select" id="stop'.$stop.'">';
-                        echo '<label for="stop'.$stop.'">Roma Street busway Station</label>';
+                        echo '<input type="radio" name="stop-select" id="'.$stop[0].'">';
+                        echo '<label for="'.$stop[0].'">'.$stop[2].'</label>';
                         echo '<li>';
                     }
+                    
                     ?>
-
                     </ul>
                 </div>
             </div>

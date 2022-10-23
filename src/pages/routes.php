@@ -46,7 +46,7 @@ $ROUTES = array(
 
         // Get new page location
         const sel = document.getElementById("route-select");
-        const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}`;
+        const url = `/DECO1800-7180/src/pages/stops.php?route=${sel.value}`;
 
         if (sel.value != "none") {
             // Route to new page
