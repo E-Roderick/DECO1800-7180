@@ -9,6 +9,8 @@ $STOPS = array(
     "4440002" => [10793, 4641, 19910],
     "P2060002" => [5902, 228, 3071],
 );
+
+$target = "610142";
 ?>
 
 <main>
@@ -21,47 +23,20 @@ $STOPS = array(
         <h4>SELECT A NEARBY 61 BUS STOP</h4>
         <div id="slider-wrapper">
         <div class="inner-wrapper">
-            <!-- Selection buttons -->
-            <input checked type="radio" name="slide" class="control" id="Slide1" />
-            <label for="Slide1" id="s1"></label>
-            <input type="radio" name="slide" class="control" id="Slide2" />
-            <label for="Slide2" id="s2"></label>
-            <input type="radio" name="slide" class="control" id="Slide3" />
-            <label for="Slide3" id="s3"></label>
-            <input type="radio" name="slide" class="control" id="Slide4" />
-            <label for="Slide4" id="s4"></label>
-
             <!-- Stop lists -->
             <div class="overflow-wrapper">
                 <div class="slide options" href="#">
-                    <input type="radio" name="stop-select" id="stop1">
-                    <label for="stop1">Roma Street busway Station</label>
-                </div>
-                <div class="slide" href="#">
                     <ul>
-                    <li><a href="#">Roma  Street Busway Station</a></li>
-                    <li><a href="#">King George Square Station</a></li>
-                    <li><a href="#">Cultural Centre Station</a></li>
-                    <li><a href="#">South Bank busway Station</a></li>
-                    <li><a href="#">Mater Hill Station</a></li>
-                    </ul>
-                </div>
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#">Roma  Street Busway Station</a></li>
-                    <li><a href="#">King George Square Station</a></li>
-                    <li><a href="#">Cultural Centre Station</a></li>
-                    <li><a href="#">South Bank busway Station</a></li>
-                    <li><a href="#">Mater Hill Station</a></li>
-                    </ul>
-                </div>
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#">Roma  Street Busway Station</a></li>
-                    <li><a href="#">King George Square Station</a></li>
-                    <li><a href="#">Cultural Centre Station</a></li>
-                    <li><a href="#">South Bank busway Station</a></li>
-                    <li><a href="#">Mater Hill Station</a></li>
+                    <?php
+
+                    foreach ($STOPS[$target] as $stop) {
+                        echo '<li>';
+                        echo '<input type="radio" name="stop-select" id="stop'.$stop.'">';
+                        echo '<label for="stop'.$stop.'">Roma Street busway Station</label>';
+                        echo '<li>';
+                    }
+                    ?>
+
                     </ul>
                 </div>
             </div>
