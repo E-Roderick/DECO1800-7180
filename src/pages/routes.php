@@ -1,16 +1,6 @@
 <?php include("../components/header_default.php"); ?>
 <?php require_once("../components/nav.php"); ?>
-
-<?php
-$ROUTES = array(
-    "61" => "610142",
-    "66" => "660047",
-    "111" => "1110001",
-    "222" => "2220001",
-    "444" => "4440002",
-    "P206" => "P2060002",
-);
-?>
+<?php require_once("../util/route_data.php"); ?>
 
 <main class="route-page">
     <section class="container all-height all-width">

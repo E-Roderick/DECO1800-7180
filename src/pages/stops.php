@@ -2,6 +2,7 @@
 
 <?php
 require_once("../util/stop_data.php");
+require_once("../util/route_data.php");
 require_once("../components/nav.php");
 
 $STOPS = array(
@@ -23,7 +24,7 @@ $STOP_DATA = getStopData($target);
     <?php BackButton("/DECO1800-7180/src/pages/routes.php") ?>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
-        <h4>SELECT A BUS STOP ALONG ROUTE 61</h4>
+        <h4>SELECT A BUS STOP ALONG ROUTE <?php echo $getRouteSignById($target)?></h4>
         <div id="slider-wrapper">
         <div class="inner-wrapper">
             <!-- Stop lists -->

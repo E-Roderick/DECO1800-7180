@@ -1,5 +1,8 @@
 <?php include("../components/header_default.php"); ?>
 <?php require_once("../components/nav.php"); ?>
+<?php require_once("../util/route_data.php"); ?>
+
+<?php $route = $_GET["route"]?>
 
 <main class="explore-page">
 <section class="container">
@@ -12,10 +15,10 @@
     </article>
 
     <article class="sub_page">
-        <?php BackButton("/DECO1800-7180/src/pages/stops.php?route=".$_GET["route"]) ?>
+        <?php BackButton("/DECO1800-7180/src/pages/stops.php?route=".$route) ?>
         <section class="sub_container">
             <img class="features_icon" src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
-            <h3 class="route_title">Route <dfn id="route_number">61</dfn></h3>
+            <h3 class="route_title">Route <span id="route_number"><?php echo $getRouteSignById($route)?></span></h3>
         </section>
         <article class="map_container">
             <svg viewBox="0 0 1240 572" fill="none" xmlns="http://www.w3.org/2000/svg">
