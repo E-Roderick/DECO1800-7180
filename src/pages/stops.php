@@ -36,10 +36,10 @@ $STOP_DATA = getStopData($target);
                     // Load each stop as a list item radio button
                     foreach ($STOPS[$target] as $stop) {
                         $stop = getStopInfoByID($STOP_DATA, $stop);
-                        echo '<li>';
+                        echo '<li class="flex-center">';
                         echo '<input type="radio" name="stop-select" id="'.$stop[0].'">';
-                        echo '<label for="'.$stop[0].'">'.$stop[2].'</label>';
-                        echo '<li>';
+                        echo '<label for="'.$stop[0].'" class="flex-center">'.$stop[2].'</label>';
+                        echo '</li>';
                     }
 
                     ?>

@@ -355,10 +355,7 @@ input.select_stop.btn {
 }
 
 .slide.options label {
-    display: block;
-    padding-top: 35%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 5%;
     width: 220px;
     height: 220px;
     margin: 10px;
