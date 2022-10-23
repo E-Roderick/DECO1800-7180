@@ -19,6 +19,43 @@ const DIR_CHANGE_KEY = "KeyR";
 const MIN_ZOOM = 16;
 const MAX_ZOOM = 16;
 
+/**
+ * This object contains route IDs, followed by associative object mapping stop
+ * IDs to route position indexes.
+ */
+const START_POSITIONS = {
+    "610142": {
+        "2481": 457,
+        "19050": 328,
+        "1960": 0,
+    },
+    "660047": {
+        "1880": 327,
+        "10793": 0,
+        "19051": 222,
+    },
+    "1110001": {
+        "10823": 286,
+        "10813": 150,
+        "10792": 0,
+    },
+    "2220001": {
+        "6291": 376,
+        "3001": 187,
+        "10792": 0,
+    },
+    "4440002": {
+        "10793": 84,
+        "4641": 696,
+        "19910": 0,
+    },
+    "P2060002": {
+        "5902": 490,
+        "228": 0,
+        "3071": 172,
+    },
+}
+
 /* Globals */
 let map;                // Map holder
 
@@ -112,6 +149,16 @@ function setMarkerAngleFromPointsIndexes(p1, p2) {
 }
 
 /**
+ * Sets the index and new index values based on a stop along a route.
+ * @param {str} route The target route's ID string
+ * @param {str} stop The target stop's ID string
+ */
+function setIndexByRouteStop(route, stop) {
+    index = START_POSITIONS[route][stop];
+    nextIndex = getNewIndex(index, maxIndex, 1, car_orientation);
+}
+
+/**
  * Draw's the player's marker and the surrounding circle to the map.
  * @param {*} index The current index of the players position.
  * @param {*} angleIndexes Indexes to calculate the angle for the player marker
@@ -182,6 +229,7 @@ function handleMove(move_dir) {
 
     iteratArtEvents(eventsPublicArt, ...getPoint(index));
     iterateBccEvents(eventsBCC, ...getPoint(index));
+    console.log(index);
 }
 
 /**
@@ -250,10 +298,9 @@ const initialiseMap = (buslineData, stops) => {
 
     // Set the initial position
     maxIndex = routeCoordinates.length - 1;
-    index = maxIndex;
-    nextIndex = maxIndex - INC;
-
     console.log(maxIndex);
+    car_orientation = index === maxIndex ? FORWARD_DIR : BACKWARD_DIR;
+    nextIndex = getNewIndex(index, maxIndex, 1, car_orientation);
 
     // Route
     L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);

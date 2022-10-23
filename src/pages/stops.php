@@ -58,7 +58,7 @@ $STOP_DATA = json_decode(getStopData($target));
         event.preventDefault();
 
         // Get new page location
-        const route = <?php echo $target; ?>;
+        const route = "<?php echo $target; ?>";
         const sel = document.querySelector('input[name="stop-select"]:checked');
         const url = `/DECO1800-7180/src/pages/explore.php?route=${route}&stop=${sel.id}`;
 
