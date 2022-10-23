@@ -1,8 +1,15 @@
 <?php include("src/components/header_default.php"); ?>
       <main class="home-page">
+        <article id="welcome-tip" class="info-popup flex-center accepted">
+          <section class="info-content">
+            <h4>Welcome to City Mario!</h4>
+            <p>City mario is a game.</p>
+            <button class="btn">UNDERSTOOD</button>
+          </section>
+        </article>
         <section class="container">
           <article class="wrapper "><img class="main_title" src="./public/assets/images/main_title_l.png" alt=""></article>
-          <section class="wrapper main_features">
+          <nav class="wrapper main_features">
             <a class="feature_box" href="src/pages/routes.php">
               <div class="box_touch_area"></div>
               <section class="feature_content">
@@ -21,7 +28,7 @@
                 <h4 class="feature_title">Nearby bus stops</h4>
               </section>
             </a>
-          </section>
+          </nav>
         </section>
       </main>
       
