@@ -229,7 +229,6 @@ function handleMove(move_dir) {
 
     iteratArtEvents(eventsPublicArt, ...getPoint(index));
     iterateBccEvents(eventsBCC, ...getPoint(index));
-    console.log(index);
 }
 
 /**
@@ -298,7 +297,6 @@ const initialiseMap = (buslineData, stops) => {
 
     // Set the initial position
     maxIndex = routeCoordinates.length - 1;
-    console.log(maxIndex);
     car_orientation = index === maxIndex ? FORWARD_DIR : BACKWARD_DIR;
     nextIndex = getNewIndex(index, maxIndex, 1, car_orientation);
 
