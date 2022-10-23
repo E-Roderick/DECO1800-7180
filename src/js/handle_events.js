@@ -23,22 +23,39 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @returns String of popup's inner HTML.
  */
 const generateEventPopup = (state, record) => {
-    const { id, item, location, desc, image } = record;
+    const { id, item, location, desc, image, start, end, source } = record;
+    var showTime = "";
+    if (!start || !end)
+        showTime = "hide";
+    var showSource;
+    if (!source)
+        showSource = "hide";
 
     return `
-        <div id='popup'>
-            <h3>${item}</h3>
-            <div>
-                <p>${location}</p>
-                <img src=${image} alt="blanchflower" />
-                <p>${desc}</p>
-            </div>
-            <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
-            <label id = ${id} class="heart" for="heart-checkbox" 
-                onclick="collectCallback('${
+        <section id='popup'>
+            <section class='title'>
+                <h3>${item}</h3>
+                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
+                <label id = ${id} class="heart" for="heart-checkbox" 
+                    onclick="collectCallback('${
                     encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
-                }');"></label>
-        </div>
+                    }');" ></label>
+            </section>
+            <section class='time ${showTime}'>
+                <span>${start}</span> ~
+                <span>${end}</span>
+            </section>
+            <section class='detail'>
+                <div class='desc'>
+                    <p>${location}</p>
+                    <p class='ellipsis'>${desc}</p>
+                </div>
+                <div class="case cover" style="background: url('${image}') center center;"></div>
+            </section>
+            <section class='${showSource}'>
+                <a href=${source} target='_blank' rel='noopener'>source</a>
+            </section>
+        </section>
     `;
 }
 

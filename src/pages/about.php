@@ -9,10 +9,10 @@
             <li><a href="#">Concepts</a></li>
             <li><a href="#">References</a></li>
         </ul>
-        <img src="/front-end/images/subpage/ic_car.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-1.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-2.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-3.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-1.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-2.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-3.png" alt="">
     </div>
     <div class="tab-content">
         <div class="item" style="display: block;">
@@ -49,5 +49,26 @@
     </section>
 </section>
 </main>
+<script>
+    var tab_list = document.querySelector('.tab-list');
+    var list = tab_list.querySelectorAll('li');
+    var items = document.querySelectorAll('.item');
+
+    for (var i = 0; i < list.length; i++) {
+        list[i].setAttribute('index',i);
+        list[i].onclick = function() {
+            for (var i = 0; i < list.length; i++) {
+                list[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            items[index].style.display = 'block';
+        }
+    }
+    
+    </script> 
 <?php include("../components/footer_default.php"); ?>
 
