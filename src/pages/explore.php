@@ -6,7 +6,7 @@
     <article id="map-help" class="flex-center flex-col">
         <h2>The Explore Page is Loading</h2>
         <p>Please wait while the explore page loads...</p>
-        <button id="help-skip-btn btn" onclick="helpSkipOnClick()" type="button" disabled>
+        <button id="help-skip-btn" class="btn" onclick="helpSkipOnClick()" type="button" disabled>
             Loading...
         </button>
     </article>
