@@ -15,7 +15,7 @@ $STOPS = array(
 
 $target = $_GET["route"];
 
-$STOP_DATA = json_decode(getStopData($target));
+$STOP_DATA = getStopData($target);
 ?>
 
 <main>
@@ -32,6 +32,7 @@ $STOP_DATA = json_decode(getStopData($target));
                     <ul>
                     <?php
 
+                    // Load each stop as a list item radio button
                     foreach ($STOPS[$target] as $stop) {
                         $stop = getStopInfoByID($STOP_DATA, $stop);
                         echo '<li>';

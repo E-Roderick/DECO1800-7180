@@ -43,7 +43,7 @@ function getStopData($target) {
             ]);
         }
 
-        return json_encode($data);
+        return $data;
     }
 
     return false;
