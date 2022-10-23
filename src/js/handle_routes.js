@@ -23,7 +23,9 @@ const generateStopPopup = (stop) => {
             <h3>${name}</h3>
             <div>
                 <p>More information about this stop can be found on the 
-                <a href="${url}">TransLink website</a>.
+                <a href="${url}" target="_blank" rel="noopener noreferrer">
+                    TransLink website
+                </a>.
             </div>
         </article>
     `;

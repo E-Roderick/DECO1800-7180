@@ -23,9 +23,9 @@ def find_stop_information(targets: List[str]):
     """ Finds information relating to the bus routes provided. """
     for target in targets:
         # Load dataframes
-        trips_df = pd.read_csv("../data/trips.txt", dtype=str)
-        stop_times_df = pd.read_csv("../data/stop_times.txt", dtype=str)
-        stops_df = pd.read_csv("../data/stops.txt", dtype=str)
+        trips_df = pd.read_csv("data/trips.txt", dtype=str)
+        stop_times_df = pd.read_csv("data/stop_times.txt", dtype=str)
+        stops_df = pd.read_csv("data/stops.txt", dtype=str)
 
         # Get trips on the target route
         trip_df = trips_df[trips_df['shape_id'] == target]
@@ -42,8 +42,16 @@ def find_stop_information(targets: List[str]):
         result_df = filtered_stops[
             ["stop_id", "stop_lat", "stop_lon", "stop_name", "stop_url"]
         ]
+
+        # Process the name to remove bad characters
+        result_df["stop_name"] = result_df.loc[:,("stop_name")].copy().apply(
+            # Remove " and , and rejoin resultant string
+            lambda name: "".join((name.strip('"').split(',')))
+        )
+
+        # Export result
         result_df.to_csv(f"{target}{FILE_TYPE}", index=False, header=None)
-        print("Wrote stops file for ")
+        print(f"Wrote stops file for {target}")
 
 
 if __name__ == "__main__":

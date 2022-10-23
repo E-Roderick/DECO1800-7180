@@ -22,12 +22,10 @@ function getRouteData($target) {
             array_push($data, [(float) $line[0], (float) $line[1]]);
         }
 
-        return json_encode($data);
+        return $data;
     }
 
     return false;
 }
-
-echo getRouteData($_GET["route"]);
 
 ?>
