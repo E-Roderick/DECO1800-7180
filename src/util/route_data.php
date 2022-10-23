@@ -28,6 +28,4 @@ function getRouteData($target) {
     return false;
 }
 
-echo getRouteData($_GET["route"]);
-
 ?>

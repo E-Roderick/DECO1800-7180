@@ -61,5 +61,4 @@ function getEventData() {
     return $data;
 }
 
-echo(json_encode(getEventData()));
 ?>
