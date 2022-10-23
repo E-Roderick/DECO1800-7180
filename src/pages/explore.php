@@ -1,4 +1,6 @@
 <?php include("../components/header_default.php"); ?>
+<?php require_once("../components/nav.php"); ?>
+
 <main class="explore-page">
 <section class="container">
     <article id="map-help" class="flex-center flex-col">
@@ -10,7 +12,7 @@
     </article>
 
     <article class="sub_page">
-        <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
+        <?php BackButton("/DECO1800-7180/src/pages/stops.php?route=".$_GET["route"]) ?>
         <section class="sub_container">
             <img class="features_icon" src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h3 class="route_title">Route <dfn id="route_number">61</dfn></h3>
@@ -99,7 +101,7 @@
 
 <script>
     /* Main page logic */            
-    $( window ).on( "load", function() {
+    $(window).on( "load", function() {
         doPageOperation();
     });
 </script>

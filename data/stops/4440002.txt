@@ -1,27 +1,27 @@
-10376, -27.507521, 152.950016,"Moggill Rd at Marshall Lane, stop 33",https://translink.com.au/stop/010376/gtfs/
+10376, -27.507521, 152.950016,Moggill Rd at Marshall Lane stop 33,https://translink.com.au/stop/010376/gtfs/
 10378, -27.520382, 152.922876,Moggill Rd at Rafting Ground Park,https://translink.com.au/stop/010378/gtfs/
-10781, -27.467881, 153.023257,"King George Square, 1A",https://translink.com.au/stop/010781/gtfs/
-10793, -27.466083, 153.019374,"Roma Street busway, platform 1",https://translink.com.au/stop/010793/gtfs/
-10802, -27.473232, 153.019415,"Cultural Centre station, platform 1",https://translink.com.au/stop/010802/gtfs/
-10804, -27.507821, 152.938930,"Moggill Rd at Kenmore Central, stop 35",https://translink.com.au/stop/010804/gtfs/
+10781, -27.467881, 153.023257,King George Square 1A,https://translink.com.au/stop/010781/gtfs/
+10793, -27.466083, 153.019374,Roma Street busway platform 1,https://translink.com.au/stop/010793/gtfs/
+10802, -27.473232, 153.019415,Cultural Centre station platform 1,https://translink.com.au/stop/010802/gtfs/
+10804, -27.507821, 152.938930,Moggill Rd at Kenmore Central stop 35,https://translink.com.au/stop/010804/gtfs/
 13048, -27.562617, 152.872281,Pioneer Cr at Pioneer East,https://translink.com.au/stop/013048/gtfs/
 13049, -27.560923, 152.867087,Pioneer Cr at Pioneer West,https://translink.com.au/stop/013049/gtfs/
-1584, -27.505273, 152.961039,"Moggill Rd at Chapel Hill, stop 28",https://translink.com.au/stop/001584/gtfs/
-1586, -27.507831, 152.957314,"Moggill Rd at Alkira, stop 30",https://translink.com.au/stop/001586/gtfs/
-1593, -27.500292, 152.967000,"Moggill Rd at Indooroopilly School, stop 27",https://translink.com.au/stop/001593/gtfs/
-1748, -27.490670, 152.985737,"Moggill Rd at BBC, stop 16",https://translink.com.au/stop/001748/gtfs/
-1754, -27.492934, 152.979140,"Moggill Rd at Taringa, stop 19",https://translink.com.au/stop/001754/gtfs/
-1889, -27.486728, 152.991665,"High St at Toowong, stop 14A",https://translink.com.au/stop/001889/gtfs/
-1944, -27.480297, 152.998150,"Coronation Dr at Wesley Hospital, stop 9",https://translink.com.au/stop/001944/gtfs/
+1584, -27.505273, 152.961039,Moggill Rd at Chapel Hill stop 28,https://translink.com.au/stop/001584/gtfs/
+1586, -27.507831, 152.957314,Moggill Rd at Alkira stop 30,https://translink.com.au/stop/001586/gtfs/
+1593, -27.500292, 152.967000,Moggill Rd at Indooroopilly School stop 27,https://translink.com.au/stop/001593/gtfs/
+1748, -27.490670, 152.985737,Moggill Rd at BBC stop 16,https://translink.com.au/stop/001748/gtfs/
+1754, -27.492934, 152.979140,Moggill Rd at Taringa stop 19,https://translink.com.au/stop/001754/gtfs/
+1889, -27.486728, 152.991665,High St at Toowong stop 14A,https://translink.com.au/stop/001889/gtfs/
+1944, -27.480297, 152.998150,Coronation Dr at Wesley Hospital stop 9,https://translink.com.au/stop/001944/gtfs/
 19910, -27.472503, 153.014853,Merivale St at Queensland Theatre,https://translink.com.au/stop/019910/gtfs/
-2191, -27.501246, 152.971855,"Indooroopilly Shopping Centre station, platform A",https://translink.com.au/stop/002191/gtfs/
-267, -27.475273, 153.003240,"Coronation Dr at Auchenflower, stop 7",https://translink.com.au/stop/000267/gtfs/
-272, -27.471125, 153.007921,"Coronation Dr at Cribb Street, stop 4",https://translink.com.au/stop/000272/gtfs/
+2191, -27.501246, 152.971855,Indooroopilly Shopping Centre station platform A,https://translink.com.au/stop/002191/gtfs/
+267, -27.475273, 153.003240,Coronation Dr at Auchenflower stop 7,https://translink.com.au/stop/000267/gtfs/
+272, -27.471125, 153.007921,Coronation Dr at Cribb Street stop 4,https://translink.com.au/stop/000272/gtfs/
 4640, -27.564224, 152.869719,Church Rd near Pine County Pl,https://translink.com.au/stop/004640/gtfs/
 4641, -27.570473, 152.874198,Moggill Rd at Moggill,https://translink.com.au/stop/004641/gtfs/
 4647, -27.561989, 152.878998,Montanus Dr at Kangaroo Gully,https://translink.com.au/stop/004647/gtfs/
 4650, -27.562424, 152.886892,Moggill Rd at Bellbowrie near Birkin Rd,https://translink.com.au/stop/004650/gtfs/
-4653, -27.509748, 152.943424,"Moggill Rd at Kenmore Churches, stop 34",https://translink.com.au/stop/004653/gtfs/
+4653, -27.509748, 152.943424,Moggill Rd at Kenmore Churches stop 34,https://translink.com.au/stop/004653/gtfs/
 4656, -27.563674, 152.882384,Montanus Dr at Montanus East,https://translink.com.au/stop/004656/gtfs/
 4657, -27.514946, 152.929232,Moggill Rd at Misty Morn,https://translink.com.au/stop/004657/gtfs/
 4663, -27.530408, 152.915654,Moggill Rd at Diggers Rest,https://translink.com.au/stop/004663/gtfs/
