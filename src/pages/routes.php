@@ -31,7 +31,7 @@ $ROUTES = array(
                         }
                     ?>
                 </select>
-                <input type="submit" name="submit" value="Next Step">
+                <input type="submit" name="submit" value="NEXT STEP">
             </form>
         </section>
     </section>
