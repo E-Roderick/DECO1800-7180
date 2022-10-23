@@ -1,17 +1,17 @@
- -27.459242, 152.998070,"Latrobe Tce at Paddington Central, stop 10",https://translink.com.au/stop/010180/gtfs/
- -27.468200, 153.023619,"King George Square, 1C",https://translink.com.au/stop/010785/gtfs/
- -27.466083, 153.019374,"Roma Street busway, platform 1",https://translink.com.au/stop/010793/gtfs/
- -27.473232, 153.019415,"Cultural Centre station, platform 1",https://translink.com.au/stop/010802/gtfs/
- -27.459346, 152.992833,"Latrobe Tce at Gilday Street, stop 12",https://translink.com.au/stop/001332/gtfs/
- -27.458137, 152.986979,MacGregor Tce at Bardon,https://translink.com.au/stop/001358/gtfs/
- -27.453522, 152.988232,Jubilee Tce near Effie St,https://translink.com.au/stop/001435/gtfs/
- -27.486079, 153.034648,"Woolloongabba station, platform 1",https://translink.com.au/stop/019050/gtfs/
- -27.484505, 153.028213,"Mater Hill station, platform 1",https://translink.com.au/stop/019051/gtfs/
- -27.480721, 153.021835,"South Bank busway station, platform 1",https://translink.com.au/stop/019052/gtfs/
- -27.444274, 152.991530,Stewart Rd at Ashgrove Village,https://translink.com.au/stop/001960/gtfs/
- -27.494449, 153.057494,Coorparoo Square - Holdsworth St,https://translink.com.au/stop/002481/gtfs/
- -27.491992, 153.040728,"Logan Rd at Lewis Street, stop 11",https://translink.com.au/stop/003062/gtfs/
- -27.498630, 153.049224,"Langlands Park station, platform 1",https://translink.com.au/stop/003071/gtfs/
- -27.497811, 153.043994,"Stones Corner station, platform 1",https://translink.com.au/stop/003091/gtfs/
- -27.463634, 153.011536,"Caxton St near Chapel St, stop 4",https://translink.com.au/stop/000814/gtfs/
- -27.461786, 153.005921,"Given Tce at Paddo Tavern, stop 6",https://translink.com.au/stop/000819/gtfs/
+10180, -27.459242, 152.998070,"Latrobe Tce at Paddington Central, stop 10",https://translink.com.au/stop/010180/gtfs/
+10785, -27.468200, 153.023619,"King George Square, 1C",https://translink.com.au/stop/010785/gtfs/
+10793, -27.466083, 153.019374,"Roma Street busway, platform 1",https://translink.com.au/stop/010793/gtfs/
+10802, -27.473232, 153.019415,"Cultural Centre station, platform 1",https://translink.com.au/stop/010802/gtfs/
+1332, -27.459346, 152.992833,"Latrobe Tce at Gilday Street, stop 12",https://translink.com.au/stop/001332/gtfs/
+1358, -27.458137, 152.986979,MacGregor Tce at Bardon,https://translink.com.au/stop/001358/gtfs/
+1435, -27.453522, 152.988232,Jubilee Tce near Effie St,https://translink.com.au/stop/001435/gtfs/
+19050, -27.486079, 153.034648,"Woolloongabba station, platform 1",https://translink.com.au/stop/019050/gtfs/
+19051, -27.484505, 153.028213,"Mater Hill station, platform 1",https://translink.com.au/stop/019051/gtfs/
+19052, -27.480721, 153.021835,"South Bank busway station, platform 1",https://translink.com.au/stop/019052/gtfs/
+1960, -27.444274, 152.991530,Stewart Rd at Ashgrove Village,https://translink.com.au/stop/001960/gtfs/
+2481, -27.494449, 153.057494,Coorparoo Square - Holdsworth St,https://translink.com.au/stop/002481/gtfs/
+3062, -27.491992, 153.040728,"Logan Rd at Lewis Street, stop 11",https://translink.com.au/stop/003062/gtfs/
+3071, -27.498630, 153.049224,"Langlands Park station, platform 1",https://translink.com.au/stop/003071/gtfs/
+3091, -27.497811, 153.043994,"Stones Corner station, platform 1",https://translink.com.au/stop/003091/gtfs/
+814, -27.463634, 153.011536,"Caxton St near Chapel St, stop 4",https://translink.com.au/stop/000814/gtfs/
+819, -27.461786, 153.005921,"Given Tce at Paddo Tavern, stop 6",https://translink.com.au/stop/000819/gtfs/

@@ -30,7 +30,6 @@ function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
  * 
  */
 function angleBetweenCoordinates(coord1, coord2) {
-    console.log(coord2);
     const [lat1, lon1] = coord1;
     const [lat2, lon2] = coord2;
 

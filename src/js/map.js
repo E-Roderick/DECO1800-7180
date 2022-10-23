@@ -14,7 +14,10 @@ const FORWARD_KEY = "ArrowUp";
 const FORWARD_KEY_ALT = "KeyW";
 const BACKWARD_KEY = "ArrowDown";
 const BACKWARD_KEY_ALT = "KeyS";
-const DIR_CHANGE_KEY = "KeyR"
+const DIR_CHANGE_KEY = "KeyR";
+
+const MIN_ZOOM = 16;
+const MAX_ZOOM = 16;
 
 /* Globals */
 let map;                // Map holder
@@ -32,7 +35,10 @@ let nextIndex;          // The next position to move to
 let routeCoordinates;   // Store all coordinate pairs for the route
 let maxIndex;           // The max index of route points
 
-let artImage;
+let artImage;           // Stores information about all art images
+
+// Bus stops
+let busStopMarkers;     // Container for all bus stops
 
 /* Functions */
 /**
@@ -81,11 +87,12 @@ const getNewIndex = (index, max, inc, direction) => {
  * Create the leaflet map.
  */
 function createMap() {
-    map = L.map("map", { keyboard: false })
-        .setView([-27.491457, 153.102629], 13);
+    map = L.map("map", { keyboard: false, zoomControl: false })
+        .setView([-27.491457, 153.102629], MIN_ZOOM);
     
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
+        minZoom: MIN_ZOOM,
+        maxZoom: MAX_ZOOM,
         attribution: '© OpenStreetMap'
     }).addTo(map);
 }
@@ -115,11 +122,30 @@ function drawUser(index, angleIndexes) {
     setMarkerAngleFromPointsIndexes(...angleIndexes);
 
     circle = L.circle([...getPoint(index)], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
+        color: '#1aeefc',
+        fillColor: '#3ef3ff',
+        fillOpacity: 0.3,
         radius: 500
     }).addTo(map);
+
+    map.panTo(userMarker.getLatLng());
+}
+
+function drawBusStops(stops) {
+    // BUG Stops has been double stringified for some reason
+    stops = JSON.parse(stops);
+
+    // Store each marker after adding to the map
+    busStopMarkers = stops.map(stop => {
+        const [id, coords, name, url] = stop;
+        stopMarker = L.marker(coords, { icon: busStopIcon })
+            .addTo(map);
+        
+        // Add popup for on click
+        let popup = L.DomUtil.create('div', 'infoWindow');
+        popup.innerHTML = generateStopPopup(stop);
+        stopMarker.bindPopup(popup);
+    });
 }
 
 /**
@@ -219,7 +245,7 @@ function registerKeyPress() {
  * loaded in on the user's end.
  * @param {*} buslineData The raw busline data to be parsed and drawn
  */
-const initialiseMap = (buslineData) => {
+const initialiseMap = (buslineData, stops) => {
     routeCoordinates = JSON.parse(buslineData);
 
     // Set the initial position
@@ -228,15 +254,18 @@ const initialiseMap = (buslineData) => {
     nextIndex = maxIndex - INC;
 
     console.log(maxIndex);
-    
-    // Player
-    drawUser(index, [index, nextIndex])
 
     // Route
-    L.polyline(routeCoordinates, { color: 'purple' }).addTo(map);
+    L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
         iteratArtEvents(eventsPublicArt, ...getPoint(index));
         iterateBccEvents(eventsBCC, ...getPoint(index));
     }
+
+    // Put the bus stops on the map
+    drawBusStops(stops)
+
+    // Put player marker on the map
+    drawUser(index, [index, nextIndex])
 }

@@ -15,16 +15,18 @@ const ROUTES = {
 
 /* Functions */
 
-function routeSelectSubmit() {
-    // Cancel immediate submission
-    // event.preventDefault();
+const generateStopPopup = (stop) => {
+    const [ id, coords, name, url ] = stop;
 
-    // Get new page location
-    const sel = document.getElementById("route-select");
-    const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}`;
-
-    // Route to new page
-    window.location.href = url;
+    return `
+        <article id='popup'>
+            <h3>${name}</h3>
+            <div>
+                <p>More information about this stop can be found on the 
+                <a href="${url}">TransLink website</a>.
+            </div>
+        </article>
+    `;
 }
 
 /**
@@ -33,7 +35,6 @@ function routeSelectSubmit() {
  * @param {*} stops list of stop information for stops along the busline 
  */
  function processRouteData(busline, stops) {
-    console.log(stops);
-    initialiseMap(busline); // Draw map related data
+    initialiseMap(busline, stops); // Draw map related data
     handleMapLoad(); // Take actions once the map is loaded
 }

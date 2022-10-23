@@ -110,7 +110,7 @@ function iteratArtEvents(results, lat, lon) {
             end: '',
             source: recordSource
         };
-        var popupText = generatePopup(checkState, record);
+        var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
@@ -175,7 +175,7 @@ function iterateBccEvents(results, lat, lon) {
             start: recordStartTime,
             end: recordEndTime
         };
-        var popupText = generatePopup(checkState, record);
+        var popupText = generateEventPopup(checkState, record);
 
         // Make sure the event coordinates exist and it's within 500m from the user's position.  
         if (recordLatitude && recordLatitude &&
