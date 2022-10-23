@@ -14,7 +14,7 @@ $ROUTES = array(
 <main class="route-page">
     <section class="container all-height all-width">
         <article class="sub_page">
-            <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
+            <a href="/DECO1800-7180/" class="back_button"> &lt; Back</a>
         </article>
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">

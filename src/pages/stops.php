@@ -20,7 +20,7 @@ $STOP_DATA = json_decode(getStopData($target));
 <main>
 <section class="container">
     <article class="sub_page">
-        <a href="#!" class="back_button"> &lt; Back</a>
+        <a href="/DECO1800-7180/src/pages/routes.php" class="back_button"> &lt; Back</a>
     </article>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
