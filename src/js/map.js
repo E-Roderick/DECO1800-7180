@@ -198,7 +198,19 @@ function handleTurn() {
     setMarkerAngleFromPointsIndexes(index, nextIndex);
 }
 
-/** Change the direction of the car */
+/**
+ * Move the car forward.
+ */
+const moveForward = () => handleMove(car_orientation);
+
+/**
+ * Move the car backward.
+ */
+const moveBackward = () => handleMove(getOppositeDirection(car_orientation));
+
+/** 
+ * Change the direction of the car 
+ */
 function changeDirection() {
     car_orientation = getOppositeDirection(car_orientation);
 }
@@ -224,13 +236,13 @@ function registerKeyPress() {
             case FORWARD_KEY:
             case FORWARD_KEY_ALT:
                 event.preventDefault(); // Ensure map does not pan
-                handleMove(car_orientation);
+                moveForward();
                 break;
 
             case BACKWARD_KEY:
             case BACKWARD_KEY_ALT:
                 event.preventDefault(); // Ensure map does not pan
-                handleMove(getOppositeDirection(car_orientation));
+                moveBackward();
                 break;
 
             case DIR_CHANGE_KEY:
@@ -242,6 +254,17 @@ function registerKeyPress() {
         }
 
     }, false);
+}
+
+
+/**
+ * Register the onclick handlers for the map interactions.
+ */
+function registerBtnClick() {
+    // Attach movement functions to buttons
+    document.getElementById("ic_forward").onclick = e => moveForward();
+    document.getElementById("ic_backward").onclick = e => moveBackward();
+    document.getElementById("ic_rotate").onclick = e => handleTurn();
 }
 
 /**
