@@ -22,7 +22,7 @@ $STOP_DATA = json_decode(getStopData($target));
     <article class="sub_page">
         <a href="#!" class="back_button"> &lt; Back</a>
     </article>
-    <section class="wrapper main-features">
+    <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
         <h4>SELECT A BUS STOP ALONG ROUTE 61</h4>
         <div id="slider-wrapper">
@@ -40,7 +40,7 @@ $STOP_DATA = json_decode(getStopData($target));
                         echo '<label for="'.$stop[0].'">'.$stop[2].'</label>';
                         echo '<li>';
                     }
-                    
+
                     ?>
                     </ul>
                 </div>
@@ -49,8 +49,25 @@ $STOP_DATA = json_decode(getStopData($target));
         </div>
 
         <input class="select_stop btn" type="submit" value="NEXT STEP">
-    </section>
+    </form>
 </section>
 </main>
+
+<script>
+    document.getElementById("stop-select-form").onsubmit = event => {
+        // Cancel immediate submission
+        event.preventDefault();
+
+        // Get new page location
+        const route = <?php echo $target; ?>;
+        const sel = document.querySelector('input[name="stop-select"]:checked');
+        const url = `/DECO1800-7180/src/pages/explore.php?route=${route}&stop=${sel.id}`;
+
+        if (sel.id != "none") {
+            // Route to new page
+            window.location.href = url
+        }
+    };
+</script>
 
 <?php include("../components/footer_default.php"); ?>
