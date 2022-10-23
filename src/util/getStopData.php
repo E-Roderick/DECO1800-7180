@@ -33,6 +33,4 @@ function getStopData($target) {
     return false;
 }
 
-echo getStopData($_GET["route"]);
-
 ?>

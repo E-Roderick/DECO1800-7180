@@ -98,7 +98,7 @@ function getServerRouteData(route) {
 
     // Request stop information from the server
     let stopResolver = $.ajax({
-        url: `../util/getStopData.php?route=${route}`,
+        url: `../serve/getStopData.php?route=${route}`,
         type: "GET",
         contentType: "html",
         success: data => { stops = data; }
