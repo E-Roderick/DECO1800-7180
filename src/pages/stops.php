@@ -55,16 +55,24 @@ $STOP_DATA = getStopData($target);
 </main>
 
 <script>
-    document.getElementById("stop-select-form").onsubmit = event => {
+    let form = document.getElementById("stop-select-form");
+
+    // Handle form changing
+    form.addEventListener('change', ()=> {
+        form.querySelector('input[type="submit"]').disabled = false;
+    });
+
+    // Handle form submission
+    form.onsubmit = event => {
         // Cancel immediate submission
         event.preventDefault();
 
         // Get new page location
         const route = "<?php echo $target; ?>";
         const sel = document.querySelector('input[name="stop-select"]:checked');
-        const url = `/DECO1800-7180/src/pages/explore.php?route=${route}&stop=${sel.id}`;
 
-        if (sel.id != "none") {
+        if (sel && sel.id != "none") {
+            const url = `/DECO1800-7180/src/pages/explore.php?route=${route}&stop=${sel.id}`;
             // Route to new page
             window.location.href = url
         }

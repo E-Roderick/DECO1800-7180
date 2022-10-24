@@ -21,7 +21,7 @@
                         }
                     ?>
                 </select>
-                <input type="submit" name="submit" value="NEXT STEP">
+                <input type="submit" name="submit" value="NEXT STEP" disabled>
             </form>
         </section>
     </section>
@@ -29,7 +29,15 @@
 </main>
 
 <script>
-    document.getElementById("select-form").onsubmit = event => {
+    let form = document.getElementById("select-form");
+
+    // Handle form changing
+    form.addEventListener('change', ()=> {
+        form.querySelector('input[type="submit"]').disabled = false;
+    });
+
+    // Handle form submission
+    form.onsubmit = event => {
         // Cancel immediate submission
         event.preventDefault();
 
