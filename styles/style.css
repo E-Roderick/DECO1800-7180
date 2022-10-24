@@ -40,7 +40,7 @@
 
 /* Section */
 
-.home-page .main_features {
+.main_features {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -49,12 +49,25 @@
     top: 40%;
 }
 
-.home-page .feature_box {
+.main_features_mobile {
+    position: relative;
+    display: block;
+    align-items: center;
+    max-width: 100%;
+    top: 13%;
+}
+
+.feature_box {
     width: 40%;
     height: 30%;
 }
 
-.home-page .box_touch_area {
+.feature_box_mobile {
+    top: 0;
+    left: 0;
+}
+
+.box_touch_area {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -70,7 +83,21 @@
     border-radius: 8px;
 }
 
-.home-page .feature_content {
+.box_touch_area_mobile {
+    position: relative;
+    margin: 5% auto;
+    max-width: 70%;
+    padding-top: 22%;
+    padding-bottom: 22%;
+    /* padding-left: 15%;
+    padding-right: 15%; */
+    border: 5px solid #3EF3FF;
+    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+    border-radius: 8px;
+
+}
+
+.feature_content {
     position: absolute;
     display: block;
     align-items: center;
@@ -82,16 +109,35 @@
     height: 25%; */
 }
 
-.home-page .feature_icon img {
+.feature_content_mobile {
+    position: absolute;
+    display: block;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+}
+
+.features_icon {
+    margin-right: 2%;
+}
+
+.feature_icon img {
     width: 40%;
     height: 40%;
 }
 
-.home-page .feature_title {
+.feature_title {
     text-align: center;
     padding: 5%;
 }
 
+.feature_title_mobile {
+    padding: 3%;
+    font-size: 14px;
+    line-height: 20px;
+}
 
 /* HOME PAGE HELP TIP */
 
@@ -238,7 +284,7 @@
 }
 
 
-/* neaby_entry page */
+
 
 .nearby-page .neabybs_sec,
 .nearby-page .nearbybs-next {
@@ -356,6 +402,14 @@ a.game_btn {
     margin: 10px 20px;
 }
 
+.inventory-sec-mobile ul,
+.inventory-next-mobile ul {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .neabybs_sec a,
 .inventory-sec a {
     display: block;
@@ -369,8 +423,27 @@ a.game_btn {
     border-radius: 50%;
 }
 
+.inventory-sec-mobile a {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    line-height: 1.2rem;
+    background-color: rgb(236, 230, 230, 0.2);
+    border: 3px solid #3EF3FF;
+}
+
 .nearbybs-next a,
 .inventory-next a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0 15px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.inventory-next-mobile a {
     display: block;
     width: 15px;
     height: 15px;
@@ -688,6 +761,11 @@ input.select_stop.btn {
     text-align: left;
 }
 
+.about-sec-mobile {
+    top: 10%;
+    box-sizing: border-box;
+}
+
 .tab-list li {
     font-size: 18px;
     margin: 20px 0;
@@ -695,13 +773,22 @@ input.select_stop.btn {
     border-bottom: 3px solid transparent;
 }
 
-.tab-list li a:hover {
+.tab-list-mobile a {
+    font-size: 12px;
+    line-height: 20px;
+    display: inline-block;
+    width: 100px;
+    vertical-align: middle;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-list li a:hover,
+.tab-list li a:focus {
     padding: 3px 0;
     border-bottom: 3px solid #3EF3FF;
 }
 
-.tab-list li a:focus {
-    padding: 3px 0;
+.tab-list-mobile a:focus {
     border-bottom: 3px solid #3EF3FF;
 }
 
@@ -713,9 +800,22 @@ input.select_stop.btn {
     flex-grow: 4;
 }
 
-.tab-content .item {
+.tab-content .item,
+.tab-content-mobile .item  {
     box-sizing: border-box;
     margin: 0 50px;
     padding: 0 20px;
     line-height: 1.2rem;
+}
+
+.tab-content-mobile .item {
+    margin: 15px 10px;
+    padding: 0 0 0 20px;
+    line-height: 1.5rem;
+    font-size: 11px;
+    text-align: left;
+}
+
+.tab-content-mobile h5 {
+    font-size: 10px;
 }
