@@ -40,7 +40,6 @@
 </main>
 
 <script>
-  console.log(isHomeHelpUnderstood());
   if (isHomeHelpUnderstood()) {
     addHomeHelpAcceptedClass();
   }
