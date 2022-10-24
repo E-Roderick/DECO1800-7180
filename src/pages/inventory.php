@@ -20,34 +20,11 @@
                 <div class="overflow-wrapper">
                 <div class="slide" href="#">
                     <ul>
-                    <li>
-                        <a href="#">
-                        <p>XXXXXXXXXX</p>   
-                        <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <p>XXXXXXXXXX</p>   
-                        <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="">
-                        </a></li>
-                    <li>
-                        <a href="#">
-                        <p>XXXXXXXXXX</p>   
-                        <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <p>XXXXXXXXXX</p>   
-                        <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"><p>XXXXXXXXXX</p>   
-                        <img src="https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg" alt="">
-                        </a>
-                    </li>
+                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#">XXXXXXXXXX</a></li>
                     </ul>
                     </div>
                 <div class="slide" href="#">
@@ -98,4 +75,64 @@
     </section>
 </section>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/DECO1800-7180/src/js/handle_data.js"></script>
+<script>
+    /* Inventory page logic */            
+    $( window ).on( "load", function() {
+        let collectedEvents = getLocalStorage(LS_EVENT_COLLECTED);
+        console.log(collectedEvents);
+
+        for (let i = 0; i < collectedEvents.length; i++) {
+            let content = `<a href="#" class="myLink">
+                        <img class="modalImg" src=${collectedEvents[i]["icon"]} alt="">
+                        <p>${collectedEvents[i]["item"]}</p>   
+                        </a>
+                        <div class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" src=${collectedEvents[i]["image"]} alt="">
+                            <div id="caption">
+                                <p>
+                                    ${collectedEvents[i]["desc"]}
+                                </p>
+                            </div>
+                        </div>
+                        `;
+            $(`.slide:nth-child(${Math.floor(i/5) + 1}) li:nth-child(${i % 5 + 1})`).html(content); // Update text
+        }
+
+        let modal = document.querySelector(".modal");
+        let labels = document.querySelectorAll("label");
+        console.log(labels);
+
+        // Make sure this page contains modal images.
+        if (document.contains(modal)) {
+            for (let i = 0; i < collectedEvents.length; i++) {
+                // Get the modal.
+                let modal = document.getElementsByClassName("modal")[i];
+                // Get the image.
+                let myLink = document.getElementsByClassName("myLink")[i];
+                // Get the <span> element that closes the modal
+                let span = document.getElementsByClassName("close")[i];
+
+                // Displays the modal container and uses the same path for the
+                // modal image.
+                myLink.addEventListener("click", function () {
+                    modal.style.display = "block";
+                    for (let i = 0; i < labels.length; i++) {
+                        labels[i].style.display = "none";
+                    }
+                });
+
+                // When the user clicks on <span> (x), close the modal.
+                span.onclick = function () {
+                    modal.style.display = "none";
+                    for (let i = 0; i < labels.length; i++) {
+                        labels[i].style.display = "block";
+                    }
+                };
+            }
+        }
+    });
+</script>
 <?php include("../components/footer_default.php"); ?>

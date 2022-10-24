@@ -3,7 +3,9 @@
  ******************************************************************************/
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
-let collectedEvents = [];
+let collectedEvents = getLocalStorage(LS_EVENT_COLLECTED);
+if (!collectedEvents)
+    collectedEvents = [];
 
 /* Functions */
 /**
@@ -21,13 +23,15 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @returns String of popup's inner HTML.
  */
 const generateEventPopup = (state, record) => {
-    const { id, item, location, desc, image, start, end, source } = record;
+    var { id, item, location, desc, image, start, end, source } = record;
     var showTime = "";
     if (!start || !end)
         showTime = "hide";
     var showSource;
     if (!source)
         showSource = "hide";
+    desc = desc.replace("<p>", "");
+    desc = desc.replace("</p>", "");
 
     return `
         <section id='popup'>
@@ -207,7 +211,7 @@ function collectCallback(record) {
     } else {
         collectedEvents.push(record);
     }
-
+    setLocalStorage(collectedEvents, LS_EVENT_COLLECTED);
     // Propagate updates to collection
     updateCollection();
 }
