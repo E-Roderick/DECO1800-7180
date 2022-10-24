@@ -3,7 +3,7 @@
  ******************************************************************************/
 
 /* Constants */
-const INC = 3; // Route coordinates skipped per move
+const INC = 1; // Route coordinates skipped per move
 const POSITIVE = 1;
 const NEGATIVE = -1;
 
