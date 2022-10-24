@@ -178,6 +178,14 @@ option {
     margin: 5pt;
 }
 
+/* NOTE Not the best way to do this but it works */
+button.btn:disabled {
+    cursor: auto !important;
+    border-color: gray !important;
+    filter: none  !important;
+    color: gray  !important;
+}
+
 .btn {
     cursor: pointer;
     font-family: 'Press Start 2P', monospace;
