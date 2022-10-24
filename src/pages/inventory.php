@@ -1,5 +1,5 @@
 <?php include("../components/header_default.php"); ?>
-<main>
+<main class="inventory-page">
 <section class="container">
     <article class="sub_page">
         <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
