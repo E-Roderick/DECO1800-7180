@@ -179,7 +179,7 @@ option {
 }
 
 /* NOTE Not the best way to do this but it works */
-button.btn:disabled {
+.btn:disabled {
     cursor: auto !important;
     border-color: gray !important;
     filter: none  !important;

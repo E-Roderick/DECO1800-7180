@@ -21,7 +21,7 @@
                         }
                     ?>
                 </select>
-                <input type="submit" name="submit" value="NEXT STEP" disabled>
+                <input type="submit" class="btn" name="submit" value="NEXT STEP" disabled>
             </form>
         </section>
     </section>

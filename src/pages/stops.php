@@ -49,7 +49,7 @@ $STOP_DATA = getStopData($target);
         </div>
         </div>
 
-        <input class="select_stop btn" type="submit" value="NEXT STEP">
+        <input class="select_stop btn" type="submit" value="NEXT STEP" disabled>
     </form>
 </section>
 </main>
