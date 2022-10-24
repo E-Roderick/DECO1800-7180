@@ -819,3 +819,16 @@ input.select_stop.btn {
 .tab-content-mobile h5 {
     font-size: 10px;
 }
+
+#about-ref li {
+    line-height: 1.1em;
+}
+
+#about-ref li:not(:first-child) {
+    margin-top: 2em;
+}
+
+#about-ref a {
+    text-decoration: underline;
+    color: cyan;
+}
