@@ -128,6 +128,59 @@
     padding-bottom: 2em;
 }
 
+/* MAP PAGE TUTORIAL */
+#map-help.complete {
+    display: none;
+}
+
+#map-help {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #2e2e56;
+    z-index: 1002;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#tutorial-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tutorial-step {
+    width: 25%;
+    margin: 1rem;
+    line-height: 1.1em;
+    font-size: small;
+}
+
+.tutorial-step h4 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.tutorial-step img {
+    width: 90%;
+}
+
+#tutorial-load-info {
+    font-size: smaller;
+    margin-top: 1em;
+}
+
+#help-skip-btn {
+    margin: 1em;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    padding: 1.2rem 5rem;
+    border: 4px solid #3EF3FF;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+}
+
 /* route_entry page */
 
 .route-page select {
