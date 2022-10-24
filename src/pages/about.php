@@ -5,9 +5,9 @@
     <div class="tab-list">
     <h2>ABOUT OBERON</h2>
         <ul>
-            <li class="current"><a href="#">Team Member</a></li>
-            <li><a href="#">Concepts</a></li>
-            <li><a href="#">References</a></li>
+            <li class="current"><a href="#team">Team Member</a></li>
+            <li><a href="#concepts">Concepts</a></li>
+            <li><a href="#references">References</a></li>
         </ul>
         <img src="/DECO1800-7180/public/assets/avatar/ic_car.png" alt="">
         <img src="/DECO1800-7180/public/assets/avatar/ic_car-1.png" alt="">
