@@ -3,7 +3,7 @@
  ******************************************************************************/
 
 /* Constants */
-const INC = 3; // Route coordinates skipped per move
+const INC = 1; // Route coordinates skipped per move
 const POSITIVE = 1;
 const NEGATIVE = -1;
 
@@ -18,6 +18,43 @@ const DIR_CHANGE_KEY = "KeyR";
 
 const MIN_ZOOM = 16;
 const MAX_ZOOM = 16;
+
+/**
+ * This object contains route IDs, followed by associative object mapping stop
+ * IDs to route position indexes.
+ */
+const START_POSITIONS = {
+    "610142": {
+        "2481": 457,
+        "19050": 328,
+        "1960": 0,
+    },
+    "660047": {
+        "1880": 327,
+        "10793": 0,
+        "19051": 222,
+    },
+    "1110001": {
+        "10823": 286,
+        "10813": 150,
+        "10792": 0,
+    },
+    "2220001": {
+        "6291": 376,
+        "3001": 187,
+        "10792": 0,
+    },
+    "4440002": {
+        "10793": 84,
+        "4641": 696,
+        "19910": 0,
+    },
+    "P2060002": {
+        "5902": 490,
+        "228": 0,
+        "3071": 172,
+    },
+}
 
 /* Globals */
 let map;                // Map holder
@@ -112,13 +149,25 @@ function setMarkerAngleFromPointsIndexes(p1, p2) {
 }
 
 /**
+ * Sets the index and new index values based on a stop along a route.
+ * @param {str} route The target route's ID string
+ * @param {str} stop The target stop's ID string
+ */
+function setIndexByRouteStop(route, stop) {
+    index = START_POSITIONS[route][stop];
+    nextIndex = getNewIndex(index, maxIndex, 1, car_orientation);
+}
+
+/**
  * Draw's the player's marker and the surrounding circle to the map.
  * @param {*} index The current index of the players position.
  * @param {*} angleIndexes Indexes to calculate the angle for the player marker
  */
 function drawUser(index, angleIndexes) {
-    userMarker = L.marker([...getPoint(index)], { icon: playerIcon })
-        .addTo(map);
+    userMarker = L.marker(
+        [...getPoint(index)], 
+        { icon: playerIcon, zIndexOffset: -1000, }
+    ).addTo(map);
     setMarkerAngleFromPointsIndexes(...angleIndexes);
 
     circle = L.circle([...getPoint(index)], {
@@ -138,8 +187,10 @@ function drawBusStops(stops) {
     // Store each marker after adding to the map
     busStopMarkers = stops.map(stop => {
         const [id, coords, name, url] = stop;
-        stopMarker = L.marker(coords, { icon: busStopIcon })
-            .addTo(map);
+        stopMarker = L.marker(
+            coords, 
+            { icon: busStopIcon, zIndexOffset: -1500 }
+        ).addTo(map);
         
         // Add popup for on click
         let popup = L.DomUtil.create('div', 'infoWindow');
@@ -194,7 +245,19 @@ function handleTurn() {
     setMarkerAngleFromPointsIndexes(index, nextIndex);
 }
 
-/** Change the direction of the car */
+/**
+ * Move the car forward.
+ */
+const moveForward = () => handleMove(car_orientation);
+
+/**
+ * Move the car backward.
+ */
+const moveBackward = () => handleMove(getOppositeDirection(car_orientation));
+
+/** 
+ * Change the direction of the car 
+ */
 function changeDirection() {
     car_orientation = getOppositeDirection(car_orientation);
 }
@@ -220,13 +283,13 @@ function registerKeyPress() {
             case FORWARD_KEY:
             case FORWARD_KEY_ALT:
                 event.preventDefault(); // Ensure map does not pan
-                handleMove(car_orientation);
+                moveForward();
                 break;
 
             case BACKWARD_KEY:
             case BACKWARD_KEY_ALT:
                 event.preventDefault(); // Ensure map does not pan
-                handleMove(getOppositeDirection(car_orientation));
+                moveBackward();
                 break;
 
             case DIR_CHANGE_KEY:
@@ -240,6 +303,17 @@ function registerKeyPress() {
     }, false);
 }
 
+
+/**
+ * Register the onclick handlers for the map interactions.
+ */
+function registerBtnClick() {
+    // Attach movement functions to buttons
+    document.getElementById("ic_forward").onclick = e => moveForward();
+    document.getElementById("ic_backward").onclick = e => moveBackward();
+    document.getElementById("ic_rotate").onclick = e => handleTurn();
+}
+
 /**
  * Handles the main logic of the map interactibles setup, once all data is
  * loaded in on the user's end.
@@ -250,22 +324,21 @@ const initialiseMap = (buslineData, stops) => {
 
     // Set the initial position
     maxIndex = routeCoordinates.length - 1;
-    index = maxIndex;
-    nextIndex = maxIndex - INC;
-
-    console.log(maxIndex);
+    car_orientation = index === maxIndex ? FORWARD_DIR : BACKWARD_DIR;
+    nextIndex = getNewIndex(index, maxIndex, 1, car_orientation);
 
     // Route
-    L.polyline(routeCoordinates, { color: '#b12defff' }).addTo(map);
+    L.polyline(routeCoordinates, { color: '#b12defff', weight: 4 }).addTo(map);
     if (eventsPublicArt != "null" && eventsBCC != "null") {
         console.log("Source: localStorage");
         iteratArtEvents(eventsPublicArt, ...getPoint(index));
         iterateBccEvents(eventsBCC, ...getPoint(index));
     }
 
+    // Put player marker on the map
+    drawUser(index, [index, nextIndex])
+
     // Put the bus stops on the map
     drawBusStops(stops)
 
-    // Put player marker on the map
-    drawUser(index, [index, nextIndex])
 }

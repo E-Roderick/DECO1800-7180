@@ -5,7 +5,7 @@ DEV_URL = "/DECO1800-7180/"
 RELEASE_URL = "/"
 
 IGNORED_DIRS = ["scripts", ".git", "front-end"]
-IGNORED_FILES = [".git", ".png", ".jpg"]
+IGNORED_FILES = [".git", ".png", ".jpg", ".jpeg", ".svg"]
 TARGET_DIR = "release/"
 
 def _is_invalid_dir(root: str):

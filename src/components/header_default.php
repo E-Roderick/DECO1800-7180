@@ -17,12 +17,12 @@
                 </a>
               </li>
               <li class="nav_icon">
-                <a href="#" class="nav_link">
+                <a href="/DECO1800-7180/src/pages/information.php" class="nav_link">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.0001 2.66666C8.64808 2.66666 2.66675 8.64799 2.66675 16C2.66675 23.352 8.64808 29.3333 16.0001 29.3333C23.3521 29.3333 29.3334 23.352 29.3334 16C29.3334 8.64799 23.3521 2.66666 16.0001 2.66666ZM16.0001 26.6667C10.1187 26.6667 5.33341 21.8813 5.33341 16C5.33341 10.1187 10.1187 5.33332 16.0001 5.33332C21.8814 5.33332 26.6667 10.1187 26.6667 16C26.6667 21.8813 21.8814 26.6667 16.0001 26.6667Z" fill="white"/>
                     <path d="M14.6667 14.6667H17.3334V22.6667H14.6667V14.6667ZM14.6667 9.33334H17.3334V12H14.6667V9.33334Z" fill="white"/>
                   </svg>
-                  <p class="nav_icon_word">Infomation</p>
+                  <p class="nav_icon_word">Information</p>
                 </a>
               </li>
               <li class="nav_icon">

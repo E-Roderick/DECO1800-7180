@@ -32,19 +32,6 @@
     display: none;
 }
 
-#map-help.complete {
-    display: none;
-}
-
-#map-help {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: #2e2e56;
-    z-index: 1002;
-    color: white;
-}
-
 #collection {
     position: absolute;
     right: 15%;

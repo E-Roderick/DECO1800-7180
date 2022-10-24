@@ -1,21 +1,10 @@
 <?php include("../components/header_default.php"); ?>
-
-<?php
-$ROUTES = array(
-    "61" => "610142",
-    "66" => "660047",
-    "111" => "1110001",
-    "222" => "2220001",
-    "444" => "4440002",
-    "P206" => "P2060002",
-);
-?>
+<?php require_once("../components/nav.php"); ?>
+<?php require_once("../util/route_data.php"); ?>
 
 <main class="route-page">
     <section class="container all-height all-width">
-        <article class="sub_page">
-            <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
-        </article>
+        <?php BackButton("/DECO1800-7180/") ?>
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SEARCH FOR A ROUTE</h4>
@@ -32,7 +21,7 @@ $ROUTES = array(
                         }
                     ?>
                 </select>
-                <input type="submit" name="submit" value="Next Step">
+                <input type="submit" class="btn" name="submit" value="NEXT STEP" disabled>
             </form>
         </section>
     </section>
@@ -40,13 +29,21 @@ $ROUTES = array(
 </main>
 
 <script>
-    document.getElementById("select-form").onsubmit = event => {
+    let form = document.getElementById("select-form");
+
+    // Handle form changing
+    form.addEventListener('change', ()=> {
+        form.querySelector('input[type="submit"]').disabled = false;
+    });
+
+    // Handle form submission
+    form.onsubmit = event => {
         // Cancel immediate submission
         event.preventDefault();
 
         // Get new page location
         const sel = document.getElementById("route-select");
-        const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}`;
+        const url = `/DECO1800-7180/src/pages/stops.php?route=${sel.value}`;
 
         if (sel.value != "none") {
             // Route to new page

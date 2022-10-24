@@ -1,4 +1,4 @@
-10185, -27.494888, 153.058817,"Old Cleveland Rd at Coorparoo, stop 23",https://translink.com.au/stop/010185/gtfs/
+10185, -27.494888, 153.058817,Old Cleveland Rd at Coorparoo stop 23,https://translink.com.au/stop/010185/gtfs/
 10193, -27.493604, 153.108084,Bedivere St at Lindisfarne Street,https://translink.com.au/stop/010193/gtfs/
 10939, -27.492123, 153.107163,Meadowlands Rd near Bedivere St,https://translink.com.au/stop/010939/gtfs/
 155, -27.468972, 153.030123,Eagle Street Stop 155 near Charlotte St,https://translink.com.au/stop/000155/gtfs/
@@ -10,28 +10,28 @@
 236, -27.458210, 153.029887,Gotha Street Stop 236 near St Pauls Tce,https://translink.com.au/stop/000236/gtfs/
 237, -27.460442, 153.027175,St Pauls Terrace Stop 237 near Union St,https://translink.com.au/stop/000237/gtfs/
 239, -27.458932, 153.028663,St Pauls Terrace Stop 239 near Quarry St,https://translink.com.au/stop/000239/gtfs/
-2554, -27.495785, 153.093340,"Old Cleveland Rd at Orana Street, stop 37",https://translink.com.au/stop/002554/gtfs/
-2555, -27.495600, 153.091841,"Old Cleveland Rd at Pembroke Street, stop 36",https://translink.com.au/stop/002555/gtfs/
-2556, -27.495768, 153.089286,"Old Cleveland Rd at Carina, stop 35",https://translink.com.au/stop/002556/gtfs/
-2557, -27.494886, 153.085567,"Old Cleveland Rd at Wonersh Street, stop 34",https://translink.com.au/stop/002557/gtfs/
-2558, -27.493278, 153.083771,"Old Cleveland Rd at Orwell Street, stop 33",https://translink.com.au/stop/002558/gtfs/
+2554, -27.495785, 153.093340,Old Cleveland Rd at Orana Street stop 37,https://translink.com.au/stop/002554/gtfs/
+2555, -27.495600, 153.091841,Old Cleveland Rd at Pembroke Street stop 36,https://translink.com.au/stop/002555/gtfs/
+2556, -27.495768, 153.089286,Old Cleveland Rd at Carina stop 35,https://translink.com.au/stop/002556/gtfs/
+2557, -27.494886, 153.085567,Old Cleveland Rd at Wonersh Street stop 34,https://translink.com.au/stop/002557/gtfs/
+2558, -27.493278, 153.083771,Old Cleveland Rd at Orwell Street stop 33,https://translink.com.au/stop/002558/gtfs/
 2559, -27.493233, 153.080292,Old Cleveland Rd at Camp Hill Primary,https://translink.com.au/stop/002559/gtfs/
-2561, -27.492811, 153.074812,"Old Cleveland Rd at Camp Hill, stop 30",https://translink.com.au/stop/002561/gtfs/
-3071, -27.498630, 153.049224,"Langlands Park station, platform 1",https://translink.com.au/stop/003071/gtfs/
-3091, -27.497811, 153.043994,"Stones Corner station, platform 1",https://translink.com.au/stop/003091/gtfs/
-5902, -27.491408, 153.102640,"Meadowlands Rd at Carina State School, stop 58",https://translink.com.au/stop/005902/gtfs/
-5967, -27.497957, 153.105851,"Bedivere St at Tristan Street, stop 68/52",https://translink.com.au/stop/005967/gtfs/
+2561, -27.492811, 153.074812,Old Cleveland Rd at Camp Hill stop 30,https://translink.com.au/stop/002561/gtfs/
+3071, -27.498630, 153.049224,Langlands Park station platform 1,https://translink.com.au/stop/003071/gtfs/
+3091, -27.497811, 153.043994,Stones Corner station platform 1,https://translink.com.au/stop/003091/gtfs/
+5902, -27.491408, 153.102640,Meadowlands Rd at Carina State School stop 58,https://translink.com.au/stop/005902/gtfs/
+5967, -27.497957, 153.105851,Bedivere St at Tristan Street stop 68/52,https://translink.com.au/stop/005967/gtfs/
 5981, -27.495914, 153.107617,Bedivere St near Cadogan St,https://translink.com.au/stop/005981/gtfs/
-6239, -27.500425, 153.093456,"Gallipoli Rd at Salonica Street, stop 39",https://translink.com.au/stop/006239/gtfs/
-6241, -27.502801, 153.093006,"Gallipoli Rd at Carina Heights, stop 45/40",https://translink.com.au/stop/006241/gtfs/
-6243, -27.504605, 153.092666,"Gallipoli Rd at Maughan Street, stop 46",https://translink.com.au/stop/006243/gtfs/
-6245, -27.507479, 153.092332,"Gallipoli Rd at Warenda Street, stop 48",https://translink.com.au/stop/006245/gtfs/
-6247, -27.509714, 153.092948,"Gallipoli Rd at Gallipoli Road Bushlands, stop 49",https://translink.com.au/stop/006247/gtfs/
-6249, -27.510621, 153.094262,"Gallipoli Rd at Gallipoli, stop 50",https://translink.com.au/stop/006249/gtfs/
-6251, -27.512158, 153.096922,"Gallipoli Rd at Tirrabella Street, stop 51",https://translink.com.au/stop/006251/gtfs/
-6277, -27.510363, 153.103802,"Donnington St at Donnington, stop 53",https://translink.com.au/stop/006277/gtfs/
-6279, -27.512854, 153.100315,"Donnington St at Stanmere, stop 52",https://translink.com.au/stop/006279/gtfs/
-6294, -27.503115, 153.102632,"Carindale Shopping Centre station, platform B",https://translink.com.au/stop/006294/gtfs/
-6325, -27.497276, 153.094052,"Gallipoli Rd at Hecklemann Street, stop 38",https://translink.com.au/stop/006325/gtfs/
+6239, -27.500425, 153.093456,Gallipoli Rd at Salonica Street stop 39,https://translink.com.au/stop/006239/gtfs/
+6241, -27.502801, 153.093006,Gallipoli Rd at Carina Heights stop 45/40,https://translink.com.au/stop/006241/gtfs/
+6243, -27.504605, 153.092666,Gallipoli Rd at Maughan Street stop 46,https://translink.com.au/stop/006243/gtfs/
+6245, -27.507479, 153.092332,Gallipoli Rd at Warenda Street stop 48,https://translink.com.au/stop/006245/gtfs/
+6247, -27.509714, 153.092948,Gallipoli Rd at Gallipoli Road Bushlands stop 49,https://translink.com.au/stop/006247/gtfs/
+6249, -27.510621, 153.094262,Gallipoli Rd at Gallipoli stop 50,https://translink.com.au/stop/006249/gtfs/
+6251, -27.512158, 153.096922,Gallipoli Rd at Tirrabella Street stop 51,https://translink.com.au/stop/006251/gtfs/
+6277, -27.510363, 153.103802,Donnington St at Donnington stop 53,https://translink.com.au/stop/006277/gtfs/
+6279, -27.512854, 153.100315,Donnington St at Stanmere stop 52,https://translink.com.au/stop/006279/gtfs/
+6294, -27.503115, 153.102632,Carindale Shopping Centre station platform B,https://translink.com.au/stop/006294/gtfs/
+6325, -27.497276, 153.094052,Gallipoli Rd at Hecklemann Street stop 38,https://translink.com.au/stop/006325/gtfs/
 64, -27.466340, 153.030148,Eagle St near Eagle Lane (Stop 64),https://translink.com.au/stop/000064/gtfs/
 94, -27.473431, 153.027153,Margaret Street Stop 94 near George St,https://translink.com.au/stop/000094/gtfs/

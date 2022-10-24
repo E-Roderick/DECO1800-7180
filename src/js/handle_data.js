@@ -70,7 +70,7 @@ function getRemoteArtEvents() {
  */
 function getServerBccData() {
     return $.ajax({
-        url: `../util/getEventData.php`,
+        url: `../serve/getEventData.php`,
         dataType: "json",
         success: data => {
             eventsBCC = data;
@@ -91,7 +91,7 @@ function getServerRouteData(route) {
 
     // Request route information from the server
     let routeResolver = $.ajax({
-        url: `../util/getRouteData.php?route=${route}`,
+        url: `../serve/getRouteData.php?route=${route}`,
         type: "GET",
         contentType: "html",
         success: data => { routeData = data; }
@@ -99,7 +99,7 @@ function getServerRouteData(route) {
 
     // Request stop information from the server
     let stopResolver = $.ajax({
-        url: `../util/getStopData.php?route=${route}`,
+        url: `../serve/getStopData.php?route=${route}`,
         type: "GET",
         contentType: "html",
         success: data => { stops = data; }
