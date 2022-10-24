@@ -181,9 +181,9 @@ option {
 /* NOTE Not the best way to do this but it works */
 .btn:disabled {
     cursor: auto !important;
-    border-color: gray !important;
+    border-color: rgba(128, 128, 128, 0.5) !important;
     filter: none  !important;
-    color: gray  !important;
+    color: rgba(128, 128, 128, 0.5)  !important;
 }
 
 .btn {
