@@ -76,7 +76,7 @@
                 </a>
 
                 <!-- Info button -->
-                <a href="#!" id="ic_info">
+                <a href="/DECO1800-7180/src/pages/information.php" id="ic_info">
                     <circle cx="1164" cy="414" r="31" fill="black"/>
                     <rect x="1160" y="398" width="8" height="8" fill="#D9D9D9"/>
                     <rect x="1160" y="410" width="8" height="20" fill="#D9D9D9"/>
