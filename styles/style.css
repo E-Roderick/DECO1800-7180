@@ -888,6 +888,7 @@ input.select_stop.btn {
 }
 
 .tab-content .ref-item span,
+.tab-content-mobile li span,
 .tab-content-mobile .ref-item span {
     color: white;
 }
