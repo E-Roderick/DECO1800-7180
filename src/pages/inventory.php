@@ -24,7 +24,6 @@
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
                     </ul>
                     </div>
                 <div class="slide" href="#">
@@ -33,12 +32,10 @@
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
                     </ul>
                     </div>
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
@@ -47,7 +44,6 @@
                 </div>
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
                     <li><a href="#"></a></li>
@@ -65,8 +61,13 @@
 <script>  
     if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
     //Mobile device
+        document.getElementById("desktop").className = "inventory-mobile-page";
         document.getElementById("slider-wrapper").className = "inventory-sec-mobile";
         document.getElementById("inner-wrapper").className = "inner-wrapper-mobile";
+        let labels = document.querySelectorAll("label");
+        for (let i = 0; i < labels.length; i++) {
+            labels[i].style.display = "none";
+        }
     }
 
     /* Inventory page logic */            
