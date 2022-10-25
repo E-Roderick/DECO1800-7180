@@ -876,10 +876,10 @@ input.select_stop.btn {
 .tab-list img {
     margin: 10px 0;
 }
-
+/* 
 .tab-content {
     flex-grow: 4;
-}
+} */
 
 .tab-content span,
 .tab-content-mobile span {
