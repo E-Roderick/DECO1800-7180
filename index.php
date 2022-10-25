@@ -26,7 +26,7 @@
           <h4 class="feature_title">Route Selection</h4>
         </section>
       </a>
-      <a class="feature_box" href="src/pages/location.php">
+      <a class="feature_box" href="src/pages/location_stops.php">
         <div class="box_touch_area"></div>
         <section class="feature_content">
           <picture class="feature_icon">
