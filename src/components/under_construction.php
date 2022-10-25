@@ -4,7 +4,7 @@ require("../components/nav.php");
 function UnderConstruction($url) {
 
     echo '<section class="container">';
-        BackButton($url);
+        DynamicBackButton();
     echo '
         <article class="wrapper">
             <h2>This Page is Under Construction</h2>
