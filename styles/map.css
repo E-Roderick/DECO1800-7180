@@ -2,7 +2,7 @@
  * These styles are used specifically for the map and map-related elements.
  */
 
-#map {
+#map_desktop {
     position: absolute;
     top: 11%;
     left: 50%;
@@ -16,7 +16,22 @@
     padding: 0;
 }
 
-#map span,
+#map_mobile {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-49.5%);
+    width: 70%;
+    aspect-ratio: 1.58;
+    max-width: 868px;
+    max-height: 548px;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#map_desktop span,
+#map_mobile span,
 #popup h3,
 #popup p,
 #popup strong,

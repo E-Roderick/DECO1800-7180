@@ -124,7 +124,15 @@ const getNewIndex = (index, max, inc, direction) => {
  * Create the leaflet map.
  */
 function createMap() {
-    map = L.map("map", { keyboard: false, zoomControl: false })
+    let mapID;
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+        //Mobile device
+        mapID = "map_mobile";
+    } else {
+        mapID = "map_desktop";
+    }
+
+    map = L.map(mapID, { keyboard: false, zoomControl: false })
         .setView([-27.491457, 153.102629], MIN_ZOOM);
     
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
