@@ -201,15 +201,15 @@
 
 .tutorial-step {
     width: 25%;
-    margin: 0.7rem;
-    line-height: 1em;
-    font-size: 10px;
+    margin: 1rem;
+    line-height: 1.5em;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .tutorial-step h4 {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 .tutorial-step img {
@@ -218,7 +218,29 @@
 
 #tutorial-load-info {
     font-size: smaller;
-    margin-top: 0.5em;
+    margin-top: 1em;
+}
+
+
+@media screen and (max-width: 1080px){
+    .tutorial-step {
+        width: 25%;
+        margin: 0.7rem;
+        line-height: 1em;
+        font-size: 11px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tutorial-step h4 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    }
+
+    #tutorial-load-info {
+        font-size: smaller;
+        margin-top: 0.5em;
+    }
+
 }
 
 #help-skip-btn {
