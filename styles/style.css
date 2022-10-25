@@ -854,6 +854,11 @@ input.select_stop.btn {
     flex-grow: 4;
 }
 
+.tab-content span,
+.tab-content-mobile span {
+    color: #3EF3FF;
+}
+
 .tab-content .item,
 .tab-content-mobile .item {
     box-sizing: border-box;
