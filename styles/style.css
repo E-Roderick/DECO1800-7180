@@ -887,6 +887,11 @@ input.select_stop.btn {
     color: #3EF3FF;
 }
 
+.tab-content .ref-item span,
+.tab-content-mobile .ref-item span {
+    color: white;
+}
+
 .tab-content .item,
 .tab-content-mobile .item {
     box-sizing: border-box;

@@ -180,6 +180,10 @@
                             <span>Trumba.com, 2022. </span>
                             <a href="http://www.trumba.com/calendars/brisbane-city-council.json">http://www.trumba.com/calendars/brisbane-city-council.json</a>
                         </li>
+                        <li>
+                            <span>Events - Datasets - Data | Brisbane City Council</span>
+                            <a href="https://www.data.brisbane.qld.gov.au/data/dataset/brisbane-city-council-events">https://www.data.brisbane.qld.gov.au/data/dataset/brisbane-city-council-events</a>
+                        </li>
                     </ul>
                 </section><br>
                 <section>
