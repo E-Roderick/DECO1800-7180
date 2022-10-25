@@ -71,9 +71,9 @@
                         <span>"Public Art Collection - Public Art Collection — CSV - Data | Brisbane City Council," Queensland Government </span>
                         <a href="https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343">https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343</a>
                     </li>
-                    <li class="ref-item">
-                        <span>Trumba.com, 2022. </span>
-                        <a href="http://www.trumba.com/calendars/brisbane-city-council.json">http://www.trumba.com/calendars/brisbane-city-council.json</a>
+                    <li>
+                        <span>Events - Datasets - Data | Brisbane City Council</span>
+                        <a href="https://www.data.brisbane.qld.gov.au/data/dataset/brisbane-city-council-events">https://www.data.brisbane.qld.gov.au/data/dataset/brisbane-city-council-events</a>
                     </li>
                 </ul>
             </section>
@@ -175,10 +175,6 @@
                         <li>
                             <span>"Public Art Collection - Public Art Collection — CSV - Data | Brisbane City Council," Queensland Government </span>
                             <a href="https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343">https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343</a>
-                        </li>
-                        <li>
-                            <span>Trumba.com, 2022. </span>
-                            <a href="http://www.trumba.com/calendars/brisbane-city-council.json">http://www.trumba.com/calendars/brisbane-city-council.json</a>
                         </li>
                         <li>
                             <span>Events - Datasets - Data | Brisbane City Council</span>
