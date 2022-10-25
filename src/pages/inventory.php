@@ -90,11 +90,11 @@
                             </div>
                         </div>
                         `;
-            $(`.slide:nth-child(${Math.floor(i/5) + 1}) li:nth-child(${i % 5 + 1})`).html(content); // Update text
+            $(`.slide:nth-child(${Math.floor(i/4) + 1}) li:nth-child(${i % 4 + 1})`).html(content); // Update text
         }
 
         let modal = document.querySelector(".modal");
-        let labels = document.querySelectorAll("label");
+        let labels = document.querySelectorAll(".inner-wrapper label");
         console.log(labels);
 
         // Make sure this page contains modal images.
