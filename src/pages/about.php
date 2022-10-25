@@ -4,21 +4,30 @@
     <section class="wrapper about-sec">
     <div class="tab-list">
     <h2>ABOUT OBERON</h2>
+        <nav>
         <ul>
-            <li class="current"><a href="#">Team Member</a></li>
-            <li><a href="#">Concepts</a></li>
-            <li><a href="#">References</a></li>
+            <li class="current"><a href="#team">Team Members</a></li>
+            <li><a href="#concepts">Concepts</a></li>
+            <li><a href="#references">References</a></li>
         </ul>
-        <img src="/front-end/images/subpage/ic_car.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-1.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-2.png" alt="">
-        <img src="/front-end/images/subpage/ic_car-3.png" alt="">
+        </nav>
+        
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-1.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-2.png" alt="">
+        <img src="/DECO1800-7180/public/assets/avatar/ic_car-3.png" alt="">
     </div>
     <div class="tab-content">
-        <div class="item" style="display: block;">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, vero voluptatibus earum enim maxime distinctio, velit cupiditate iure ex fugiat adipisci voluptatem reiciendis dolore veniam voluptas harum recusandae magnam aliquam.
-        </div>
-        <div class="item" style="display: none;">
+        <article id="about-team" class="item" style="display: block;">
+            <ul id="member-list">
+                <li><p>Shuo Liu</p></li>
+                <li><p>Yen-Chen Chen</p></li>
+                <li><p>Karell Usang</p></li>
+                <li><p>Ethan Roderick - Dual BEngg and IT</p></li>
+                <li><p>Yu-Hsuan, Wu</p></li>
+            </ul>
+        </article>
+        <article id="about-concept" class="item" style="display: none;">
             <h5>Purpose of the application:</h5><br>
             <p>City Mario is a web application that aims to help tourists discover Brisbane's cultural 
             experience and art collection by providing a fun and informative interface. City Mario 
@@ -41,13 +50,76 @@
             <p>We chose and designed our features to be implemented as a middle-ground between what our 
             target audience needs and what we can deliver in the timeframe we are given.</p>
 
-        </div>
-        <div class="item" style="display: none;">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis corrupti pariatur nihil, ex ipsam eos aspernatur ratione asperiores doloribus ad impedit in distinctio modi, dolorem consequatur nostrum laudantium eligendi repellendus.
-        </div>
+        </article>
+        <article id="about-ref" class="item" style="display: none;">
+            <section id="about-ref-data">
+                <h5>Datasets:</h5>
+                <ul>
+                    <li class="ref-item">
+                        <span>General transit feed specification (GTFS)—South East Queensland, TransLink </span>
+                        <a href="https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-seq">https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-seq</a>
+                    </li>
+                    <li class="ref-item">
+                        <span>“Public Art Collection - Public Art Collection — CSV - Data | Brisbane City Council,” Queensland Government </span>
+                        <a href="https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343">https://www.data.brisbane.qld.gov.au/data/dataset/public-art/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343</a>
+                    </li>
+                    <li class="ref-item">
+                        <span>Trumba.com, 2022. </span>
+                        <a href="http://www.trumba.com/calendars/brisbane-city-council.json">http://www.trumba.com/calendars/brisbane-city-council.json</a>
+                    </li>
+                </ul>
+            </section>
+            <section id="about-ref-refs">
+                <h5>References:</h5>
+                <ul>
+                    <li class="ref-item">
+                        <span>Bbecquet (2018) Leaflet.RotatedMarker [Source code]. </span>
+                        <a href="https://github.com/bbecquet/Leaflet.RotatedMarker">https://github.com/bbecquet/Leaflet.RotatedMarker</a>
+                    </li>
+                    <li class="ref-item">
+                        <span>C. Boisclair, Press Start 2P. 2011. Accessed: Oct. 22, 2022. [Font]. Available: </span>
+                        <a href="https://fonts.google.com/specimen/Press+Start+2P">https://fonts.google.com/specimen/Press+Start+2P</a>
+                    </li>
+                    <li class="ref-item">
+                        <span>D. E. Research, “Calculating the Bearing between two geospatial coordinates,” Medium, May 25, 2020. </span>
+                        <a href="https://towardsdatascience.com/calculating-the-bearing-between-two-geospatial-coordinates-66203f57e4b4">https://towardsdatascience.com/calculating-the-bearing-between-two-geospatial-coordinates-66203f57e4b4</a>
+                        <span> (accessed Oct. 24, 2022).</span>
+                    </li>
+                    <li class="ref-item">
+                        <span>“Leaflet — an open-source JavaScript library for interactive maps,” leafletjs.com. </span>
+                        <a href="https://leafletjs.com/index.html">https://leafletjs.com/index.html</a>
+                    </li>
+                    <li class="ref-item">
+                        <span>Zeratax (2017) gimages [Source code]. </span>
+                        <a href="https://gist.github.com/zeratax/a0719af17fdf8d338f8fdd6601f90a36">https://gist.github.com/zeratax/a0719af17fdf8d338f8fdd6601f90a36</a>
+                    </li>
+                </ul>
+            </section>
+        </article>
     </div>
     </section>
 </section>
 </main>
+<script>
+    var tab_list = document.querySelector('.tab-list');
+    var list = tab_list.querySelectorAll('li');
+    var items = document.querySelectorAll('.item');
+
+    for (var i = 0; i < list.length; i++) {
+        list[i].setAttribute('index',i);
+        list[i].onclick = function() {
+            for (var i = 0; i < list.length; i++) {
+                list[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            items[index].style.display = 'block';
+        }
+    }
+    
+    </script> 
 <?php include("../components/footer_default.php"); ?>
 

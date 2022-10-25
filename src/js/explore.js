@@ -7,7 +7,7 @@
  */
  function handleMapLoad() {
     $("#help-skip-btn").prop("disabled", false); // Enable button
-    $("#help-skip-btn").text("Skip Tutorial"); // Update text
+    $("#help-skip-btn").text("Begin Exploring!"); // Update text
 }
 
 /**
@@ -17,6 +17,7 @@
 function helpSkipOnClick() {
     registerKeyPress(); // Enable interaction with map
     registerBtnClick(); // Enable button interaction
+    registerBtnTouch(); // Enable button interaction
     $("#map-help").addClass("complete");
 }
 
@@ -35,7 +36,8 @@ async function doPageOperation() {
     await getEventData();
 
     const route = getUrlParam(window.location.href, "route");
-    const stop = getUrlParam(window.location.href, "stop");
+    // Stop also has to remove any errant on-page links
+    const stop = getUrlParam(window.location.href, "stop").split("#")[0];
     setIndexByRouteStop(route, stop);
     getServerRouteData(route);
 }
