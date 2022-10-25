@@ -57,25 +57,25 @@ const START_POSITIONS = {
 }
 
 /* Globals */
-let map;                // Map holder
+let map; // Map holder
 
 // Car
-let userMarker;         // Marker of the user
-let circle;             // circle round the user marker
+let userMarker; // Marker of the user
+let circle; // circle round the user marker
 
-let car_orientation     // Car move direction
+let car_orientation // Car move direction
     = FORWARD_DIR;
-let angle = 0;          // The angle of the user's marker
+let angle = 0; // The angle of the user's marker
 
-let index = 0;          // Index of route points which the user is currently at
-let nextIndex;          // The next position to move to 
-let routeCoordinates;   // Store all coordinate pairs for the route
-let maxIndex;           // The max index of route points
+let index = 0; // Index of route points which the user is currently at
+let nextIndex; // The next position to move to 
+let routeCoordinates; // Store all coordinate pairs for the route
+let maxIndex; // The max index of route points
 
-let artImage;           // Stores information about all art images
+let artImage; // Stores information about all art images
 
 // Bus stops
-let busStopMarkers;     // Container for all bus stops
+let busStopMarkers; // Container for all bus stops
 
 /* Functions */
 /**
@@ -99,7 +99,7 @@ const rotToMarkerAngle = angle => (1 * angle - 90) % 360;
  * @param {point} c2 The point to find the angle to
  * @returns The angle in between
  */
-const angleToPoint = (c1, c2) => 
+const angleToPoint = (c1, c2) =>
     rotToMarkerAngle(angleBetweenCoordinates(c1, c2));
 
 /**
@@ -134,7 +134,7 @@ function createMap() {
 
     map = L.map(mapID, { keyboard: false, zoomControl: false })
         .setView([-27.491457, 153.102629], MIN_ZOOM);
-    
+
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         minZoom: MIN_ZOOM,
         maxZoom: MAX_ZOOM,
@@ -149,9 +149,9 @@ function createMap() {
  */
 function setMarkerAngleFromPointsIndexes(p1, p2) {
     // Check for route wrapping
-    angle = (Math.abs(index - nextIndex) > INC) ? 
+    angle = (Math.abs(index - nextIndex) > INC) ?
         angle : angleToPoint(getPoint(p1), getPoint(p2));
-    
+
     // Update angle
     userMarker.setRotationAngle(angle);
 }
@@ -173,8 +173,7 @@ function setIndexByRouteStop(route, stop) {
  */
 function drawUser(index, angleIndexes) {
     userMarker = L.marker(
-        [...getPoint(index)], 
-        { icon: playerIcon, zIndexOffset: -1000, }
+        [...getPoint(index)], { icon: playerIcon, zIndexOffset: -1000, }
     ).addTo(map);
     setMarkerAngleFromPointsIndexes(...angleIndexes);
 
@@ -196,10 +195,9 @@ function drawBusStops(stops) {
     busStopMarkers = stops.map(stop => {
         const [id, coords, name, url] = stop;
         stopMarker = L.marker(
-            coords, 
-            { icon: busStopIcon, zIndexOffset: -1500 }
+            coords, { icon: busStopIcon, zIndexOffset: -1500 }
         ).addTo(map);
-        
+
         // Add popup for on click
         let popup = L.DomUtil.create('div', 'infoWindow');
         popup.innerHTML = generateStopPopup(stop);
@@ -221,13 +219,12 @@ function handleMove(move_dir) {
      * the car orientation. Each of the conditions is separate.
      */
     // Check move direction to possibly reverse direction
-    let points = move_dir === FORWARD_DIR ? 
-        [index, nextIndex] : [nextIndex, index];
-    
+    let points = move_dir === FORWARD_DIR ? [index, nextIndex] : [nextIndex, index];
+
     // Check car orientation to possibly reverse direction again
     points = car_orientation === FORWARD_DIR ?
         points : points.reverse();
-    
+
     // remove all the pervious event markers, the user marker and the circle
     nearbyMarkers.forEach((marker) => {
         map.removeLayer(marker);
@@ -276,7 +273,7 @@ function changeDirection() {
  * @returns The opposite direction
  */
 function getOppositeDirection(direction) {
-    return direction == FORWARD_DIR? BACKWARD_DIR : FORWARD_DIR;
+    return direction == FORWARD_DIR ? BACKWARD_DIR : FORWARD_DIR;
 }
 
 /**
@@ -303,7 +300,7 @@ function registerKeyPress() {
             case DIR_CHANGE_KEY:
                 handleTurn();
                 break;
-            
+
             default:
                 return;
         }
@@ -326,9 +323,9 @@ function registerBtnClick() {
  */
 function registerBtnTouch() {
     // Attach movement functions to buttons
-    document.getElementById("ic_forward").touchend = e => moveForward();
-    document.getElementById("ic_backward").touchend = e => moveBackward();
-    document.getElementById("ic_rotate").touchend = e => handleTurn();
+    document.getElementById("ic_forward_mobile").onclick = e => moveForward();
+    document.getElementById("ic_backward_mobile").onclick = e => moveBackward();
+    document.getElementById("ic_rotate_mobile").onclick = e => handleTurn();
 }
 
 /**

@@ -16,11 +16,21 @@
     </div>
     <div class="tab-content">
         <article id="about-team" class="item" style="display: block;">
-            <h4>- Ethan Roderick</h4>
-            <h4>- Karell Usang</h4>
-            <h4>- Shuo Liu</h4>
-            <h4>- Yu-Hsuan Wu</h4>
-            <h4>- Yen-Chen Chen</h4>
+            <h4>Ethan Roderick
+                <span>Dual BEngg and IT</span>
+            </h4>
+            <h4>Karell Usang
+                <span>Master of IT</span>
+            </h4>
+            <h4>Shuo Liu
+                <span>Master of IT</span>
+            </h4>
+            <h4>Yu-Hsuan Wu
+                <span>Master of ID</span>
+            </h4>
+            <h4>Yen-Chen Chen
+                <span>Master of ID</span>
+            </h4>
         </article>
         <article id="about-concept" class="item" style="display: none;">
             <h5>Purpose of the application:</h5><br>
@@ -111,13 +121,21 @@
         </div>
         <div class="tab-content-mobile">
             <article class="item" style="display: block;">
-            <br>
-            <br>
-            - Ethan Roderick<br>
-            - Karell Usang<br>
-            - Shuo Liu<br>
-            - Yu-Hsuan Wu<br>
-            - Yen-Chen Chen
+                <h5>Ethan Roderick
+                    <span>Dual BEngg and IT</span>
+                </h5>
+                <h5>Karell Usang
+                    <span>Master of IT</span>
+                </h5>
+                <h5>Shuo Liu
+                    <span>Master of IT</span>
+                </h5>
+                <h5>Yu-Hsuan Wu
+                    <span>Master of ID</span>
+                </h5>
+                <h5>Yen-Chen Chen
+                    <span>Master of ID</span>
+                </h5>
             </article>
             <article class="item" style="display: none;">
                 <h5>Purpose of the application:</h5>
