@@ -20,7 +20,7 @@ $STOP_DATA = getStopData("660047");
 
 <main>
 <section class="container">
-    <?php BackButton("/DECO1800-7180/src/pages/routes.php") ?>
+    <?php BackButton("/DECO1800-7180/") ?>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
         <h4>SELECT A BUS STOP NEAR YOUR CURRENT LOCATION</h4>

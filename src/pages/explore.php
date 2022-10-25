@@ -48,7 +48,7 @@
     </article>
 
     <article class="sub_page">
-        <?php BackButton() ?>
+        <?php DynamicBackButton() ?>
         <section class="sub_container">
             <img class="features_icon" src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h3 class="route_title">Route <span id="route_number"><?php echo $getRouteSignById($route)?></span></h3>

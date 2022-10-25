@@ -2,9 +2,15 @@
 <?php require_once("../components/nav.php"); ?>
 <?php require_once("../util/route_data.php"); ?>
 
+<?php 
+
+$stop = $_GET["stop"];
+
+?>
+
 <main class="route-page">
     <section class="container all-height all-width">
-        <?php BackButton("/DECO1800-7180/") ?>
+        <?php BackButton("/DECO1800-7180/src/pages/location_stops.php") ?>
         <section class="wrapper main-features">
             <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_route_selection.svg" alt="">
             <h4>SELECT A BUS ROUTE THAT PASSES YOUR STOP</h4>
@@ -37,7 +43,7 @@
         event.preventDefault();
 
         // Get new page location
-        const stop = "<?php echo $_GET["stop"] ?>";
+        const stop = "<?php echo $stop ?>";
         const sel = document.getElementById("route-select");
         const url = `/DECO1800-7180/src/pages/explore.php?route=${sel.value}&stop=${stop}`;
 
