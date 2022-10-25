@@ -36,7 +36,8 @@ async function doPageOperation() {
     await getEventData();
 
     const route = getUrlParam(window.location.href, "route");
-    const stop = getUrlParam(window.location.href, "stop");
+    // Stop also has to remove any errant on-page links
+    const stop = getUrlParam(window.location.href, "stop").split("#")[0];
     setIndexByRouteStop(route, stop);
     getServerRouteData(route);
 }

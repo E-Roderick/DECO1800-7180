@@ -4,11 +4,14 @@
     <section class="wrapper about-sec">
     <div class="tab-list">
     <h2>ABOUT OBERON</h2>
+        <nav>
         <ul>
-            <li class="current"><a href="#team">Team Member</a></li>
+            <li class="current"><a href="#team">Team Members</a></li>
             <li><a href="#concepts">Concepts</a></li>
             <li><a href="#references">References</a></li>
         </ul>
+        </nav>
+        
         <img src="/DECO1800-7180/public/assets/avatar/ic_car.png" alt="">
         <img src="/DECO1800-7180/public/assets/avatar/ic_car-1.png" alt="">
         <img src="/DECO1800-7180/public/assets/avatar/ic_car-2.png" alt="">

@@ -742,6 +742,10 @@ input[type='submit'] {
     margin: 10px 0;
 }
 
+.tab-list {
+    width: 15em;
+}
+
 .tab-content {
     flex-grow: 4;
 }

@@ -412,6 +412,11 @@ a.game_btn {
     margin: 0 auto;
 }
 
+.stop-dist {
+    font-size: 10px;
+    line-height: 1.5em;
+}
+
 .neabybs_sec,
 .nearbybs-next,
 .inventory-sec,
@@ -839,7 +844,7 @@ input.select_stop.btn {
 }
 
 #desktop .tab-list {
-    width: 25%;
+    width: 18em;
 }
 
 .tab-list li {
@@ -925,10 +930,22 @@ input.select_stop.btn {
     color: cyan;
 }
 
+#about-team {
+    width: 100%;
+}
+
+#member-list {
+    width: 100%;
+}
+
+#member-list li {
+    list-style-type: square;
+}
+
 #about-ref h5 {
     font-size: 18px;
 }
 
 #about-ref-refs {
-    margin-top: 2em;
+    margin-top: 4em;
 }
