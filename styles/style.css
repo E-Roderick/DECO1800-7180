@@ -766,6 +766,10 @@ input.select_stop.btn {
     box-sizing: border-box;
 }
 
+.tab-list {
+    width: 18em;
+}
+
 .tab-list li {
     font-size: 18px;
     margin: 20px 0;
@@ -831,4 +835,16 @@ input.select_stop.btn {
 #about-ref a {
     text-decoration: underline;
     color: cyan;
+}
+
+#about-team {
+    width: 100%;
+}
+
+#member-list {
+    width: 100%;
+}
+
+#member-list li {
+    list-style-type: square;
 }
