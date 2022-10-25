@@ -385,6 +385,11 @@ a.game_btn {
 
 /* neaby_entry page */
 
+.stop-dist {
+    font-size: 10px;
+    line-height: 1.5em;
+}
+
 .neabybs_sec,
 .nearbybs-next,
 .inventory-sec,

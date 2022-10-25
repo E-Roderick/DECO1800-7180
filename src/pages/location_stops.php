@@ -8,6 +8,11 @@ require_once("../components/nav.php");
 /* Hardcoding stop data for now */
 // Specify three stops along route 66 closest to expo location
 $STOPS = [1880, 18055];
+// Specify distances in km from Schonell theatre to the stops
+$DISTANCES = array(
+    1880 => 0.217,
+    18055 => 0.876,
+);
 // Get stop data for route 66
 $STOP_DATA = getStopData("660047");
 
@@ -32,7 +37,13 @@ $STOP_DATA = getStopData("660047");
                         $stop = getStopInfoByID($STOP_DATA, $stop);
                         echo '<li class="flex-center">';
                         echo '<input type="radio" name="stop-select" id="'.$stop[0].'">';
-                        echo '<label for="'.$stop[0].'" class="flex-center">'.$stop[2].'</label>';
+                        echo '
+                            <label for="'.$stop[0].'" class="flex-center">
+                                <p>'.
+                                    $stop[2].'<br>
+                                    <span class="stop-dist">'.$DISTANCES[$stop[0]].' km</span>
+                                </p>
+                            </label>';
                         echo '</li>';
                     }
 
