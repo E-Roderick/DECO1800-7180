@@ -3,7 +3,7 @@
  ******************************************************************************/
 
 /* Constants */
-const INC = 1; // Route coordinates skipped per move
+const INC = 2; // Route coordinates skipped per move
 const POSITIVE = 1;
 const NEGATIVE = -1;
 
@@ -303,7 +303,6 @@ function registerKeyPress() {
     }, false);
 }
 
-
 /**
  * Register the onclick handlers for the map interactions.
  */
@@ -312,6 +311,16 @@ function registerBtnClick() {
     document.getElementById("ic_forward").onclick = e => moveForward();
     document.getElementById("ic_backward").onclick = e => moveBackward();
     document.getElementById("ic_rotate").onclick = e => handleTurn();
+}
+
+/**
+ * Register the touchend handlers for the map interactions.
+ */
+function registerBtnTouch() {
+    // Attach movement functions to buttons
+    document.getElementById("ic_forward").touchend = e => moveForward();
+    document.getElementById("ic_backward").touchend = e => moveBackward();
+    document.getElementById("ic_rotate").touchend = e => handleTurn();
 }
 
 /**
