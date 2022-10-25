@@ -357,4 +357,6 @@ const initialiseMap = (buslineData, stops) => {
     // Put the bus stops on the map
     drawBusStops(stops)
 
+    // Update the event tray
+    updateCollection();
 }

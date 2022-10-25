@@ -209,6 +209,12 @@ function collectCallback(record) {
     updateCollection();
 }
 
+function updateCount(count) {
+    // <foreignObject id="inv_count_text" x="1167" y="125" width="50" height="30">0</foreignObject>
+    let countText = document.getElementById("inv_count_text");
+    countText.innerHTML = String(count);
+}
+
 /**
  * Update the collection tray on the map page, based on the actual collected
  * events.
@@ -225,4 +231,7 @@ function updateCollection() {
             )
         );
     });
+
+    // Update the inventory icon number
+    updateCount(collectedEvents.length)    
 }
