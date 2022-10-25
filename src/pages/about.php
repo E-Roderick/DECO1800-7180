@@ -107,7 +107,13 @@
         </div>
         <div class="tab-content-mobile">
             <article class="item" style="display: block;">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, vero voluptatibus earum enim maxime distinctio, velit cupiditate iure ex fugiat adipisci voluptatem reiciendis dolore veniam voluptas harum recusandae magnam aliquam.
+            <br>
+            <br>
+            - Ethan Roderick<br>
+            - Karell Usang<br>
+            - Shuo Liu<br>
+            - Yu-Hsuan Wu<br>
+            - Yen-Chen Chen
             </article>
             <article class="item" style="display: none;">
                 <h5>Purpose of the application:</h5>
