@@ -1,4 +1,4 @@
-        <footer class="footer_section">
+        <footer id="default-footer" class="footer_section">
             <div class="footer_container">
             <div class="copyright_area">
                 <div class="copyright_text">

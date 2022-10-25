@@ -197,28 +197,37 @@
 <script src="/DECO1800-7180/src/js/explore.js"></script>
 
 <script>
-    /* Main page logic */            
-    $(window).on( "load", function() {
-        doPageOperation();
-    });
-
-
     /* Detect mobile */
-    var oDiv1=document.getElementById("desktop");
-    var oDiv2=document.getElementById("mobile");
+    let mobile = false;
+    let oDiv1=document.getElementById("desktop");
+    let oDiv2=document.getElementById("mobile");
 
     if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-    //Mobile device
-    oDiv1.style.display="none";
-    oDiv2.style.display="block";
+        // Mobile device
+        oDiv1.style.display = "none";
+        oDiv2.style.display = "block";
+        mobile = true;
     }else{
-    oDiv1.style.display="block";
-    oDiv2.style.display="none";
+        // Desktop
+        oDiv1.style.display = "block";
+        oDiv2.style.display = "none";
     }
 
     /* Detect direction */ 
     if(window.innerHeight > window.innerWidth){
-    alert("Please use Landscape!");
+        alert("Please use Landscape!");
     }
+
+    /* Main page logic */            
+    $(window).on( "load", function() {
+        doPageOperation();
+
+        if (mobile) {
+            // Stop displaying header/footer/back
+            document.getElementsByClassName("back_button")[1].style.display = "none";
+            document.getElementById("default-header").style.display = "none";
+            document.getElementById("default-footer").style.display = "none";
+        }
+    });
 </script>
 <?php include("../components/footer_default.php"); ?>

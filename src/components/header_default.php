@@ -1,7 +1,7 @@
 <?php include ("html_pre.php"); ?>
 </head>
     <body>
-        <header class="web">
+        <header id="default-header" class="web">
         <nav class="navbar_container">
           <div class="navbar">
             <a href="/DECO1800-7180/index.php" class="nav_logo"><h4>City Mario</h4></a>
