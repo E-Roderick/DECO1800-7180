@@ -10,7 +10,7 @@
       <p>City Mario is a game about exploring Brisbane to find new and fun events to do.</p>
       <p>To begin, select a method for finding a TransLink bus route to follow. 
         "Route Selection" should be chosen if you are familiar with TransLink. Otherwise, choose the "Nearby Bus Stops" option.</p>
-      <p>Currently only the "Route Selection" option is implemented.</p>
+      <p>If visiting on mobile, tt is recommended that the map page be viewed in landscape.</p>
       <button class="btn" onclick="setHomeHelpAccepted()">UNDERSTOOD</button>
     </section>
   </article>
