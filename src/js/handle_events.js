@@ -209,10 +209,19 @@ function collectCallback(record) {
     updateCollection();
 }
 
+/**
+ * Update the game's inventory count on the inventory button. Handles mobile and
+ * desktop.
+ * @param {*} count The new count to set to.
+ */
 function updateCount(count) {
-    // <foreignObject id="inv_count_text" x="1167" y="125" width="50" height="30">0</foreignObject>
+    // Update desktop
     let countText = document.getElementById("inv_count_text");
-    countText.innerHTML = String(count);
+    if (countText) countText.innerHTML = String(count);
+    
+    // Update mobile
+    countText = document.getElementById("inv_count_text_m");
+    if (countText) countText.innerHTML = String(count);
 }
 
 /**
