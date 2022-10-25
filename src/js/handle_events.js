@@ -72,7 +72,6 @@ const generateEventPopup = (state, record) => {
  * @param {number} lon the longitude of the user's current position.
  */
 function iteratArtEvents(results, lat, lon) {
-    // console.log(artImage);
     $.each(results.result.records, function(eventID, eventData) {
         let latitude = eventData["Latitude"];
         let longitude = eventData["Longitude"]
