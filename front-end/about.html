@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
 </head>
@@ -50,15 +51,15 @@
           </div>
         </nav>
       </header>
-      <main>
+      <main id="desktop">
         <section class="container">
           <section class="wrapper about-sec">
             <div class="tab-list">
             <h2>ABOUT OBERON</h2>
                 <ul>
-                    <li class="current"><a href="#"''>Team Member</a></li>
-                    <li><a href="#"''>Concepts</a></li>
-                    <li><a href="#"''>References</a></li>
+                    <li class="current"><a href="#">Team Member</a></li>
+                    <li><a href="#">Concepts</a></li>
+                    <li><a href="#">References</a></li>
                 </ul>
                 <img src="/front-end/images/subpage/ic_car.png" alt="">
                 <img src="/front-end/images/subpage/ic_car-1.png" alt="">
@@ -89,6 +90,55 @@
                     from Google Images. It is possible that the image does not match the public art in question.</p><br>
                     
                     <h5>Standpoints:</h5><br>
+                    <p>We chose and designed our features to be implemented as a middle-ground between what our 
+                    target audience needs and what we can deliver in the timeframe we are given.</p>
+
+                </div>
+                <div class="item" style="display: none;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis corrupti pariatur nihil, ex ipsam eos aspernatur ratione asperiores doloribus ad impedit in distinctio modi, dolorem consequatur nostrum laudantium eligendi repellendus.
+                </div>
+            </div>
+          </section>
+        </section>
+      </main>
+      <main id="mobile">
+        <section class="container">
+          <section class="about-sec-mobile">
+            <div class="tab-list-mobile">
+                <h2>ABOUT OBERON</h2>
+                <ul>
+                    <li class="current" style="display:none;"><a href="#"''>Team Member</a></li>
+                    <li><a href="#" style="display:none;">Concepts</a></li>
+                    <li><a href="#" style="display:none;">References</a></li>
+                    <a href=#><li class="current">Team Member</li></a>
+                    <a href=#><li>Concepts</li></a>
+                    <a href=#><li>References</li></a>
+                </ul>
+            </div>
+            <div class="tab-content-mobile">
+                <div class="item" style="display: block;">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, vero voluptatibus earum enim maxime distinctio, velit cupiditate iure ex fugiat adipisci voluptatem reiciendis dolore veniam voluptas harum recusandae magnam aliquam.
+                </div>
+                <div class="item" style="display: none;">
+                    <h5>Purpose of the application:</h5>
+                    <p>City Mario is a web application that aims to help tourists discover Brisbane's cultural 
+                    experience and art collection by providing a fun and informative interface. City Mario 
+                    will display to users nearby events and public arts based on the location of their car 
+                    icons. Car icons follow the bus routes chosen by users. With a computer, tourists can 
+                    access the web app and use it as an enjoyable research tool before heading out in person.</p><br>
+        
+                    <h5>Assumptions:</h5>
+                    <p>We assumed that tourists don't know much about Brisbane public transport and bus routes, 
+                    which is why our app wants to provide bus route recommendations based on the tourist's 
+                    location. However, due to time constraints, our priority for this assignment is to allow 
+                    users to input the bus route number of interest.</p><br>
+                    
+                    <h5>Disclaimers:</h5>
+                    <p>We have no control over the correctness of the information provided for events, bus routes 
+                    and public arts by the datasets used.Images for public arts are automatically retrieved 
+                    from Google Images. It is possible that the image does not match the public art in question.</p><br>
+                    
+                    <h5>Standpoints:</h5>
                     <p>We chose and designed our features to be implemented as a middle-ground between what our 
                     target audience needs and what we can deliver in the timeframe we are given.</p>
 
@@ -131,9 +181,37 @@
                 items[index].style.display = 'block';
             }
         }
+        var tab_list_mobile = document.querySelector('.tab-list-mobile');
+        var list_mobile = tab_list_mobile.querySelectorAll('a');
+        var items_mobile = document.querySelectorAll('.item');
+
+        for (var i = 0; i < list_mobile.length; i++) {
+            list_mobile[i].setAttribute('index',i);
+            list_mobile[i].addEventListener('touchend', function() {
+                for (var i = 0; i < list_mobile.length; i++) {
+                    list_mobile[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                for (var i = 0; i < items_mobile.length; i++) {
+                    items_mobile[i].style.display = 'none';
+                }
+                items_mobile[index].style.display = 'block';
+            }
+        )}
+        var oDiv1=document.getElementById("desktop");
+        var oDiv2=document.getElementById("mobile");
+        
+        if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+        //Mobile device
+            oDiv1.style.display="none";
+            oDiv2.style.display="block";
+            }else{
+            oDiv1.style.display="block";
+            oDiv2.style.display="none";
+        }
         
       </script> 
 
 </body>
 </html>
-

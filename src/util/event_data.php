@@ -33,8 +33,8 @@ function getEventData() {
             unset($data[$id]['template']);
             unset($data[$id]['locatinoType']);
             unset($data[$id]['webLink']);
-            unset($data[$id]['startDateTime']);
-            unset($data[$id]['endDateTime']);
+            // unset($data[$id]['startDateTime']);
+            // unset($data[$id]['endDateTime']);
             unset($data[$id]['startTimeZoneOffset']);
             unset($data[$id]['endTimeZoneOffset']);
             unset($data[$id]['canceled']);

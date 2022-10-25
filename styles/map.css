@@ -2,7 +2,7 @@
  * These styles are used specifically for the map and map-related elements.
  */
 
-#map {
+#map_desktop {
     position: absolute;
     top: 11%;
     left: 50%;
@@ -16,23 +16,35 @@
     padding: 0;
 }
 
-#map span,
+#map_mobile {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-49.5%);
+    width: 70%;
+    aspect-ratio: 1.58;
+    max-width: 868px;
+    max-height: 548px;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#map_desktop span,
+#map_mobile span,
 #popup h3,
-#popup p {
+#popup p,
+#popup strong,
+#popup .time {
     color: black;
 }
 
-#map-help.complete {
-    display: none;
+#popup h3 {
+    font-size: 18px;
 }
 
-#map-help {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: #2e2e56;
-    z-index: 1002;
-    color: white;
+#popup .hide {
+    display: none;
 }
 
 #collection {
@@ -67,18 +79,55 @@
     width: 100%;
 }
 
+.leaflet-popup-content .detail {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#popup .desc {
+    width: 50%;
+    margin-right: 10px;
+}
+
+#popup .time {
+    margin-top: 3px;
+}
+
+#popup .desc p {
+    margin: 1.1em 0;
+}
+
+.case {
+    box-sizing: border-box;
+    flex-grow: 2;
+    margin-top: 20px;
+    height: 230px;
+    width: 230px;
+}
+
+.cover {
+    background-size: cover !important;
+}
+
+.ellipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
 .heart {
     color: gray;
     background-color: currentColor;
     display: inline-block;
     height: 20px;
     margin: 0 4px;
-    position: relative;
-    top: 0;
     transform: rotate(-45deg);
     position: absolute;
-    right: 10px;
-    top: 30px;
+    top: 10px;
+    right: 0;
     width: 20px;
 }
 

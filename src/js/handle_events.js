@@ -3,7 +3,9 @@
  ******************************************************************************/
 /* Globals */
 let nearbyMarkers = []; // the event marker within a certain range of the user
-let collectedEvents = [];
+let collectedEvents = getLocalStorage(LS_EVENT_COLLECTED);
+if (!collectedEvents)
+    collectedEvents = [];
 
 const EVENT_RADIUS = 500;
 
@@ -23,22 +25,41 @@ const findCollectedEvent = (ce, id) => ce.id === id;
  * @returns String of popup's inner HTML.
  */
 const generateEventPopup = (state, record) => {
-    const { id, item, location, desc, image } = record;
+    var { id, item, location, desc, icon, image, start, end, source } = record;
+    var showTime = "";
+    if (!start || !end)
+        showTime = "hide";
+    var showSource;
+    if (!source)
+        showSource = "hide";
+    desc = desc.replace("<p>", "");
+    desc = desc.replace("</p>", "");
 
     return `
-        <div id='popup'>
-            <h3>${item}</h3>
-            <div>
-                <p>${location}</p>
-                <img src=${image} alt="blanchflower" />
-                <p>${desc}</p>
-            </div>
-            <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
-            <label id = ${id} class="heart" for="heart-checkbox" 
-                onclick="collectCallback('${
+        <section id='popup'>
+            <section class='title'>
+                <h3>${item}</h3>
+                <input type="checkbox" class="heart-checkbox" id="heart-checkbox" ${state}>
+                <label id = ${id} class="heart" for="heart-checkbox" 
+                    onclick="collectCallback('${
                     encodeURIComponent(JSON.stringify(record)).replace(/'/g, '%27')
-                }');"></label>
-        </div>
+                    }');" ></label>
+            </section>
+            <section class='time ${showTime}'>
+                <span>${start}</span> ~
+                <span>${end}</span>
+            </section>
+            <section class='detail'>
+                <div class='desc'>
+                    <p>${location}</p>
+                    <p class='ellipsis'>${desc}</p>
+                </div>
+                <div class="case cover" style="background: url('${image}') center center;"></div>
+            </section>
+            <section class='${showSource}'>
+                <a href=${source} target='_blank' rel='noopener'>source</a>
+            </section>
+        </section>
     `;
 }
 
@@ -51,36 +72,42 @@ const generateEventPopup = (state, record) => {
  * @param {number} lon the longitude of the user's current position.
  */
 function iteratArtEvents(results, lat, lon) {
+    // console.log(artImage);
     $.each(results.result.records, function(eventID, eventData) {
         let latitude = eventData["Latitude"];
         let longitude = eventData["Longitude"]
         let title = eventData["Item_title"];
         let description = eventData["Description"];
         let location = eventData["The_Location"];
-        
-        let image;
-        if (artImage.hasOwnProperty(title))
-            image = artImage[title];
 
-            let collected = collectedEvents.find(
-                event => findCollectedEvent(event, eventID)
-            ) ? 'checked' : '';
+        let image;
+        let source;
+        if (artImage.hasOwnProperty(title)) {
+            image = artImage[title][0];
+            source = artImage[title][1];
+        }
+
+
+        let collected = collectedEvents.find(
+            event => findCollectedEvent(event, eventID)
+        ) ? 'checked' : '';
 
         let event = {
             id: eventID,
             item: title,
             location: location,
             desc: description,
-            icon: artEventIcon.iconUrl,
-            image: image
+            icon: artEventIcon.options.iconUrl,
+            image: image,
+            start: '',
+            end: '',
+            source: source
         };
 
         // Handle the event data
         handleSingleEvent(
-            event, 
-            collected, 
-            [lat, lon], 
-            [latitude, longitude],
+            event,
+            collected, [lat, lon], [latitude, longitude],
             artEventIcon
         );
     });
@@ -103,7 +130,9 @@ function iterateBccEvents(results, lat, lon) {
         let title = eventData["title"];
         let description = eventData["description"];
         let location = eventData["location"];
-        
+        var start = eventData["startDateTime"];
+        var end = eventData["endDateTime"];
+
         let recordImage;
         if ("eventImage" in eventData)
             recordImage = eventData["eventImage"]["url"];
@@ -118,16 +147,16 @@ function iterateBccEvents(results, lat, lon) {
             item: title,
             location: location,
             desc: description,
-            icon: culturalEventIcon.iconUrl,
-            image: recordImage
+            icon: culturalEventIcon.options.iconUrl,
+            image: recordImage,
+            start: start,
+            end: end
         };
 
         // Handle the event data
         handleSingleEvent(
-            event, 
-            collected, 
-            [lat, lon], 
-            [latitude, longitude],
+            event,
+            collected, [lat, lon], [latitude, longitude],
             culturalEventIcon
         );
     });
@@ -144,17 +173,18 @@ function iterateBccEvents(results, lat, lon) {
  * @param {*} icon The icon to display as the events marker
  */
 function handleSingleEvent(event, collectState, refPos, eventPos, icon) {
+    // console.log(event);
     // Find the distance between car and event
-    let distance = eventPos[0] && eventPos[1] ? 
-        distanceInKmBetweenCoords(...refPos, ...eventPos) 
-        : null;
-    
+    let distance = eventPos[0] && eventPos[1] ?
+        distanceInKmBetweenCoords(...refPos, ...eventPos) :
+        null;
+
     // Make sure the event is within 500m from the user's position.  
     if (distance * 1000 < EVENT_RADIUS) {
         // Create a new marker
         let marker = L.marker(eventPos, { icon: icon }).addTo(map);
         nearbyMarkers.push(marker);
-        
+
         let popup = L.DomUtil.create('div', 'infoWindow');
         popup.innerHTML = generateEventPopup(collectState, event);
         marker.bindPopup(popup);
@@ -175,7 +205,7 @@ function collectCallback(record) {
     } else {
         collectedEvents.push(record);
     }
-
+    setLocalStorage(collectedEvents, LS_EVENT_COLLECTED);
     // Propagate updates to collection
     updateCollection();
 }

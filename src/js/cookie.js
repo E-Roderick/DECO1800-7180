@@ -26,5 +26,5 @@ function getCookie(cookie) {
     .filter(_cookie => _cookie[0] === cookie);
   
   // Pull item out of array, then return value
-  return result ? result[0][1] : null;
+  return result && result[0] ? result[0][1] : null;
 }

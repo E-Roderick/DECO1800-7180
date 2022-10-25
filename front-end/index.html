@@ -7,7 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/style.css">
+   
     <title>Document</title>
 </head>
 <body>
@@ -49,7 +52,7 @@
           </div>
         </nav>
       </header>
-      <main>
+      <main id="desktop">
         <section class="container">
           <article class="wrapper "><img class="main_title" src="./images/main_title_l.png" alt=""></article>
           <section class="wrapper main_features">
@@ -74,6 +77,32 @@
           </section>
         </section>
       </main>
+      <main id="mobile">
+        <section class="container">
+          <article class="wrapper_mobile "><img class="main_title" src="./images/main_title_mobile.png" alt=""></article>
+          <section class="wrapper_mobile main_features_mobile">
+            <a class="feature_box_mobile">
+              <div href="" class="box_touch_area_mobile"></div>
+              <section href="#!" class="feature_content_mobile">
+                <picture class="feature_icon">
+                  <img src="./images/ic_outline_route_selection.svg" alt="">
+                </picture>
+                <h4 class="feature_title_mobile">Route selections</h4>
+              </section>
+            </a>
+            <a class="feature_box_mobile">
+              <div href="" class="box_touch_area_mobile"></div>
+              <section href="#!" class="feature_content_mobile">
+                <picture class="feature_icon">
+                  <img src="./images/ic_outline_nearby_bus_stops.svg" alt="">
+                </picture>
+                <h4 class="feature_title_mobile">Nearby bus stops</h4>
+              </section>
+            </a>
+          </section>
+        </section>
+
+      </main>
       
       <footer class="footer_section">
         <div class="footer_container">
@@ -87,5 +116,20 @@
         </div>
       </footer>    
 </body>
+<script>
+  var oDiv1=document.getElementById("desktop");
+  var oDiv2=document.getElementById("mobile");
+  
+  if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+  //Mobile device
+  oDiv1.style.display="none";
+  oDiv2.style.display="block";
+  }else{
+  oDiv1.style.display="block";
+  oDiv2.style.display="none";
+  }
+
+
+  </script>
 </html>
 

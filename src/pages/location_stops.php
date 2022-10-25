@@ -5,26 +5,25 @@ require_once("../util/stop_data.php");
 require_once("../util/route_data.php");
 require_once("../components/nav.php");
 
-$STOPS = array(
-    "610142" => [2481, 19050, 1960],
-    "660047" => [1880, 10793, 19051],
-    "1110001" => [10823, 10813, 10792],
-    "2220001" => [6291, 3001, 10792],
-    "4440002" => [10793, 4641, 19910],
-    "P2060002" => [5902, 228, 3071],
+/* Hardcoding stop data for now */
+// Specify three stops along route 66 closest to expo location
+$STOPS = [1880, 18055];
+// Specify distances in km from Schonell theatre to the stops
+$DISTANCES = array(
+    1880 => 0.217,
+    18055 => 0.876,
 );
+// Get stop data for route 66
+$STOP_DATA = getStopData("660047");
 
-$target = $_GET["route"];
-
-$STOP_DATA = getStopData($target);
 ?>
 
 <main>
 <section class="container">
-    <?php BackButton("/DECO1800-7180/src/pages/routes.php") ?>
+    <?php BackButton("/DECO1800-7180/") ?>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
-        <h4>SELECT A BUS STOP ALONG ROUTE <?php echo $getRouteSignById($target)?></h4>
+        <h4>SELECT A BUS STOP NEAR YOUR CURRENT LOCATION</h4>
         <div id="slider-wrapper">
         <div class="inner-wrapper">
             <!-- Stop lists -->
@@ -34,11 +33,17 @@ $STOP_DATA = getStopData($target);
                     <?php
 
                     // Load each stop as a list item radio button
-                    foreach ($STOPS[$target] as $stop) {
+                    foreach ($STOPS as $stop) {
                         $stop = getStopInfoByID($STOP_DATA, $stop);
                         echo '<li class="flex-center">';
                         echo '<input type="radio" name="stop-select" id="'.$stop[0].'">';
-                        echo '<label for="'.$stop[0].'" class="flex-center">'.$stop[2].'</label>';
+                        echo '
+                            <label for="'.$stop[0].'" class="flex-center">
+                                <p>'.
+                                    $stop[2].'<br>
+                                    <span class="stop-dist">'.$DISTANCES[$stop[0]].' km</span>
+                                </p>
+                            </label>';
                         echo '</li>';
                     }
 
@@ -68,11 +73,10 @@ $STOP_DATA = getStopData($target);
         event.preventDefault();
 
         // Get new page location
-        const route = "<?php echo $target; ?>";
         const sel = document.querySelector('input[name="stop-select"]:checked');
 
         if (sel && sel.id != "none") {
-            const url = `/DECO1800-7180/src/pages/explore.php?route=${route}&stop=${sel.id}`;
+            const url = `/DECO1800-7180/src/pages/location-routes.php?stop=${sel.id}`;
             // Route to new page
             window.location.href = url
         }

@@ -5,10 +5,11 @@
 /* Constants */
 const LS_EVENT_ART_DATA = "event_art_data";
 const LS_EVENT_BCC_DATA = "event_bcc_data";
+const LS_EVENT_COLLECTED = "event_collected";
 
 /* Globals */
-let eventsPublicArt;    // Events from the public art API
-let eventsBCC;          // Events from the BCC event site
+let eventsPublicArt; // Events from the public art API
+let eventsBCC; // Events from the BCC event site
 
 /* Functions */
 
@@ -129,7 +130,7 @@ async function getEventData() {
         // Track that we have something to resolve
         resolving.push(getServerBccData())
     }
-    
+
     // Wait for any outstanding data requests
     if (resolving) {
         await Promise.all(resolving);
