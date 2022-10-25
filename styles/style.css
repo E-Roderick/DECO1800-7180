@@ -817,6 +817,10 @@ input.select_stop.btn {
     overflow: scroll;
 }
 
+#desktop .tab-list {
+    width: 25%;
+}
+
 .tab-list li {
     font-size: 18px;
     margin: 20px 0;
