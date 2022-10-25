@@ -8,7 +8,7 @@
         <h4>Inventory</h4>
         
             <div class="inventory-sec" id="slider-wrapper">
-            <div class="inner-wrapper">
+            <div class="inner-wrapper" id="inner-wrapper">
                 <input checked type="radio" name="slide" class="control" id="Slide1" />
                 <label for="Slide1" id="s1"></label>
                 <input type="radio" name="slide" class="control" id="Slide2" />
@@ -60,57 +60,15 @@
     </section>
 </section>
 </main>
-<main id='mobile' class="inventory-mobile-page">
-<section class="container">
-    <article class="sub_page">
-        <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
-    </article>
-    <section class="main-features wrapper-inventory">
-        <h4>Inventory</h4>
-            <div class="inventory-sec-mobile" id="slider-wrapper">
-            <div class="inner-wrapper-mobile">
-                <div class="overflow-wrapper">
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    </ul>
-                    </div>
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    </ul>
-                    </div>
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    </ul>
-                </div>
-                <div class="slide" href="#">
-                    <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </div>
-    </section>
-</section>
-</main>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/DECO1800-7180/src/js/handle_data.js"></script>
-<script>
+<script>  
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+    //Mobile device
+        document.getElementById("slider-wrapper").className = "inventory-sec-mobile";
+        document.getElementById("inner-wrapper").className = "inner-wrapper-mobile";
+    }
+
     /* Inventory page logic */            
     $( window ).on( "load", function() {
         let collectedEvents = getLocalStorage(LS_EVENT_COLLECTED);
@@ -167,16 +125,5 @@
             }
         }
     });
-    var oDiv1=document.getElementById("desktop");
-    var oDiv2=document.getElementById("mobile");
-    
-    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-    //Mobile device
-        oDiv1.style.display="none";
-        oDiv2.style.display="block";
-        }else{
-        oDiv1.style.display="block";
-        oDiv2.style.display="none";
-    }
 </script>
 <?php include("../components/footer_default.php"); ?>
