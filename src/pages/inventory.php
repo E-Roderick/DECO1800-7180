@@ -1,9 +1,9 @@
+<?php require_once("../components/nav.php") ?>
+
 <?php include("../components/header_default.php"); ?>
 <main id="desktop" class="inventory-page">
 <section class="container">
-    <article class="sub_page">
-        <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
-    </article>
+    <?php DynamicBackButton() ?>
     <section class="wrapper main-features">
         <h4>Inventory</h4>
         
