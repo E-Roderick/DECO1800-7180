@@ -3,7 +3,7 @@
  ******************************************************************************/
 
 /* Constants */
-const INC = 1; // Route coordinates skipped per move
+const INC = 2; // Route coordinates skipped per move
 const POSITIVE = 1;
 const NEGATIVE = -1;
 
@@ -33,6 +33,8 @@ const START_POSITIONS = {
         "1880": 327,
         "10793": 0,
         "19051": 222,
+        "18055": 309,
+        "10795": 290,
     },
     "1110001": {
         "10823": 286,
@@ -124,7 +126,15 @@ const getNewIndex = (index, max, inc, direction) => {
  * Create the leaflet map.
  */
 function createMap() {
-    map = L.map("map", { keyboard: false, zoomControl: false })
+    let mapID;
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+        //Mobile device
+        mapID = "map_mobile";
+    } else {
+        mapID = "map_desktop";
+    }
+
+    map = L.map(mapID, { keyboard: false, zoomControl: false })
         .setView([-27.491457, 153.102629], MIN_ZOOM);
     
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -303,7 +313,6 @@ function registerKeyPress() {
     }, false);
 }
 
-
 /**
  * Register the onclick handlers for the map interactions.
  */
@@ -312,6 +321,16 @@ function registerBtnClick() {
     document.getElementById("ic_forward").onclick = e => moveForward();
     document.getElementById("ic_backward").onclick = e => moveBackward();
     document.getElementById("ic_rotate").onclick = e => handleTurn();
+}
+
+/**
+ * Register the touchend handlers for the map interactions.
+ */
+function registerBtnTouch() {
+    // Attach movement functions to buttons
+    document.getElementById("ic_forward").touchend = e => moveForward();
+    document.getElementById("ic_backward").touchend = e => moveBackward();
+    document.getElementById("ic_rotate").touchend = e => handleTurn();
 }
 
 /**

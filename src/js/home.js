@@ -21,7 +21,6 @@ function setHomeHelpCookie(value) {
  */
 function isHomeHelpUnderstood() {
   // Check if the home help tip value is like true
-  console.log(getCookie(HOME_HELP_TIP));
   return getCookie(HOME_HELP_TIP) === "true";
 }
 
@@ -39,5 +38,4 @@ function addHomeHelpAcceptedClass() {
 function setHomeHelpAccepted() {
   addHomeHelpAcceptedClass();
   setHomeHelpCookie(true);
-  console.log(document.cookie)
 }

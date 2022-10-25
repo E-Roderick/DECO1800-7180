@@ -385,6 +385,11 @@ a.game_btn {
 
 /* neaby_entry page */
 
+.stop-dist {
+    font-size: 10px;
+    line-height: 1.5em;
+}
+
 .neabybs_sec,
 .nearbybs-next,
 .inventory-sec,
@@ -829,7 +834,11 @@ input.select_stop.btn {
 }
 
 #about-ref li:not(:first-child) {
-    margin-top: 2em;
+    margin-top: 1.5em;
+}
+
+#about-ref li:first-child {
+    margin-top: 0.5em;
 }
 
 #about-ref a {
@@ -847,4 +856,12 @@ input.select_stop.btn {
 
 #member-list li {
     list-style-type: square;
+}
+
+#about-ref h5 {
+    font-size: 18px;
+}
+
+#about-ref-refs {
+    margin-top: 4em;
 }
