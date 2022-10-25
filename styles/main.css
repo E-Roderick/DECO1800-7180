@@ -3,301 +3,301 @@
  * page. More specific styles may overwrite.
  */
 
-html,
-body {
-    height: 100%;
-    font-family: 'Press Start 2P', monospace;
-}
-
-body {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: normal;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
-
-main {
-    background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
-}
-
-h1 {
-    font-size: 48px;
-    line-height: 48px;
-    font-weight: bold;
-}
-
-h2 {
-    font-size: 36px;
-    line-height: 44px;
-}
-
-h3 {
-    font-size: 24px;
-    line-height: 40px;
-    color: #ffffff;
-}
-
-h4 {
-    font-size: 18px;
-    line-height: 40px;
-    color: #ffffff;
-}
-
-option {
-    background-color: #9ba5ff;
-}
-
-.web {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.navbar_container {
-    position: relative;
-    margin: 0 auto;
-    width: 100%;
-    height: 20%;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 1440px;
-    height: 20%;
-}
-
-.nav_logo {
-    line-height: 64px;
-    color: #ffffff;
-}
-
-.nav_right_menu {
-    display: flex;
-}
-
-.nav_link {
-    position: relative;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    line-height: 16px;
-    padding: 6px 0;
-    margin-left: 32px;
-}
-
-.nav_link:hover {
-    color: #9ba5ff;
-}
-
-.nav_icon_word {
-    margin-left: 12px;
-}
-
-/* Navigation bar */
-@media screen and (max-width: 1080px) {
-    .navbar_container {
-        position: relative;
-        margin: 0 auto;
-        width: 95%;
-        height: 20%;
-    }
-
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: auto;
-        padding: 2%;
-    }
-
-    .nav_logo{
-        width: 10%;
-    }
-    
-    .nav_logo h4{
-        width: 10%;
-        line-height: 24px;
-        color: #ffffff;
-    }
-
-    .nav_right_menu {
-        display: flex;
-        position: relative;
-    }
-
-    .nav_right_menu .nav_icon .nav_link svg{
-        width: 24px;
-        height: 24px;
-    }
-    
-    .nav_link {
-        position: relative;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        line-height: 16px;
-        padding: 6px 6px;
-        margin-left: 0px;
-    }
-    
-    .nav_link:hover {
-        color: #9ba5ff;
-    }
-    
-    .nav_icon_word {
-        display: none;
-    }
-    
-}
-
-/* Section */
-
-.container {
-    height: 100vh;
-    position: absolute;
-    text-align: center;
-    width: 100vw;
-    background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
-}
-
-.wrapper {
-    max-width: 1440px;
-    position: relative;
-    top: 20%;
-    margin: 0 auto;
-}
-
-.back_button {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    z-index: 998;
-}
-
-/* Mobile */
-#mobile {
-    display: none;
-}
-
-.wrapper_mobile {
-    max-width: 80%;
-    padding-left: 5%;
-    padding-right: 5%;
-    position: relative;
-    top: 13%;
-    margin: 0 auto;
-}
-
-.wrapper_mobile img {
-    width: 90%;
-}
-
-/* Sub page */
-
-.sub_page {
-    max-width: 1440px;
-    position: relative;
-    top: 10%;
-    margin: 0 auto;
-}
-
-.sub_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-features h4 {
-    margin: 20px 0 30px 0;
-}
-
-/* Footer */
-
-.footer_section {
-    position: absolute;
-    width: 100%;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.1);
-    bottom: 0%;
-    z-index: 999;
-}
-
-.footer_container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1440px;
-    height: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1440px;
-}
-
-/* Footer mobile*/
-
-@media screen and (max-width: 1080px) {
-    .footer_section {
-        position: absolute;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        bottom: 0%;
-        text-align: center;
-        z-index: 999;
-        margin: 0 auto;
-    }
-    
-    .footer_container {
-        position: relative;
-
-        width: 80%;
-        height: 48px;
-        display: block;
-        /* justify-content: space-between; */
-        align-items: center;
-        font-size: 8px;
-        line-height: 16px;
-
-    }
-    
-
-}
-
-#explore-select {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.explore-select-btn {
-    margin: 5pt;
-}
-
-/* NOTE Not the best way to do this but it works */
-.btn:disabled {
-    cursor: auto !important;
-    border-color: rgba(128, 128, 128, 0.5) !important;
-    filter: none  !important;
-    color: rgba(128, 128, 128, 0.5)  !important;
-}
-
-.btn {
-    cursor: pointer;
-    font-family: 'Press Start 2P', monospace;
-    padding: 1.2rem 5rem;
-    border: 4px solid #3EF3FF;
-    border-radius: 8px;
-    filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
-}
+ html,
+ body {
+     height: 100%;
+     font-family: 'Press Start 2P', monospace;
+ }
+ 
+ body {
+     font-size: 14px;
+     font-style: normal;
+     font-weight: normal;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ header {
+     position: fixed;
+     width: 100%;
+     top: 0;
+     left: 0;
+     z-index: 999;
+ }
+ 
+ main {
+     background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
+ }
+ 
+ h1 {
+     font-size: 48px;
+     line-height: 48px;
+     font-weight: bold;
+ }
+ 
+ h2 {
+     font-size: 36px;
+     line-height: 44px;
+ }
+ 
+ h3 {
+     font-size: 24px;
+     line-height: 40px;
+     color: #ffffff;
+ }
+ 
+ h4 {
+     font-size: 18px;
+     line-height: 40px;
+     color: #ffffff;
+ }
+ 
+ option {
+     background-color: #9ba5ff;
+ }
+ 
+ .web {
+     background: rgba(255, 255, 255, 0.1);
+ }
+ 
+ .navbar_container {
+     position: relative;
+     margin: 0 auto;
+     width: 100%;
+     height: 20%;
+ }
+ 
+ .navbar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: 0 auto;
+     max-width: 1440px;
+     height: 20%;
+ }
+ 
+ .nav_logo {
+     line-height: 64px;
+     color: #ffffff;
+ }
+ 
+ .nav_right_menu {
+     display: flex;
+ }
+ 
+ .nav_link {
+     position: relative;
+     text-decoration: none;
+     display: flex;
+     align-items: center;
+     line-height: 16px;
+     padding: 6px 0;
+     margin-left: 32px;
+ }
+ 
+ .nav_link:hover {
+     color: #9ba5ff;
+ }
+ 
+ .nav_icon_word {
+     margin-left: 12px;
+ }
+ 
+ /* Navigation bar */
+ @media screen and (max-width: 1080px) {
+     .navbar_container {
+         position: relative;
+         margin: 0 auto;
+         width: 95%;
+         height: 20%;
+     }
+ 
+     .navbar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: auto;
+         padding: 2%;
+     }
+ 
+     .nav_logo{
+         width: 10%;
+     }
+     
+     .nav_logo h4{
+         width: 10%;
+         line-height: 24px;
+         color: #ffffff;
+     }
+ 
+     .nav_right_menu {
+         display: flex;
+         position: relative;
+     }
+ 
+     .nav_right_menu .nav_icon .nav_link svg{
+         width: 24px;
+         height: 24px;
+     }
+     
+     .nav_link {
+         position: relative;
+         text-decoration: none;
+         display: flex;
+         align-items: center;
+         line-height: 16px;
+         padding: 6px 6px;
+         margin-left: 0px;
+     }
+     
+     .nav_link:hover {
+         color: #9ba5ff;
+     }
+     
+     .nav_icon_word {
+         display: none;
+     }
+     
+ }
+ 
+ /* Section */
+ 
+ .container {
+     height: 100vh;
+     position: absolute;
+     text-align: center;
+     width: 100vw;
+     background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
+ }
+ 
+ .wrapper {
+     max-width: 1440px;
+     position: relative;
+     top: 20%;
+     margin: 0 auto;
+ }
+ 
+ .back_button {
+     position: absolute;
+     top: 0%;
+     left: 0%;
+     z-index: 998;
+ }
+ 
+ /* Mobile */
+ #mobile {
+     display: none;
+ }
+ 
+ .wrapper_mobile {
+     max-width: 80%;
+     padding-left: 5%;
+     padding-right: 5%;
+     position: relative;
+     top: 13%;
+     margin: 0 auto;
+ }
+ 
+ .wrapper_mobile img {
+     width: 90%;
+ }
+ 
+ /* Sub page */
+ 
+ .sub_page {
+     max-width: 1440px;
+     position: relative;
+     top: 10%;
+     margin: 0 auto;
+ }
+ 
+ .sub_container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .main-features h4 {
+     margin: 20px 0 30px 0;
+ }
+ 
+ /* Footer */
+ 
+ .footer_section {
+     position: absolute;
+     width: 100%;
+     height: 80px;
+     background: rgba(255, 255, 255, 0.1);
+     bottom: 0%;
+     z-index: 999;
+ }
+ 
+ .footer_container {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 1440px;
+     height: 64px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 1440px;
+ }
+ 
+ /* Footer mobile*/
+ 
+ @media screen and (max-width: 1080px) {
+     .footer_section {
+         position: absolute;
+         width: 100%;
+         background: rgba(255, 255, 255, 0.1);
+         bottom: 0%;
+         text-align: center;
+         z-index: 999;
+         margin: 0 auto;
+     }
+     
+     .footer_container {
+         position: relative;
+ 
+         width: 80%;
+         height: 48px;
+         display: block;
+         /* justify-content: space-between; */
+         align-items: center;
+         font-size: 8px;
+         line-height: 16px;
+ 
+     }
+     
+ 
+ }
+ 
+ #explore-select {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+ }
+ 
+ .explore-select-btn {
+     margin: 5pt;
+ }
+ 
+ /* NOTE Not the best way to do this but it works */
+ .btn:disabled {
+     cursor: auto !important;
+     border-color: rgba(128, 128, 128, 0.5) !important;
+     filter: none  !important;
+     color: rgba(128, 128, 128, 0.5)  !important;
+ }
+ 
+ .btn {
+     cursor: pointer;
+     font-family: 'Press Start 2P', monospace;
+     padding: 1.2rem 5rem;
+     border: 4px solid #3EF3FF;
+     border-radius: 8px;
+     filter: drop-shadow(0px 0px 10px #3EF3FF) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+ }
