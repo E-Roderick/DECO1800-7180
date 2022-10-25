@@ -825,10 +825,22 @@ input.select_stop.btn {
 }
 
 #about-ref li:not(:first-child) {
-    margin-top: 2em;
+    margin-top: 1.5em;
+}
+
+#about-ref li:first-child {
+    margin-top: 0.5em;
 }
 
 #about-ref a {
     text-decoration: underline;
     color: cyan;
+}
+
+#about-ref h5 {
+    font-size: 18px;
+}
+
+#about-ref-refs {
+    margin-top: 2em;
 }
