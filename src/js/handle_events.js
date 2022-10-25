@@ -81,7 +81,7 @@ function iteratArtEvents(results, lat, lon) {
 
         let image;
         let source;
-        if (artImage.hasOwnProperty(title)) {
+        if (artImage && artImage.hasOwnProperty(title)) {
             image = artImage[title][0];
             source = artImage[title][1];
         }
