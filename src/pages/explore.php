@@ -7,11 +7,11 @@
 <main class="explore-page">
 <section class="container">
     <article id="map-help" class="flex-center">
-        <h3>Exploration Tutorial</h3>
+        <h4>Exploration Tutorial</h4>
         <article id="tutorial-content">
             <section class="tutorial-step flex-col">
                 <img src="/DECO1800-7180/public/assets/images/tute_1.jpeg">
-                <h4>Step One</h4>
+                <h5>Step One</h5>
                 <p>
                     Navigate the map using the keyboard or on screen controls.
                     To move forward, use 'W' or the button  labelled 'A'. To 
@@ -21,7 +21,7 @@
             </section>
             <section class="tutorial-step flex-col">
                 <img src="/DECO1800-7180/public/assets/images/tute_2.jpeg">
-                <h4>Step Two</h4>
+                <h5>Step Two</h5>
                 <p>
                     Explore the map to find events. Events are markers on the
                     map, and come in two types. The Green markers represent a 
@@ -31,7 +31,7 @@
             </section>
             <section class="tutorial-step flex-col">
                 <img src="/DECO1800-7180/public/assets/images/tute_3.jpeg">
-                <h4>Step Three</h4>
+                <h5>Step Three</h5>
                 <p>
                     Click on an event to find more details. If you decide that 
                     you like the event, you can add the item to your inventory 

@@ -201,9 +201,10 @@
 
 .tutorial-step {
     width: 25%;
-    margin: 1rem;
-    line-height: 1.1em;
-    font-size: small;
+    margin: 0.7rem;
+    line-height: 1em;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .tutorial-step h4 {
@@ -217,7 +218,7 @@
 
 #tutorial-load-info {
     font-size: smaller;
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 #help-skip-btn {
@@ -813,6 +814,10 @@ input.select_stop.btn {
     height: 100vh;
     box-sizing: border-box;
     overflow: scroll;
+}
+
+#desktop .tab-list {
+    width: 25%;
 }
 
 .tab-list li {

@@ -16,7 +16,11 @@
     </div>
     <div class="tab-content">
         <article id="about-team" class="item" style="display: block;">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, vero voluptatibus earum enim maxime distinctio, velit cupiditate iure ex fugiat adipisci voluptatem reiciendis dolore veniam voluptas harum recusandae magnam aliquam.
+            <h4>- Ethan Roderick</h4>
+            <h4>- Karell Usang</h4>
+            <h4>- Shuo Liu</h4>
+            <h4>- Yu-Hsuan Wu</h4>
+            <h4>- Yen-Chen Chen</h4>
         </article>
         <article id="about-concept" class="item" style="display: none;">
             <h5>Purpose of the application:</h5><br>
@@ -107,7 +111,13 @@
         </div>
         <div class="tab-content-mobile">
             <article class="item" style="display: block;">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, vero voluptatibus earum enim maxime distinctio, velit cupiditate iure ex fugiat adipisci voluptatem reiciendis dolore veniam voluptas harum recusandae magnam aliquam.
+            <br>
+            <br>
+            - Ethan Roderick<br>
+            - Karell Usang<br>
+            - Shuo Liu<br>
+            - Yu-Hsuan Wu<br>
+            - Yen-Chen Chen
             </article>
             <article class="item" style="display: none;">
                 <h5>Purpose of the application:</h5>
