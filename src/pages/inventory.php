@@ -1,5 +1,5 @@
 <?php include("../components/header_default.php"); ?>
-<main class="inventory-page">
+<main id="desktop" class="inventory-page">
 <section class="container">
     <article class="sub_page">
         <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
@@ -20,58 +20,91 @@
                 <div class="overflow-wrapper">
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
                     </ul>
                     </div>
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
                     </ul>
                     </div>
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
                     </ul>
                 </div>
                 <div class="slide" href="#">
                     <ul>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
-                    <li><a href="#">XXXXXXXXXX</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
                     </ul>
                 </div>
                 </div>
             </div>
             </div>
-            <!-- <ul>
-            <li><a href="#"><img src="" alt=""></a></li>
-            <li><a href="#"><img src="" alt=""></a></li>
-            <li><a href="#"><img src="" alt=""></a></li>
-            <li><a href="#"><img src="" alt=""></a></li>
-            <li><a href="#"><img src="" alt=""></a></li>
-            </ul> -->
-        <!-- <section class="inventory-next">
-            <ul>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            </ul>
-        </section> -->
+    </section>
+</section>
+</main>
+<main id='mobile' class="inventory-mobile-page">
+<section class="container">
+    <article class="sub_page">
+        <a href="javascript:history.back()" class="back_button"> &lt; Back</a>
+    </article>
+    <section class="main-features wrapper-inventory">
+        <h4>Inventory</h4>
+            <div class="inventory-sec-mobile" id="slider-wrapper">
+            <div class="inner-wrapper-mobile">
+                <div class="overflow-wrapper">
+                <div class="slide" href="#">
+                    <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    </ul>
+                    </div>
+                <div class="slide" href="#">
+                    <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    </ul>
+                    </div>
+                <div class="slide" href="#">
+                    <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="slide" href="#">
+                    <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
     </section>
 </section>
 </main>
@@ -134,5 +167,16 @@
             }
         }
     });
+    var oDiv1=document.getElementById("desktop");
+    var oDiv2=document.getElementById("mobile");
+    
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+    //Mobile device
+        oDiv1.style.display="none";
+        oDiv2.style.display="block";
+        }else{
+        oDiv1.style.display="block";
+        oDiv2.style.display="none";
+    }
 </script>
 <?php include("../components/footer_default.php"); ?>

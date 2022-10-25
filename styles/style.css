@@ -384,6 +384,12 @@ a.game_btn {
 
 
 /* neaby_entry page */
+.wrapper-inventory {
+    max-width: 1440px;
+    position: relative;
+    top: 12%;
+    margin: 0 auto;
+}
 
 .neabybs_sec,
 .nearbybs-next,
@@ -427,7 +433,8 @@ a.game_btn {
     display: block;
     width: 150px;
     height: 150px;
-    margin: 5px;
+    margin: 8px;
+    padding: 15px 0;
     line-height: 1.2rem;
     background-color: rgb(236, 230, 230, 0.2);
     border: 3px solid #3EF3FF;
@@ -450,6 +457,21 @@ a.game_btn {
     margin: 0 15px;
     background-color: #fff;
     border-radius: 50%;
+}
+
+.inventory-sec p,
+.inventory-sec-mobile p {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.inventory-sec-mobile p {
+    font-size: 10px;
+    -webkit-line-clamp: 2;
 }
 
 .inventory-page #slider-wrapper {
@@ -524,7 +546,8 @@ a.game_btn {
     opacity: .50;
 }
 
-.inner-wrapper {
+.inner-wrapper,
+.inner-wrapper-mobile {
     width: 100%;
     height: 280px;
     /* position: absolute; */
@@ -534,6 +557,19 @@ a.game_btn {
     overflow: hidden;
 }
 
+.stop-inner-wrapper {
+    width: 100%;
+    height: 280px;
+    top: 0;
+    left: 0;
+    overflow-x: scroll;
+}
+
+.inner-wrapper-mobile {
+    height: 500px;
+    overflow: scroll;
+}
+
 .control {
     display: none;
 }
@@ -541,6 +577,13 @@ a.game_btn {
 .slide.options {
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* margin: 0 auto; */
+}
+
+#slide-mobile {
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     /* margin: 0 auto; */
 }
@@ -599,7 +642,7 @@ a.game_btn {
 
 .slide {
     max-width: 1200px;
-    height: 280px;
+    /* height: 280px; */
     margin: 0 auto;
 }
 
@@ -753,6 +796,11 @@ input.select_stop.btn {
 
 
 /* about page */
+.container-about {
+    text-align: center;
+    width: 100vw;
+    background: radial-gradient(100% 100% at 50% 0%, #A91E9B 0%, #390183 100%);
+}
 
 .wrapper.about-sec {
     top: 12%;
@@ -762,8 +810,10 @@ input.select_stop.btn {
 }
 
 .about-sec-mobile {
-    top: 10%;
+    padding-top: 25%;
+    height: 100vh;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 .tab-list li {
@@ -814,10 +864,16 @@ input.select_stop.btn {
     line-height: 1.5rem;
     font-size: 11px;
     text-align: left;
+    word-wrap: break-word;
 }
 
 .tab-content-mobile h5 {
-    font-size: 10px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.tab-content-mobile li {
+    margin: 15px 0;
 }
 
 #about-ref li {
@@ -832,7 +888,8 @@ input.select_stop.btn {
     margin-top: 0.5em;
 }
 
-#about-ref a {
+#about-ref a,
+.tab-content-mobile a {
     text-decoration: underline;
     color: cyan;
 }
