@@ -7,7 +7,7 @@ require_once("../components/nav.php");
 
 /* Hardcoding stop data for now */
 // Specify three stops along route 66 closest to expo location
-$STOPS = [1880, 18055, 10795];
+$STOPS = [1880, 18055];
 // Get stop data for route 66
 $STOP_DATA = getStopData("660047");
 
@@ -18,7 +18,7 @@ $STOP_DATA = getStopData("660047");
     <?php BackButton("/DECO1800-7180/src/pages/routes.php") ?>
     <form class="wrapper main-features" id="stop-select-form">
         <img src="/DECO1800-7180/public/assets/ui/icons/ic_outline_nearby_bus_stops.svg" alt="">
-        <h4>SELECT A NEARBY BUS STOP</h4>
+        <h4>SELECT A BUS STOP NEAR YOUR CURRENT LOCATION</h4>
         <div id="slider-wrapper">
         <div class="inner-wrapper">
             <!-- Stop lists -->
